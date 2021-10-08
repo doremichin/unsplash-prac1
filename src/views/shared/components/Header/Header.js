@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {IconLogo} from "../../../../icons";
 import SearchBox from "../SearchBox";
 import Nav from "./Nav";
+import SearchBoxContainer from "../../../search/containers/SearchBoxContainer";
 
 const Header = () => {
     return(
@@ -10,7 +11,7 @@ const Header = () => {
             <Logo>
                 <IconLogo/>
             </Logo>
-            <SearchBox/>
+            <SearchBoxContainer shape={'round'}/>
             <Nav/>
         </Container>
     )

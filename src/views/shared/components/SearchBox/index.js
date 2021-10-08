@@ -1,16 +1,71 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components'
+import {IconSearch} from "../../../../icons";
+import {DefaultButton} from "../Button/Button.Styled";
 
-const SearchBox = () => {
+const SearchBox = ({ value,onSubmit,onChange,shape }) => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(e);
+    }
+
     return(
-        <Container>
-            SearchBox
+        <Container className={shape}>
+            <Form onSubmit={handleSubmit}>
+                <Button type={"submit"}>
+                    <IconSearch/>
+                </Button>
+                <Label>
+                    <Input
+                        type="text"
+                        onChange={onChange}
+                        value={value}
+                        placeholder={'Search Free...'}
+                    />
+                </Label>
+            </Form>
         </Container>
     )
 };
 
 const Container = styled.div`
-  flex: 1;
+    
 `;
+const Form = styled.form`
+  display: flex;
+  width: 100%;
+  .round & {
+    background: #eee;
+    border-radius: 30px;
 
+  }
+  .square & {
+    background: #fff;
+    border-radius: 6px;
+  }
+`;
+const Button = styled(DefaultButton)`
+  
+`;
+const Label = styled.div`
+  display: block;
+  width: 100%;
+`;
+const Input = styled.input`
+  display: block;
+  height: 38px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  padding: 8px;
+  font-size: 14px;
+  .round & {
+    height: 38px;
+  }
+  .square & {
+    height: 54px;
+  }
+`;
 export default SearchBox;
