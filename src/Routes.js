@@ -8,7 +8,7 @@ const Routes = () => {
     return(
         <Switch>
             <Route exact path={'/'} component={Main}/>
-            <Route exact path={'/search'} component={Search}/>
+            <Route exact path={'/search/photos/:query'} component={Search}/>
         </Switch>
     )
 };
