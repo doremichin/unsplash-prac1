@@ -8,32 +8,29 @@ React
 
 Redux
 
-*store
-    *dispatch 아래 참조
-    *getState - 현재 store의 상태를 리턴한다
-    *생성
+* store
+  * dispatch - 아래 참조
+  * getState - 현재 store의 상태를 리턴한다
+  * 생성
 ```javascript
-    const store = createStore(reducer);
+const store = createStore(reducer);
 ```
 
 * action 
-    *type은 plane object {}
+  * plane object {}
   * type과 payload를 갖는다
-     ```javascript
-    {
-        type: 'ACTION_NAME',
-            payload : any
-    }
-    ```
+ ```javascript
+{ type: 'ACTION_NAME', payload : any }
+```
 * dispatch
   * function
-  * 역할 - action 을 reducer의 전달하여 실행한다.
+  * 역할 - action을 reducer의 인자로 전달하여 실행한다.
 
 * reducer 
   * function
   * 역할 - nextState 를 return 하여 store의 상태를 업데이트 한다.
 ```javascript
-    const reducer = (state, action) => {
+const reducer = (state, action) => {
     switch (action.type) {
         default : return state;
         case "ACTION_NAME" : {
@@ -45,7 +42,7 @@ Redux
     }
 }
 ```
-    
+
 
 Redux-saga
 
