@@ -1,19 +1,17 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import Routes from "./Routes";
-import {GlobalStyle} from "./style/GlobalStyle";
-import Header from "./views/shared/components/Header/Header";
+import Routes from './Routes';
+import { GlobalStyle } from './style/GlobalStyle';
+import Header from './views/shared/components/Header/Header';
 
-const App = () => {
-    return(
-        <Container>
-            <GlobalStyle/>
-            <Header/>
-            <Routes/>
-        </Container>
-    )
-};
+const App = () => (
+  <Container>
+    <GlobalStyle />
+    <Header />
+    <Routes />
+  </Container>
+);
 
 const Container = styled.div`
 
