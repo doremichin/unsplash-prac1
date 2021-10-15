@@ -1,34 +1,34 @@
-import React from 'react';
-import styled from 'styled-components'
-import {useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {Action} from "../../../redux/search/slice";
-import SearchBox from "../../shared/components/SearchBox";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-const SearchBoxContainer = ({shape}) => {
+import { Action } from '../../../redux/search/slice';
+import SearchBox from '../../shared/components/SearchBox';
 
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const {searchQuery} = useSelector((state) => state.search);
+const SearchBoxContainer = ({ shape }) => {
+  const history = useHistory();
+  const [query, setQuery] = useState('');
 
-    const onChange = (e) => {
-        dispatch(Action.Creators.setSearchQuery(e.target.value))
-    }
+  const onSubmit = (e) => {
+    history.push(`/search/photos/${query}`);
+  };
 
-    const onSubmit = (e) => {
-        history.push(`/search/photos/${searchQuery}`)
-    }
+  const onChange = (e) => {
+    setQuery(e.target.value);
+  };
 
-    return(
-        <Container>
-            <SearchBox
-                shape={shape}
-                value={searchQuery}
-                onChange={onChange}
-                onSubmit={onSubmit}
-            />
-        </Container>
-    )
+  return (
+    <Container>
+      <SearchBox
+        shape={shape}
+        value={query}
+        onChange={onChange}
+        onSubmit={onSubmit}
+      />
+    </Container>
+
+  );
 };
 
 const Container = styled.div`

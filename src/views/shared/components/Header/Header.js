@@ -1,21 +1,28 @@
 import React from 'react';
-import styled from 'styled-components'
-import {IconLogo} from "../../../../icons";
-import SearchBox from "../SearchBox";
-import Nav from "./Nav";
-import SearchBoxContainer from "../../../search/containers/SearchBoxContainer";
+import styled from 'styled-components';
 
-const Header = () => {
-    return(
-        <Container>
-            <Logo>
-                <IconLogo/>
-            </Logo>
-            <SearchBoxContainer shape={'round'}/>
-            <Nav/>
-        </Container>
-    )
-};
+import { Link, Route } from 'react-router-dom';
+
+import { IconLogo } from '../../../../icons';
+import SearchBox from '../SearchBox';
+import Nav from './Nav';
+import SearchBoxContainer from '../../../search/containers/SearchBoxContainer';
+import TopicLnbContainer from '../../../topics/containers/TopicLnbContainer';
+
+const Header = () => (
+  <>
+    <Container>
+      <Logo to="/">
+        <IconLogo />
+      </Logo>
+      <SearchBoxContainer shape="round" />
+      <Nav />
+    </Container>
+    <Route exact path={['/', '/topics', '/topics/:slug']}>
+      <TopicLnbContainer />
+    </Route>
+  </>
+);
 
 const Container = styled.div`
   padding: 0 20px;
@@ -23,9 +30,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
 `;
-const Logo = styled.div`
+const Logo = styled(Link)`
   margin-right: 18px;
 `;
-
 
 export default Header;
