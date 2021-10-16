@@ -37,18 +37,23 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   width: 100%;
+  transition: 0.4s;
+  border: 1px solid transparent;
   .round & {
     background: #eee;
     border-radius: 30px;
-
   }
   .square & {
     background: #fff;
     border-radius: 6px;
   }
+  &:hover{
+    border: 1px solid #d1d1d1;
+  }
 `;
 const Button = styled(DefaultButton)`
-  
+  fill: #767676;
+  width: 25px;
 `;
 const Label = styled.div`
   display: block;

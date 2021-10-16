@@ -27,6 +27,7 @@ const TopicsLnbContainer = () => {
 };
 
 const Container = styled.div`
+  box-shadow: 0 4px 5px #00000014;
 
 `;
 const Nav = styled.div`
