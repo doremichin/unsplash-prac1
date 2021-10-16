@@ -1,23 +1,19 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const GridList = ({data  ,renderItem }) => {
-    return(
-        <Container>
-            <Row>
-                {
-                    data.map((item, index) => {
-                        return(
-                            <Col key={item.id || index}>
-                                {renderItem(item)}
-                            </Col>
-                        )
-                    })
-                }
-            </Row>
-        </Container>
-    )
-};
+const GridList = ({ data, renderItem }) => (
+  <Container>
+    <Row>
+      {
+        data.map((item, index) => (
+          <Col key={item.id || index}>
+            {renderItem(item)}
+          </Col>
+        ))
+      }
+    </Row>
+  </Container>
+);
 
 const Container = styled.div`
   padding: 0 010px;
@@ -33,7 +29,7 @@ const Col = styled.div`
   margin-bottom: 20px
 `;
 GridList.defaultProps = {
-    data : [],
-    renderItem : () => {}
-}
+  data: [],
+  renderItem: () => {},
+};
 export default GridList;
