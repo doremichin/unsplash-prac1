@@ -1,32 +1,34 @@
-import React, {useState} from 'react';
-import styled from 'styled-components'
-import {IconSearch} from "../../../../icons";
-import {DefaultButton} from "../Button/Button.Styled";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-const SearchBox = ({ value,onSubmit,onChange,shape }) => {
+import { IconSearch } from '../../../../icons';
+import { DefaultButton } from '../Button/Button.Styled';
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(e);
-    }
+const SearchBox = ({
+  value, onSubmit, onChange, shape,
+}) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(e);
+  };
 
-    return(
-        <Container className={shape}>
-            <Form onSubmit={handleSubmit}>
-                <Button type={"submit"}>
-                    <IconSearch/>
-                </Button>
-                <Label>
-                    <Input
-                        type="text"
-                        onChange={onChange}
-                        value={value}
-                        placeholder={'Search Free...'}
-                    />
-                </Label>
-            </Form>
-        </Container>
-    )
+  return (
+    <Container className={shape}>
+      <Form onSubmit={handleSubmit}>
+        <Button type="submit">
+          <IconSearch />
+        </Button>
+        <Label>
+          <Input
+            type="text"
+            onChange={onChange}
+            value={value}
+            placeholder="Search Free..."
+          />
+        </Label>
+      </Form>
+    </Container>
+  );
 };
 
 const Container = styled.div`
