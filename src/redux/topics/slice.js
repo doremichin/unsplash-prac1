@@ -1,6 +1,10 @@
 const initialState = {
   list: [],
-  detail: {},
+  detail: {
+    owners: [],
+    top_contributors: [],
+
+  },
 
 };
 export const Action = {

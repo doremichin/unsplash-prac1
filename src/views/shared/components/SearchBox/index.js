@@ -39,6 +39,7 @@ const Form = styled.form`
   width: 100%;
   transition: 0.4s;
   border: 1px solid transparent;
+  padding: 0 10px;
   .round & {
     background: #eee;
     border-radius: 30px;
