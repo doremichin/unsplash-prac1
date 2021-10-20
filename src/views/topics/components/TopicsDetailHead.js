@@ -35,8 +35,8 @@ const TopicsDetailHead = ({ data }) => {
               <IconCurator />
               Curator
             </StatusTitle>
-            <a href={data.owners[0]?.portfolio_url}>
-              <img src={data.owners[0]?.profile_image.small} alt="" />
+            <a href={data.owners[0]?.portfolio_url} className="curatorImg">
+              <img src={data.owners[0]?.profile_image.small} alt={data.owners[0]?.username} />
             </a>
           </li>
           <li>
@@ -112,8 +112,7 @@ const StatusBox = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 15px;
-    font-weight: 500;
+    font-weight: 800;
     svg{
       width: 18px;
       fill: #d1d1d1;
@@ -121,6 +120,12 @@ const StatusBox = styled.ul`
     }
     &:last-child{
       border-bottom: none;
+    }
+    .curatorImg{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
     }
   }
 `;
