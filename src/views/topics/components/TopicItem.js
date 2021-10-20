@@ -16,7 +16,7 @@ const TopicItem = ({ item }) => {
   };
   return (
     <Container to={`/topics/${item.slug}`}>
-      <StatusButton item={item} />
+      <StatusButton item={item} position="absolute" top="20px" left="15px" />
       <Thumb>
         <img src={item.cover_photo.urls.regular} alt={item.cover_photo.alt_description} />
       </Thumb>

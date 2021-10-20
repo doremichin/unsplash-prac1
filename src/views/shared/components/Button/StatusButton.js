@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StatusButton = ({ item, position }) => (
-  <Status className={item?.status === 'open' ? 'open' : 'close'} position={position}>
+const StatusButton = ({
+  item, position, top, left,
+}) => (
+  <Status
+    className={item?.status === 'open' ? 'open' : 'close'}
+    position={position}
+    top={top}
+    left={left}
+  >
     <span>
       {item?.status}
     </span>
@@ -10,10 +17,10 @@ const StatusButton = ({ item, position }) => (
 );
 
 const Status = styled.div`
-  position: ${(props) => (props.position ? props.position : 'absolute')};
+  position: ${(props) => props.position || 'static'};
   z-index: 100;
-  top: 20px;
-  left: 15px;
+  top: ${(props) => props.top || 0};
+  left: ${(props) => props.left || 0};
   padding: 3px 8px;
   display: flex;
   align-items: center;
