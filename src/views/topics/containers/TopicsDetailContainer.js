@@ -12,16 +12,19 @@ const TopicsDetailContainer = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const topicDetail = useSelector((state) => state.topics.detail);
+  const topicPhotos = useSelector((state) => state.topics.photos);
+  console.log(topicPhotos);
 
   useEffect(() => {
     dispatch(Action.Creators.getTopicById(slug));
+    dispatch(Action.Creators.getTopicPhotos(slug));
   }, [slug]);
 
   const renderItem = (item) => <TopicsDetailPhotoItem item={item} />;
   return (
     <Container>
       <TopicsDetailHead data={topicDetail} />
-      <GridList data={topicDetail.preview_photos} renderItem={renderItem} />
+      <GridList data={topicPhotos} renderItem={renderItem} />
     </Container>
   );
 };

@@ -13,6 +13,8 @@ export const Action = {
     SET_TOPICS: '@@TOPICS/SET_TOPICS',
     GET_TOPIC_BY_ID: '@@TOPICS/GET_TOPIC_BY_ID',
     SET_TOPIC_BY_ID: '@@TOPICS/SET_TOPIC_BY_ID',
+    GET_TOPIC_PHOTOS: '@@TOPICS/GET_TOPIC_PHOTOS',
+    SET_TOPIC_PHOTOS: '@@TOPICS/SET_TOPIC_PHOTOS',
   },
   Creators: {
     getTopics: (payload) => ({
@@ -31,6 +33,14 @@ export const Action = {
       type: Action.Types.SET_TOPIC_BY_ID,
       payload,
     }),
+    getTopicPhotos: (payload) => ({
+      type: Action.Types.GET_TOPIC_PHOTOS,
+      payload,
+    }),
+    setTopicPhotos: (payload) => ({
+      type: Action.Types.SET_TOPIC_PHOTOS,
+      payload,
+    }),
   },
 };
 const reducer = (state = initialState, action) => {
@@ -46,6 +56,12 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       detail: action.payload,
+    };
+  }
+  case Action.Types.SET_TOPIC_PHOTOS: {
+    return {
+      ...state,
+      photos: action.payload,
     };
   }
   }
