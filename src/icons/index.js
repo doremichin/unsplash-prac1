@@ -76,3 +76,28 @@ export const IconTopContributors = () => (
     />
   </svg>
 );
+export const IconChevronLeft = () => (
+  <svg
+width="24"
+height="24"
+className="DG_Wq"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path d="M20.6667 24.6666l-2 2L8 16 18.6667 5.3333l2 2L12 16l8.6667 8.6666z" />
+  </svg>
+);
+export const IconChevronRight = () => (
+  <svg
+width="24"
+height="24"
+className="DG_Wq"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path d="M11.3333 7.3333l2-2L24 16 13.3333 26.6666l-2-2L20 16l-8.6667-8.6667z" />
+  </svg>
+
+);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { IconSearch } from '../../../../icons';
@@ -56,6 +56,7 @@ const Button = styled(DefaultButton)`
   fill: #767676;
   width: 25px;
 `;
+
 const Label = styled.div`
   display: block;
   width: 100%;

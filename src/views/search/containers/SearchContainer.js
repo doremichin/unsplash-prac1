@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Route, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Action } from '../../../redux/search/slice';
-import GridList from '../../shared/components/List/GridList';
-import PhotoItem from '../../shared/components/Item/PhotoItem';
+import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import RelatedSearchesMenu from '../components/RelatedSearchesMenu';
+import SearchPhotos from '../components/SearchPhotos';
+import SearchCollections from '../components/SearchCollections';
+import SearchUsers from '../components/SearchUsers';
 
 const SearchContainer = () => {
   const { query } = useParams();
   const dispatch = useDispatch();
-  const { photos } = useSelector((state) => state.search);
+  const {
+    photos, collections, users, related_searches,
+  } = useSelector((state) => state.search);
 
   const searchPhotos = () => {
     dispatch(Action.Creators.searchPhotos({
       page: 1,
       query,
+      per_page: 30,
     }));
   };
 
@@ -24,17 +29,25 @@ const SearchContainer = () => {
     searchPhotos();
   }, [query]);
 
-  const renderItem = (item) => <PhotoItem item={item} />;
+  if (!photos) return '...loading';
+
   return (
     <Container>
-      검색결과
-      {' '}
-      {photos.total}
-      개가 검색됨
-      <GridList
-        data={photos.results}
-        renderItem={renderItem}
-      />
+      <ContentContainer>
+        <h1>{query}</h1>
+        <RelatedSearchesMenu data={related_searches} />
+        <Route path={['/search/photos/:query']}>
+          <SearchPhotos data={photos?.results} />
+        </Route>
+        <Route path={['/search/collections/:query']}>
+          <SearchCollections data={collections?.results} />
+        </Route>
+        <Route path={['/search/users/:query']}>
+          <SearchUsers data={users?.results} />
+        </Route>
+
+      </ContentContainer>
+
     </Container>
   );
 };

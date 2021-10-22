@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import Visual from '../components/Visual';
 import { Action } from '../../../redux/main/slice';
-import GridList from '../../shared/components/List/GridList';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
+import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import MainPhotoList from '../../shared/components/List/MainPhotoList';
 
 const MainContainer = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,10 @@ const MainContainer = () => {
   return (
     <Container>
       <Visual />
-      <GridList data={photos} renderItem={renderItem} />
+      <ContentContainer>
+        <MainPhotoList data={photos} />
+        {/* <GridList data={photos} renderItem={renderItem} /> */}
+      </ContentContainer>
     </Container>
   );
 };

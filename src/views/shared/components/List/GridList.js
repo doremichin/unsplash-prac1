@@ -13,6 +13,7 @@ const GridList = ({ data, renderItem }) => (
       }
     </Row>
   </Container>
+
 );
 
 const Container = styled.div`

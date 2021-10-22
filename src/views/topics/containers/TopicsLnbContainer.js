@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Link, useParams } from 'react-router-dom';
 
 import { Action } from '../../../redux/topics/slice';
+import ScrollMenu from '../../shared/components/ScrollMenu';
 
 const TopicsLnbContainer = () => {
   const dispatch = useDispatch();
@@ -16,29 +16,28 @@ const TopicsLnbContainer = () => {
       per_page: 30,
     }));
   }, []);
+
+  const renderItem = (item) => (<NavItem key={item.id} to={`/topics/${item.slug}`} className={item.slug === slug && 'active'}>{item.title}</NavItem>);
   return (
     <Container>
-      <Nav>
-        {
-          list.map((item) => <NavItem key={item.id} to={`/topics/${item.slug}`} className={item.slug === slug && 'active'}>{item.title}</NavItem>)
-        }
-      </Nav>
+      <NavItem>editorial</NavItem>
+      <NavItem>following</NavItem>
+      <ScrollMenu data={list} renderItem={renderItem} />
     </Container>
   );
 };
 
 const Container = styled.div`
   box-shadow: 0 4px 5px #00000014;
-
+  display: flex;
 `;
-const Nav = styled.div`
+
+const NavItem = styled(Link)`
   display: flex;
   align-items: center;
-  height: auto;
-`;
-const NavItem = styled(Link)`
-  white-space: nowrap;
+  justify-content: center;
   flex-shrink: 0;
+  white-space: nowrap;
   padding: 10px 0;
   margin: 0 10px;
   &.active{
