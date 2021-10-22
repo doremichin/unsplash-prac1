@@ -19,13 +19,13 @@ export const Action = {
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  default: return state;
-  case Action.Types.SET_PHOTOS: {
-    return {
-      ...state,
-      photos: action.payload,
-    };
-  }
+    default: return state;
+    case Action.Types.SET_PHOTOS: {
+      return {
+        ...state,
+        photos: action.payload,
+      };
+    }
   }
 };
 export default reducer;

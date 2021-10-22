@@ -5,6 +5,16 @@ const initialState = {
     total: 0,
     total_pages: 0,
   },
+  collections: {
+    results: [],
+    total: 0,
+    total_pages: 0,
+  },
+  users: {
+    results: [],
+    total: 0,
+    total_pages: 0,
+  },
 };
 export const Action = {
   Types: {
@@ -29,19 +39,19 @@ export const Action = {
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  default: return state;
-  case Action.Types.SEARCH_QUERY: {
-    return {
-      ...state,
-      searchQuery: action.payload,
-    };
-  }
-  case Action.Types.SET_SEARCH_RESULTS: {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  }
+    default: return state;
+    case Action.Types.SEARCH_QUERY: {
+      return {
+        ...state,
+        searchQuery: action.payload,
+      };
+    }
+    case Action.Types.SET_SEARCH_RESULTS: {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
   }
 };
 export default reducer;

@@ -72,6 +72,7 @@ const TopicsDetailHead = ({ data }) => {
     </Container>
   );
 };
+
 const Container = styled.div`
   padding: 60px 10px;
   color: #111;

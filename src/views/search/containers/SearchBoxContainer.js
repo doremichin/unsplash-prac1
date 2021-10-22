@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import { Action } from '../../../redux/search/slice';
 import SearchBox from '../../shared/components/SearchBox';
 
 const SearchBoxContainer = ({ shape }) => {
