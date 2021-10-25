@@ -13,7 +13,6 @@ const TopicsDetailContainer = () => {
   const dispatch = useDispatch();
   const topicDetail = useSelector((state) => state.topics.detail);
   const topicPhotos = useSelector((state) => state.topics.photos);
-  console.log(topicPhotos);
 
   useEffect(() => {
     dispatch(Action.Creators.getTopicById(slug));

@@ -8,6 +8,9 @@ export const getTopicByIdRest = async (slug) => {
       headers: {
         Authorization: 'Client-ID 6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
       },
+      params: {
+        client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+      },
     });
     return data;
   } catch (err) {
