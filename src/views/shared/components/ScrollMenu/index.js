@@ -85,9 +85,6 @@ const Container = styled.div`
   &.end::after{
     opacity: 0;
   }
-  &:not(.start)::before{
-    opacity: 1;
-  }
 `;
 
 const Track = styled.div`
