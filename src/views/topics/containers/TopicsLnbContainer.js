@@ -14,6 +14,7 @@ const TopicsLnbContainer = () => {
   useEffect(() => {
     dispatch(Action.Creators.getTopics({
       per_page: 30,
+      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
     }));
   }, []);
 

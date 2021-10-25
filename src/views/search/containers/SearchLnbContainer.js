@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 
 const SearchLnbContainer = () => {
   const { category, query } = useParams();
-  const a = 1;
 
   return (
     <Container>

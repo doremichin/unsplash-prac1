@@ -16,6 +16,7 @@ const MainContainer = () => {
     dispatch(Action.Creators.getPhotos({
       page: 1,
       per_page: 15,
+      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
     }));
   };
 
