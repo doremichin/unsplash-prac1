@@ -42,9 +42,11 @@ const SearchContainer = () => {
         <Route path={['/search/photos/:query']}>
           <SearchPhotos data={photos?.results} />
         </Route>
+
         <Route path={['/search/collections/:query']}>
           <SearchCollections data={collections?.results} />
         </Route>
+
         <Route path={['/search/users/:query']}>
           <SearchUsers data={users?.results} />
         </Route>

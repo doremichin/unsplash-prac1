@@ -59,15 +59,23 @@ const NavItem = styled(Link)`
   font-weight: 600;
   text-transform: capitalize;
   color: #767676;
+  border-bottom: 2px solid transparent;
   svg{
     width: 18px;
     margin-right: 6px;
     fill: #d1d1d1;
+    transition: 0.3s;
   }
   &.active {
     color: #111;
     border-bottom: 2px solid #111;
     svg {
+      fill: #111;
+    }
+  }
+  &:hover{
+    color: #111;
+    svg{
       fill: #111;
     }
   }
