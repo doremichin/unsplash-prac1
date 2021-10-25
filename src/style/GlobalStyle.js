@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
+    color: #111;
   }
   img{
     max-width: 100%;

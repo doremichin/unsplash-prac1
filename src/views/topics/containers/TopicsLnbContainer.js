@@ -41,6 +41,7 @@ const NavItem = styled(Link)`
   white-space: nowrap;
   padding: 10px 0;
   margin: 0 10px;
+  border-bottom: 2px solid transparent;
   &.active{
     border-bottom: 2px solid #111;
   }
