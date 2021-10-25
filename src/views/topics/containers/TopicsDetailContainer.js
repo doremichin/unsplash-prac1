@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Action } from '../../../redux/topics/slice';
 import TopicsDetailHead from '../components/TopicsDetailHead';
-import GridList from '../../shared/components/List/GridList';
-import TopicsDetailPhotoItem from '../components/TopicsDetailPhotoItem';
+import TopicsDetailPhotos from '../components/TopicsDetailPhotos';
 
 const TopicsDetailContainer = () => {
   const { slug } = useParams();
@@ -19,11 +18,10 @@ const TopicsDetailContainer = () => {
     dispatch(Action.Creators.getTopicPhotos(slug));
   }, [slug]);
 
-  const renderItem = (item) => <TopicsDetailPhotoItem item={item} />;
   return (
     <Container>
       <TopicsDetailHead data={topicDetail} />
-      <GridList data={topicPhotos} renderItem={renderItem} />
+      <TopicsDetailPhotos data={topicPhotos} />
     </Container>
   );
 };
