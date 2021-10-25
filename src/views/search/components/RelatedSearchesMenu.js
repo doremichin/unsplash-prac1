@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import ScrollMenu from '../../shared/components/ScrollMenu';
 
 const RelatedSearchesMenu = ({ data }) => {
-  const renderItem = (item) => <MenuItem>{item.title}</MenuItem>;
+  const renderItem = (item) => <MenuItem to={`/search/photos/${item.title}`}>{item.title}</MenuItem>;
   return (
     <Container>
       <ScrollMenu data={data} renderItem={renderItem} />
@@ -15,7 +16,7 @@ const RelatedSearchesMenu = ({ data }) => {
 const Container = styled.div`
   margin: 32px 0 72px;
 `;
-const MenuItem = styled.div`
+const MenuItem = styled(Link)`
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -31,5 +32,10 @@ const MenuItem = styled.div`
   font-weight: 600;
   color: #767676;
   text-transform: capitalize;
+  transition: 0.4s;
+  &:hover{
+    color: #111;
+    border: 1px solid #111;
+  }
 `;
 export default RelatedSearchesMenu;
