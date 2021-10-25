@@ -36,8 +36,9 @@ const SearchContainer = () => {
     <Container>
       <ContentContainer>
         <PageTitle>{query}</PageTitle>
+
         <RelatedSearchesMenu data={related_searches} />
-        <PageDesc>Results for {query}</PageDesc>
+
         <Route path={['/search/photos/:query']}>
           <SearchPhotos data={photos?.results} />
         </Route>
@@ -62,11 +63,6 @@ const PageTitle = styled.h1`
   font-weight: 900;
   text-transform: capitalize;
   margin-top: 60px;
-`;
-const PageDesc = styled.h2`
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
 `;
 
 export default SearchContainer;
