@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PhotoItem from '../Item/PhotoItem';
-
-const MainPhotoList = ({ data = [] }) => {
+const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
   // 사진이 배치 될 때 다음 사진은 높이가 가장 낮은 그룹의 하단에 배치 되어야 한다
   // 매번 사진이 나열 될 때마다 그룹의 총 높이를 알고 있어야한다.
   // 가장 작은 높이값의 인덱스 번호를 알아야한다
@@ -25,7 +23,7 @@ const MainPhotoList = ({ data = [] }) => {
               {
                 group.map((item, index) => (
                   <ItemWrapper>
-                    <PhotoItem item={item} />
+                    {renderItem(item)}
                   </ItemWrapper>
                 ))
               }

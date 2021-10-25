@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import StatusButton from '../../shared/components/Button/StatusButton';
-import { IconContributions } from '../../../icons';
+import { IconImage } from '../../../icons';
 
 const TopicItem = ({ item }) => {
   const handlePhotosCount = () => {
@@ -36,7 +36,7 @@ const TopicItem = ({ item }) => {
         </Title>
         <Info dangerouslySetInnerHTML={{ __html: item.description }} />
         <Contribution>
-          <IconContributions />
+          <IconImage />
           <p>
             {handlePhotosCount()}
             {' '}

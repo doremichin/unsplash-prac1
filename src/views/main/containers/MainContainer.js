@@ -28,8 +28,7 @@ const MainContainer = () => {
     <Container>
       <Visual />
       <ContentContainer>
-        <MainPhotoList data={photos} />
-        {/* <GridList data={photos} renderItem={renderItem} /> */}
+        <MainPhotoList data={photos} renderItem={renderItem} />
       </ContentContainer>
     </Container>
   );

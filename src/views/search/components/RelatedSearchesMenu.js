@@ -27,5 +27,9 @@ const MenuItem = styled.div`
   width: 143px;
   height: 40px;
   margin-right: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #767676;
+  text-transform: capitalize;
 `;
 export default RelatedSearchesMenu;
