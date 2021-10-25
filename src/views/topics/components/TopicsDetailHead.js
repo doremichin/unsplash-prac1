@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { DefaultButton } from '../../shared/components/Button/Button.Styled';
 import {
-  IconContributions, IconCurator, IconStatus, IconTopContributors,
+  IconCurator, IconImage, IconStatus, IconUsers,
 } from '../../../icons';
 import StatusButton from '../../shared/components/Button/StatusButton';
 
@@ -41,14 +41,14 @@ const TopicsDetailHead = ({ data }) => {
           </li>
           <li>
             <StatusTitle>
-              <IconContributions />
+              <IconImage />
               Contributions
             </StatusTitle>
             {handlePhotosCount()}
           </li>
           <li>
             <StatusTitle>
-              <IconTopContributors />
+              <IconUsers />
               Top contributors
             </StatusTitle>
             <TopContributors>
