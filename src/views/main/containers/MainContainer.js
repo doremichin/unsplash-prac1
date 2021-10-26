@@ -11,6 +11,7 @@ import MainPhotoList from '../../shared/components/List/MainPhotoList';
 const MainContainer = () => {
   const dispatch = useDispatch();
   const { photos } = useSelector((state) => state.main);
+  const { randomPhoto } = useSelector((state) => state.main);
 
   const getPhotos = () => {
     dispatch(Action.Creators.getPhotos({
@@ -19,14 +20,20 @@ const MainContainer = () => {
       client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
     }));
   };
-
+  const getRandomPhoto = () => {
+    dispatch(Action.Creators.getRandomPhoto({
+      query: 'galaxy',
+      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+    }));
+  };
   useEffect(() => {
     getPhotos();
+    getRandomPhoto();
   }, []);
   const renderItem = (item) => <PhotoItem item={item} />;
   return (
     <Container>
-      <Visual />
+      <Visual data={randomPhoto} />
       <ContentContainer>
         <MainPhotoList data={photos} renderItem={renderItem} />
       </ContentContainer>
