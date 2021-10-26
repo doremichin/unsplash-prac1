@@ -59,6 +59,7 @@ const Container = styled(Link)`
   cursor: pointer;
   &:hover{
     border: 1px solid #d1d1d1;
+    box-shadow: 0 4px 24px #0000001a;
   }
 `;
 const Thumb = styled.div`
