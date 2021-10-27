@@ -24,8 +24,8 @@ const TopicsLnbContainer = () => {
   return (
     <Container>
       <Nav>
-        <NavItem to="/" className={cn({ active: pathname === '/' })}>editorial</NavItem>
-        <NavItem to="/following" className={cn({ active: pathname === '/following' })}>following</NavItem>
+        <NavItem to="/" className={cn({ active: pathname === '/' })}>Editorial</NavItem>
+        <NavItem to="/following" className={cn({ active: pathname === '/following' })}>Following</NavItem>
       </Nav>
       <Line />
       <ScrollMenu data={list} renderItem={renderItem} />
@@ -48,9 +48,13 @@ const NavItem = styled(Link)`
   white-space: nowrap;
   padding: 14px 0;
   margin: 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #767676;
   border-bottom: 2px solid transparent;
   &.active{
     border-bottom: 2px solid #111;
+    color: #111;
   }
 `;
 const Line = styled.div`
