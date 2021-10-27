@@ -26,14 +26,14 @@ const TopicsDetailHead = ({ data }) => {
           <li>
             <StatusTitle>
               <IconStatus />
-              Status
+              <span>Status</span>
             </StatusTitle>
             <StatusButton position="static" item={data} />
           </li>
           <li>
             <StatusTitle>
               <IconCurator />
-              Curator
+              <span>Curator</span>
             </StatusTitle>
             <a href={data.owners[0]?.portfolio_url} className="curatorImg">
               <img src={data.owners[0]?.profile_image.small} alt={data.owners[0]?.username} />
@@ -42,14 +42,14 @@ const TopicsDetailHead = ({ data }) => {
           <li>
             <StatusTitle>
               <IconImage />
-              Contributions
+              <span>Contributions</span>
             </StatusTitle>
             {handlePhotosCount()}
           </li>
           <li>
             <StatusTitle>
               <IconUsers />
-              Top contributors
+              <span>Top contributors</span>
             </StatusTitle>
             <TopContributors>
               {
@@ -114,11 +114,7 @@ const StatusBox = styled.ul`
     align-items: center;
     justify-content: space-between;
     font-weight: 800;
-    svg{
-      width: 18px;
-      fill: #d1d1d1;
-      margin-right: 10px;
-    }
+
     &:last-child{
       border-bottom: none;
     }
@@ -133,6 +129,15 @@ const StatusBox = styled.ul`
 const StatusTitle = styled.div`
   display: flex;
   align-items: center;
+  svg{
+    width: 18px;
+    fill: #d1d1d1;
+    margin-right: 10px;
+  }
+  span{
+    position: relative;
+    top: 2px;
+  }
 `;
 const SubmitButton = styled(DefaultButton)`
   background: #000;
