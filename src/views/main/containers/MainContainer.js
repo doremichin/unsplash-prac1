@@ -22,7 +22,7 @@ const MainContainer = () => {
   };
   const getRandomPhoto = () => {
     dispatch(Action.Creators.getRandomPhoto({
-      query: 'galaxy',
+      query: 'desktop wallpapers',
       client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
     }));
   };
