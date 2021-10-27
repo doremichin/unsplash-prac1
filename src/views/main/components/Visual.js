@@ -79,16 +79,16 @@ const PhotoInfo = styled.div`
   padding: 20px;
   color: #fff;
   font-size: 14px;
-
+  letter-spacing: 0.6px;
   span {
     font-size: 13px;
-    color: #767676;
+    color: #fffc;
   }
   a {
-    color: #fff;
-
+    color: #fffc;
+    transition: 0.3s;
     &:hover {
-      text-decoration: underline;
+      color: #fff;
     }
   }
 `;
