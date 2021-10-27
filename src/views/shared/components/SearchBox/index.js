@@ -51,6 +51,10 @@ const Form = styled.form`
   &:hover{
     border: 1px solid #d1d1d1;
   }
+  &:focus-within{
+    background: #fff;
+    border: 1px solid #d1d1d1;
+  }
 `;
 const Button = styled(DefaultButton)`
   fill: #767676;
