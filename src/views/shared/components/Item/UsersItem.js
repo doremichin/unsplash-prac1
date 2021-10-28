@@ -118,7 +118,7 @@ const Photos = styled.a`
   margin: 15px 0;
 `;
 const Photo = styled.div`
-  width: 100%;
+  width: 33.3%;
   height: 90px;
   &:nth-child(2){
     margin: 0 10px;
