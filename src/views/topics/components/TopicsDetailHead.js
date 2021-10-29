@@ -6,15 +6,10 @@ import {
   IconCurator, IconImage, IconStatus, IconUsers,
 } from '../../../icons';
 import StatusButton from '../../shared/components/Button/StatusButton';
+import { setNumberThousand } from '../../../lib/utils';
 
 const TopicsDetailHead = ({ data }) => {
-  const handlePhotosCount = () => {
-    const count = data.total_photos;
-    if (count >= 1000) {
-      return (`${(Math.floor(count / 100)) / 10}k`);
-    }
-    return count;
-  };
+  const a = 1;
   return (
     <Container>
       <Title>
@@ -44,7 +39,7 @@ const TopicsDetailHead = ({ data }) => {
               <IconImage />
               <span>Contributions</span>
             </StatusTitle>
-            {handlePhotosCount()}
+            {setNumberThousand(data.total_photos)}k
           </li>
           <li>
             <StatusTitle>
