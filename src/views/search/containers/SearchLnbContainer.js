@@ -11,21 +11,34 @@ const SearchLnbContainer = () => {
   const { category, query } = useParams();
   const { photos, collections, users } = useSelector((state) => state.search);
 
+  const menu = [
+    {
+      name: 'photos',
+      icon: <IconImage />,
+      total: photos.total,
+    },
+    {
+      name: 'collections',
+      icon: <IconCollections />,
+      total: collections.total,
+    },
+    {
+      name: 'users',
+      icon: <IconUsers />,
+      total: users.total,
+    },
+  ];
   return (
     <Container>
       <Nav>
-        <NavItem to={`/search/photos/${query}`} className={cn({ active: category === 'photos' })}>
-          <IconImage />
-          photos {setNumberThousand(photos.total)}k
-        </NavItem>
-        <NavItem to={`/search/collections/${query}`} className={cn({ active: category === 'collections' })}>
-          <IconCollections />
-          collections {setNumberThousand(collections.total)}k
-        </NavItem>
-        <NavItem to={`/search/users/${query}`} className={cn({ active: category === 'users' })}>
-          <IconUsers />
-          users {setNumberThousand(users.total)}k
-        </NavItem>
+        {
+          menu.map(({ name, icon, total }) => (
+            <NavItem to={`/search/${name}/${query}`} className={cn({ active: category === name })}>
+              {icon}
+              {name} {setNumberThousand(total)}k
+            </NavItem>
+          ))
+        }
       </Nav>
       <Filter />
     </Container>
