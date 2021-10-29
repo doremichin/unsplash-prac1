@@ -5,33 +5,26 @@ import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import { IconCollections, IconImage, IconUsers } from '../../../icons';
+import { setNumberThousand } from '../../../lib/utils';
 
 const SearchLnbContainer = () => {
   const { category, query } = useParams();
   const { photos, collections, users } = useSelector((state) => state.search);
-
-  const handleCount = (data) => {
-    const count = data.total;
-    if (count >= 1000) {
-      return (`${(Math.floor(count / 100)) / 10}k`);
-    }
-    return count;
-  };
 
   return (
     <Container>
       <Nav>
         <NavItem to={`/search/photos/${query}`} className={cn({ active: category === 'photos' })}>
           <IconImage />
-          photos {handleCount(photos)}
+          photos {setNumberThousand(photos.total)}k
         </NavItem>
         <NavItem to={`/search/collections/${query}`} className={cn({ active: category === 'collections' })}>
           <IconCollections />
-          collections {handleCount(collections)}
+          collections {setNumberThousand(collections.total)}k
         </NavItem>
         <NavItem to={`/search/users/${query}`} className={cn({ active: category === 'users' })}>
           <IconUsers />
-          users {handleCount(users)}
+          users {setNumberThousand(users.total)}k
         </NavItem>
       </Nav>
       <Filter />
