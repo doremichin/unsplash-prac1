@@ -1,5 +1,5 @@
 const initialState = {
-  photos: [],
+  list: [],
   randomPhoto: {
     urls: {},
     links: {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
     case Action.Types.SET_PHOTOS: {
       return {
         ...state,
-        photos: action.payload,
+        list: action.payload,
       };
     }
     case Action.Types.SET_RANDOM_PHOTOS: {

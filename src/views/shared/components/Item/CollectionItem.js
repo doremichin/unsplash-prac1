@@ -16,13 +16,36 @@ const CollectionItem = ({ item }) => {
   return (
     <Container>
       <Thumb href={item.links.html}>
-        <CoverImage>
-          <img src={item.preview_photos[0].urls.small} alt="" />
-        </CoverImage>
-        <SubImage>
-          <img src={item.preview_photos[1].urls.small} alt="" />
-          <img src={item.preview_photos[2].urls.small} alt="" />
-        </SubImage>
+
+        <Inner>
+          <CoverImage>
+            <Image>
+              {
+                item.preview_photos[0].urls.small
+                && <img src={item.preview_photos[0].urls.small} alt="" />
+              }
+            </Image>
+          </CoverImage>
+          <SubImage>
+            <Top>
+              <Image>
+                {
+                  item.preview_photos[1].urls.small
+                  && <img src={item.preview_photos[1].urls.small} alt="" />
+                }
+              </Image>
+            </Top>
+            <Bottom>
+              <Image>
+                {
+                  item.preview_photos[2].urls.small
+                  && <img src={item.preview_photos[2].urls.small} alt="" />
+                }
+              </Image>
+            </Bottom>
+          </SubImage>
+        </Inner>
+
       </Thumb>
       <Desc>
         <DescTitle>
@@ -46,40 +69,52 @@ const Container = styled.div`
 
 `;
 const Thumb = styled.a`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 290px;
-  background: #eee;
+  display: block;
+  padding-bottom: 70%;
   border-radius: 6px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: opacity 0.3s;
   cursor: pointer;
+  position: relative;
   &:hover{
     opacity: 0.8;
   }
 `;
+const Inner = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background: #eee;
+`;
 const CoverImage = styled.div`
   width: 70%;
+  height: 100%;
   border-right: 2px solid #fff;
-  img{
-    width: 100%;
-    height: 290px;
-    object-fit: cover;
-  }
 `;
 const SubImage = styled.div`
   width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100%;
+`;
+const Top = styled.div`
+  height: 50%;
+  border-bottom: 1px solid #fff;
+`;
+const Bottom = styled.div`
+  height: 50%;
+  border-top: 1px solid #fff;
+`;
+const Image = styled.div`
+  background: #eee;
+  width: 100%;
+  height: 100%;
   img{
     width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
-    :first-child{
-      border-bottom: 2px solid #fff;
-    }
   }
 `;
 const Desc = styled.div`
