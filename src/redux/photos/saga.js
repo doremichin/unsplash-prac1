@@ -1,13 +1,21 @@
 import {
-  takeLatest, call, put, all,
+  takeLatest, call, put, all, select,
 } from 'redux-saga/effects';
 
 import { Action } from './slice';
 import { getPhotosRest, getRandomPhotoRest } from '../../api';
 
 function* getPhotos({ payload }) {
+  const { photos } = yield select();
+  const prevPhotos = photos.list;
+
   const result = yield call(getPhotosRest, payload);
-  yield put(Action.Creators.setPhotos(result));
+
+  const nextPhotos = [
+    ...prevPhotos,
+    ...result,
+  ];
+  yield put(Action.Creators.setPhotos(nextPhotos));
 }
 function* getRandomPhoto({ payload }) {
   const result = yield call(getRandomPhotoRest, payload);
