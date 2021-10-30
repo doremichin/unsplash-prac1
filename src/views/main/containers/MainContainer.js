@@ -7,17 +7,17 @@ import PhotoItem from '../../shared/components/Item/PhotoItem';
 import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import InfiniteScroll from '../../shared/components/InfiniteScroll';
+import { ACCESS_KEY } from '../../../const/config';
 
 const MainContainer = () => {
   const dispatch = useDispatch();
   const { list } = useSelector((state) => state.photos);
   const [page, setPage] = useState(1);
-
   const getPhotos = () => {
     dispatch(Action.Creators.getPhotos({
       page,
       per_page: 15,
-      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+      client_id: ACCESS_KEY,
     }));
   };
   useEffect(() => {

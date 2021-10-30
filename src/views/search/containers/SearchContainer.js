@@ -9,6 +9,7 @@ import RelatedSearchesMenu from '../components/RelatedSearchesMenu';
 import SearchPhotos from '../components/SearchPhotos';
 import SearchCollections from '../components/SearchCollections';
 import SearchUsers from '../components/SearchUsers';
+import { ACCESS_KEY } from '../../../const/config';
 
 const SearchContainer = () => {
   const { query } = useParams();
@@ -22,7 +23,7 @@ const SearchContainer = () => {
       query,
       page: 1,
       per_page: 15,
-      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+      client_id: ACCESS_KEY,
     }));
   };
 

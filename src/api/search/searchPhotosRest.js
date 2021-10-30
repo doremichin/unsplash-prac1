@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+import { BASE_API_URL } from '../../const/config';
+
 export const searchPhotosRest = async (params) => {
   try {
     const { data } = await axios({
-      url: 'https://api.unsplash.com/search',
+      baseURL: BASE_API_URL,
+      url: '/search',
       method: 'get',
       params,
     });
