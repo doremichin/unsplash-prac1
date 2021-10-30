@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+import { BASE_API_URL } from '../../const/config';
+
 export const getRandomPhotoRest = async (params) => {
   try {
     const { data } = await axios({
-      url: 'https://api.unsplash.com/photos/random',
+      baseURL: BASE_API_URL,
+      url: '/photos/random',
       method: 'get',
       params,
     });

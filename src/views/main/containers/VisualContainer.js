@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Action } from '../../../redux/photos/slice';
 import Visual from '../components/Visual';
+import { ACCESS_KEY } from '../../../const/config';
 
 const VisualContainer = () => {
   const { randomPhoto } = useSelector((state) => state.photos);
@@ -12,7 +13,7 @@ const VisualContainer = () => {
   const getRandomPhoto = () => {
     dispatch(Action.Creators.getRandomPhoto({
       query: 'desktop wallpapers',
-      client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+      client_id: ACCESS_KEY,
     }));
   };
 

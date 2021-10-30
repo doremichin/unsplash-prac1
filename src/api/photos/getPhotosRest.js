@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+import { BASE_API_URL } from '../../const/config';
+
 export const getPhotosRest = async (params) => {
   try {
     const { data } = await axios({
-      url: 'https://api.unsplash.com/photos',
+      baseURL: BASE_API_URL,
+      url: '/photos',
       method: 'get',
       params,
     });
