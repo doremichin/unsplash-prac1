@@ -32,7 +32,7 @@ const SearchContainer = () => {
   }, [query]);
 
   if (!photos) return '...loading';
-
+  const b = 1;
   return (
     <Container>
       <ContentContainer>
