@@ -57,7 +57,6 @@ function* getNextUsers({ payload }) {
       ...result.results,
     ],
   };
-
   yield put(Action.Creators.setNextUsers(nextResult));
 }
 
@@ -66,6 +65,6 @@ function* saga() {
   yield takeLatest(Action.Types.GET_NEXT_PHOTOS, getNextPhotos);
   yield takeLatest(Action.Types.GET_NEXT_COLLECTIONS, getNextCollections);
   yield takeLatest(Action.Types.GET_NEXT_USERS, getNextUsers);
-
+}
 
 export default saga;
