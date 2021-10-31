@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Route, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,7 @@ import SearchUsersContainer from './SearchUsersContainer';
 const SearchContainer = () => {
   const { query } = useParams();
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
   const {
     photos, collections, users, related_searches,
   } = useSelector((state) => state.search);
@@ -27,9 +28,31 @@ const SearchContainer = () => {
     }));
   };
 
+  const gatherSearchPhotos = () => {
+    dispatch(Action.Creators.getNextSearchPhotos({
+      query,
+      page,
+      per_page: 15,
+      client_id: ACCESS_KEY,
+    }));
+  };
+
+  useEffect(() => {
+    if (page > 1) {
+      gatherSearchPhotos();
+    }
+  }, [page]);
+
   useEffect(() => {
     searchPhotos();
+    setPage(1);
   }, [query]);
+
+  const next = () => {
+    if (photos.results.length) {
+      setPage((p) => p + 1);
+    }
+  };
 
   if (!photos) return '...loading';
   const b = 1;
@@ -39,6 +62,11 @@ const SearchContainer = () => {
         <PageTitle>{query}</PageTitle>
 
         <RelatedSearchesMenu data={related_searches} />
+        <InfiniteScroll next={next}>
+          <Route path={['/search/photos/:query']}>
+            <SearchPhotos data={photos?.results} />
+          </Route>
+
 
         <Route path={['/search/photos/:query']}>
           <SearchPhotosContainer data={photos?.results} />
@@ -51,6 +79,7 @@ const SearchContainer = () => {
         <Route path={['/search/users/:query']}>
           <SearchUsersContainer data={users?.results} />
         </Route>
+
 
       </ContentContainer>
 

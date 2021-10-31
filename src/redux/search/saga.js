@@ -16,6 +16,7 @@ function* getSearchResults({ payload }) {
 }
 function* getNextPhotos({ payload }) {
   const { search } = yield select();
+
   const prevPhotos = search.photos;
   const result = yield call(nextPhotosResultsRest, payload);
 
@@ -65,6 +66,6 @@ function* saga() {
   yield takeLatest(Action.Types.GET_NEXT_PHOTOS, getNextPhotos);
   yield takeLatest(Action.Types.GET_NEXT_COLLECTIONS, getNextCollections);
   yield takeLatest(Action.Types.GET_NEXT_USERS, getNextUsers);
-}
+
 
 export default saga;
