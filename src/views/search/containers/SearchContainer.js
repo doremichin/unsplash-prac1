@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Action } from '../../../redux/search/slice';
 import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
 import RelatedSearchesMenu from '../components/RelatedSearchesMenu';
-import SearchPhotos from '../components/SearchPhotos';
-import SearchCollections from '../components/SearchCollections';
-import SearchUsers from '../components/SearchUsers';
 import { ACCESS_KEY } from '../../../const/config';
+import SearchPhotosContainer from './SearchPhotosContainer';
+import SearchCollectionsContainer from './SearchCollectionsContainer';
+import SearchUsersContainer from './SearchUsersContainer';
 
 const SearchContainer = () => {
   const { query } = useParams();
@@ -19,7 +19,7 @@ const SearchContainer = () => {
   } = useSelector((state) => state.search);
 
   const searchPhotos = () => {
-    dispatch(Action.Creators.searchPhotos({
+    dispatch(Action.Creators.getSearchResults({
       query,
       page: 1,
       per_page: 15,
@@ -41,15 +41,15 @@ const SearchContainer = () => {
         <RelatedSearchesMenu data={related_searches} />
 
         <Route path={['/search/photos/:query']}>
-          <SearchPhotos data={photos?.results} />
+          <SearchPhotosContainer data={photos?.results} />
         </Route>
 
         <Route path={['/search/collections/:query']}>
-          <SearchCollections data={collections?.results} />
+          <SearchCollectionsContainer data={collections?.results} />
         </Route>
 
         <Route path={['/search/users/:query']}>
-          <SearchUsers data={users?.results} />
+          <SearchUsersContainer data={users?.results} />
         </Route>
 
       </ContentContainer>
