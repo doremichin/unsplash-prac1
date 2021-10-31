@@ -3,50 +3,69 @@ import {
 } from 'redux-saga/effects';
 
 import { Action } from './slice';
-import { searchPhotosRest } from '../../api';
+import {
+  nextCollectionsResultsRest,
+  nextPhotosResultsRest,
+  nextUsersResultsRest,
+  searchResultsRest,
+} from '../../api';
 
-function* searchPhotos({ payload }) {
-  const result = yield call(searchPhotosRest, payload);
+function* getSearchResults({ payload }) {
+  const result = yield call(searchResultsRest, payload);
   yield put(Action.Creators.setSearchResults(result));
 }
 function* getNextPhotos({ payload }) {
   const { search } = yield select();
-  const result = yield call(searchPhotosRest, payload);
+
+  const prevPhotos = search.photos;
+  const result = yield call(nextPhotosResultsRest, payload);
 
   const nextResult = {
-    ...result,
-    photos: {
-      total: result.photos.total,
-      total_pages: result.photos.total_pages,
-      results: [
-        ...search.photos.results,
-        ...result.photos.results,
-      ],
-    },
-    users: {
-      total: result.users.total,
-      total_pages: result.users.total_pages,
-      results: [
-        ...search.users.results,
-        ...result.users.results,
-      ],
-    },
-    collections: {
-      total: result.collections.total,
-      total_pages: result.collections.total_pages,
-      results: [
-        ...search.collections.results,
-        ...result.collections.results,
-      ],
-    },
+    ...prevPhotos,
+    results: [
+      ...prevPhotos.results,
+      ...result.results,
+    ],
   };
 
-  yield put(Action.Creators.setNextSearchPhotos(nextResult));
+  yield put(Action.Creators.setNextPhotos(nextResult));
+}
+function* getNextCollections({ payload }) {
+  const { search } = yield select();
+  const prevCollections = search.collections;
+  const result = yield call(nextCollectionsResultsRest, payload);
+
+  const nextResult = {
+    ...prevCollections,
+    results: [
+      ...prevCollections.results,
+      ...result.results,
+    ],
+  };
+
+  yield put(Action.Creators.setNextCollections(nextResult));
+}
+function* getNextUsers({ payload }) {
+  const { search } = yield select();
+  const prevUsers = search.users;
+  const result = yield call(nextUsersResultsRest, payload);
+
+  const nextResult = {
+    ...prevUsers,
+    results: [
+      ...prevUsers.results,
+      ...result.results,
+    ],
+  };
+
+  yield put(Action.Creators.setNextUsers(nextResult));
 }
 
 function* saga() {
-  yield takeLatest(Action.Types.SEARCH_PHOTOS, searchPhotos);
-  yield takeLatest(Action.Types.GET_NEXT_SEARCH_PHOTOS, getNextPhotos);
-}
+  yield takeLatest(Action.Types.GET_SEARCH_RESULTS, getSearchResults);
+  yield takeLatest(Action.Types.GET_NEXT_PHOTOS, getNextPhotos);
+  yield takeLatest(Action.Types.GET_NEXT_COLLECTIONS, getNextCollections);
+  yield takeLatest(Action.Types.GET_NEXT_USERS, getNextUsers);
+
 
 export default saga;

@@ -18,31 +18,51 @@ const initialState = {
 };
 export const Action = {
   Types: {
-    SEARCH_PHOTOS: '@@SEARCH/SEARCH_PHOTOS',
     SEARCH_QUERY: '@@SEARCH/SEARCH_QUERY',
+    GET_SEARCH_RESULTS: '@@SEARCH/GET_SEARCH_RESULTS',
     SET_SEARCH_RESULTS: '@@SEARCH/SET_SEARCH_RESULTS',
-    GET_NEXT_SEARCH_PHOTOS: '@@SEARCH/GET_NEXT_SEARCH_PHOTOS',
-    SET_NEXT_SEARCH_PHOTOS: '@@SEARCH/SET_NEXT_SEARCH_PHOTOS',
+    GET_NEXT_PHOTOS: '@@SEARCH/GET_NEXT_PHOTOS',
+    SET_NEXT_PHOTOS: '@@SEARCH/SET_NEXT_PHOTOS',
+    GET_NEXT_COLLECTIONS: '@@SEARCH/GET_NEXT_COLLECTIONS',
+    SET_NEXT_COLLECTIONS: '@@SEARCH/SET_NEXT_COLLECTIONS',
+    GET_NEXT_USERS: '@@SEARCH/GET_NEXT_USERS',
+    SET_NEXT_USERS: '@@SEARCH/SET_NEXT_USERS',
   },
   Creators: {
-    searchPhotos: (payload) => ({
-      type: Action.Types.SEARCH_PHOTOS,
-      payload,
-    }),
     setSearchQuery: (payload) => ({
       type: Action.Types.SEARCH_QUERY,
+      payload,
+    }),
+    getSearchResults: (payload) => ({
+      type: Action.Types.GET_SEARCH_RESULTS,
       payload,
     }),
     setSearchResults: (payload) => ({
       type: Action.Types.SET_SEARCH_RESULTS,
       payload,
     }),
-    getNextSearchPhotos: (payload) => ({
-      type: Action.Types.GET_NEXT_SEARCH_PHOTOS,
+    getNextPhotos: (payload) => ({
+      type: Action.Types.GET_NEXT_PHOTOS,
       payload,
     }),
-    setNextSearchPhotos: (payload) => ({
-      type: Action.Types.SET_NEXT_SEARCH_PHOTOS,
+    setNextPhotos: (payload) => ({
+      type: Action.Types.SET_NEXT_PHOTOS,
+      payload,
+    }),
+    getNextCollections: (payload) => ({
+      type: Action.Types.GET_NEXT_COLLECTIONS,
+      payload,
+    }),
+    setNextCollections: (payload) => ({
+      type: Action.Types.SET_NEXT_COLLECTIONS,
+      payload,
+    }),
+    getNextUsers: (payload) => ({
+      type: Action.Types.GET_NEXT_USERS,
+      payload,
+    }),
+    setNextUsers: (payload) => ({
+      type: Action.Types.SET_NEXT_USERS,
       payload,
     }),
   },
@@ -62,10 +82,28 @@ const reducer = (state = initialState, action) => {
         ...action.payload,
       };
     }
-    case Action.Types.SET_NEXT_SEARCH_PHOTOS: {
+    case Action.Types.SET_NEXT_PHOTOS: {
       return {
         ...state,
-        ...action.payload,
+        photos: {
+          ...action.payload,
+        },
+      };
+    }
+    case Action.Types.SET_NEXT_COLLECTIONS: {
+      return {
+        ...state,
+        collections: {
+          ...action.payload,
+        },
+      };
+    }
+    case Action.Types.SET_NEXT_USERS: {
+      return {
+        ...state,
+        users: {
+          ...action.payload,
+        },
       };
     }
   }
