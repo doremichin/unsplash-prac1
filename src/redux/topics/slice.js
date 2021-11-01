@@ -5,6 +5,7 @@ const initialState = {
     top_contributors: [],
 
   },
+  photos: [],
 
 };
 export const Action = {
@@ -15,6 +16,8 @@ export const Action = {
     SET_TOPIC_BY_ID: '@@TOPICS/SET_TOPIC_BY_ID',
     GET_TOPIC_PHOTOS: '@@TOPICS/GET_TOPIC_PHOTOS',
     SET_TOPIC_PHOTOS: '@@TOPICS/SET_TOPIC_PHOTOS',
+    GET_NEXT_TOPIC_PHOTOS: '@@TOPICS/GET_NEXT_TOPIC_PHOTOS',
+    SET_NEXT_TOPIC_PHOTOS: '@@TOPICS/SET_NEXT_TOPIC_PHOTOS',
   },
   Creators: {
     getTopics: (payload) => ({
@@ -41,7 +44,14 @@ export const Action = {
       type: Action.Types.SET_TOPIC_PHOTOS,
       payload,
     }),
-
+    getNextTopicPhotos: (payload) => ({
+      type: Action.Types.GET_NEXT_TOPIC_PHOTOS,
+      payload,
+    }),
+    setNextTopicPhotos: (payload) => ({
+      type: Action.Types.SET_NEXT_TOPIC_PHOTOS,
+      payload,
+    }),
   },
 };
 const reducer = (state = initialState, action) => {
@@ -60,6 +70,12 @@ const reducer = (state = initialState, action) => {
       };
     }
     case Action.Types.SET_TOPIC_PHOTOS: {
+      return {
+        ...state,
+        photos: action.payload,
+      };
+    }
+    case Action.Types.SET_NEXT_TOPIC_PHOTOS: {
       return {
         ...state,
         photos: action.payload,
