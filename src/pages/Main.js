@@ -3,16 +3,23 @@ import styled from 'styled-components';
 
 import MainContainer from '../views/main/containers/MainContainer';
 import VisualContainer from '../views/main/containers/VisualContainer';
+import PhotoPopupContainer from '../views/shared/containers/PhotoPopupContainer';
+import ModalPortal from '../lib/ModalPortal';
 
 const Main = () => (
-  <Container>
-    <VisualContainer />
-    <MainContainer />
-  </Container>
+  <>
+    <ModalPortal>
+      <PhotoPopupContainer />
+    </ModalPortal>
+    <Container>
+      <VisualContainer />
+      <MainContainer />
+    </Container>
+  </>
 );
 
 const Container = styled.div`
-
+  
 `;
 
 export default Main;

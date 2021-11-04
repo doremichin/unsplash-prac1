@@ -41,7 +41,7 @@ const MainContainer = () => {
 };
 
 const Container = styled.div`
-
+  
 `;
 
 export default MainContainer;
