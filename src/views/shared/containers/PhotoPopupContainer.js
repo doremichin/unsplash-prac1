@@ -44,9 +44,11 @@ const Container = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
+  padding-bottom: 100px;
   background-color: #00000070;
   ${(props) => props.popup && css`
     display: flex;
+    overflow: auto;
   `}
   justify-content: center;
 `;

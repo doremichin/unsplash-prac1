@@ -21,7 +21,8 @@ const PhotoPopupItem = ({ data }) => {
 
 const Container = styled.div`
   margin-top: 15px;
-  width: 85%;
+  width: 85vw;
+  height: 2000px;
   overflow: auto;
   background-color: #fff;
 `;
