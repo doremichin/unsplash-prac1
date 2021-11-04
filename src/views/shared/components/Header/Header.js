@@ -16,7 +16,7 @@ const Header = () => (
       <SearchBoxContainer shape="round" />
       <Nav />
     </Container>
-    <Route exact path={['/', '/topics', '/topics/:slug']}>
+    <Route exact path={['/', '/photos/:id', '/topics', '/topics/:slug']}>
       <TopicsLnbContainer />
     </Route>
   </>

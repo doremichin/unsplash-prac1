@@ -14,7 +14,7 @@ const App = () => (
 );
 
 const Container = styled.div`
-
+  position: relative;
 `;
 
 export default App;

@@ -36,7 +36,7 @@ const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
 };
 
 const Container = styled.div`
-
+  
 `;
 
 const Row = styled.div`
