@@ -23,7 +23,11 @@ const PhotoPopupContainer = () => {
         id,
         client_id: ACCESS_KEY,
       }));
+      document.body.style.overflow = 'hidden';
     }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [popup]);
   return (
     <Container popup={popup} onClick={handlePopup}>
@@ -36,15 +40,17 @@ const Container = styled.div`
   display: none;
   position: fixed;
   width: 100%;
-  height: 100%;
   z-index: 1000;
   top: 0;
   right: 0;
   left: 0;
+  bottom: 0;
   background-color: #00000070;
   ${(props) => props.popup && css`
     display: block;
   `}
+  display: flex;
+  justify-content: center;
 `;
 
 export default PhotoPopupContainer;

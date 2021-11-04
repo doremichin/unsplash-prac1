@@ -20,10 +20,9 @@ const PhotoPopupItem = ({ data }) => {
 };
 
 const Container = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 100px;
-  right: 100px;
+  margin-top: 15px;
+  width: 85%;
+  overflow: auto;
   background-color: #fff;
 `;
 const Area = styled.div`
