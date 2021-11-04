@@ -39,7 +39,6 @@ const PhotoPopupContainer = () => {
 const Container = styled.div`
   display: none;
   position: fixed;
-  width: 100%;
   z-index: 1000;
   top: 0;
   right: 0;
@@ -47,9 +46,8 @@ const Container = styled.div`
   bottom: 0;
   background-color: #00000070;
   ${(props) => props.popup && css`
-    display: block;
+    display: flex;
   `}
-  display: flex;
   justify-content: center;
 `;
 
