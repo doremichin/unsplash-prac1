@@ -210,3 +210,29 @@ aria-hidden="false"
     />
   </svg>
 );
+export const IconCheckCircle = () => (
+  <svg
+width="32"
+height="32"
+className="lXK9Z"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path
+      d="M16.3 3C9 3 3 9 3 16.3C3 23.6 9 29.6 16.3 29.6C23.7 29.6 29.6 23.6 29.6 16.3C29.6 9 23.7 3 16.3 3ZM13.8 22.6L8.7 17.5L10.7 15.5L13.8 18.6L21.6 10.8L23.6 12.8L13.8 22.6Z"
+    />
+  </svg>
+);
+export const IconArrowDown = () => (
+  <svg
+width="32"
+height="32"
+className="c_c7b"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path d="M25.8 15.5l-7.8 7.2v-20.7h-4v20.7l-7.8-7.2-2.7 3 12.5 11.4 12.5-11.4z" />
+  </svg>
+);
