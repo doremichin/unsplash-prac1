@@ -8,14 +8,12 @@ import {
 import RelatedPhotos from './RelatedPhotos';
 import RelatedCollections from './RelatedCollections';
 import RelatedTags from './RelatedTags';
+import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import UserTag from '../../shared/components/Item/UserTag';
 
 const PhotoPopup = ({ detail = {}, related = [] }) => {
   const handleOnClick = (e) => {
     e.stopPropagation();
-  };
-  const ableToHire = () => {
-    if (detail.user.for_hire) return <p>available for hire</p>;
-    return <p>@{detail.user.username}</p>;
   };
 
   const checkOrientation = () => {
@@ -27,15 +25,7 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
   return (
     <Container onClick={handleOnClick}>
       <Title>
-        <UserTag>
-          <Image>
-            <img src={detail.user.profile_image.small} alt={detail.user.name} />
-          </Image>
-          <Name>
-            <h2>{detail.user.name}</h2>
-            {ableToHire()}
-          </Name>
-        </UserTag>
+        <UserTag item={detail} />
         <ButtonBox>
           <Button>
             <IconHeart />
@@ -92,12 +82,13 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
           </Button>
         </ButtonBox>
       </Info>
+      <ContentContainer>
+        <RelatedPhotos data={related} />
 
-      <RelatedPhotos data={related} />
+        <RelatedCollections collection={detail.related_collections.results} />
 
-      <RelatedCollections collection={detail.related_collections.results} />
-
-      <RelatedTags tags={detail.tags} />
+        <RelatedTags tags={detail.tags} />
+      </ContentContainer>
     </Container>
   );
 };
@@ -116,26 +107,7 @@ const Title = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 `;
-const UserTag = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Image = styled.div`
-  border: 1px solid #eee;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 10px;
-`;
-const Name = styled.div`
-  h2{
-    color: #111;
-    font-size: 15px;
-  }
-  p{
-    font-size: 11px;
-    color: #767676;
-  }
-`;
+
 const ButtonBox = styled.div`
   display: flex;
 `;
@@ -205,6 +177,7 @@ const MainPhoto = styled.div`
   &.landscape, &.square{
     img{
       width: 100%;
+      max-width: 1500px;
     }
   }
 `;
