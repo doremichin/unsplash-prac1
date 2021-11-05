@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import MainContainer from '../views/main/containers/MainContainer';
 import VisualContainer from '../views/main/containers/VisualContainer';
-import PhotoPopupContainer from '../views/shared/containers/PhotoPopupContainer';
+import PhotoPopupContainer from '../views/popup/containers/PhotoPopupContainer';
 import ModalPortal from '../lib/ModalPortal';
 
 const Main = () => (

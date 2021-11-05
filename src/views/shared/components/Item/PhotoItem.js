@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { Action } from '../../../../redux/app/slice';
+import { Action } from '../../../../redux/popup/slice';
 
 const PhotoItem = ({ item }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { popup } = useSelector((state) => state.app);
   const handlePopup = () => {
-    dispatch(Action.Creators.togglePopup(!popup));
+    dispatch(Action.Creators.togglePopup(true));
     history.push(`/photos/${item.id}`);
   };
   return (

@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
-import appReducer from './app/slice';
+import popupReducer from './popup/slice';
 import photosReducer from './photos/slice';
 import searchReducer from './search/slice';
 import topicsReducer from './topics/slice';
 
 const reducers = combineReducers({
-  app: appReducer,
+  popup: popupReducer,
   photos: photosReducer,
   search: searchReducer,
   topics: topicsReducer,
