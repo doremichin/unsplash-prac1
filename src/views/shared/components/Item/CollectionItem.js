@@ -121,6 +121,7 @@ const Desc = styled.div`
   padding: 20px 0 30px;
 `;
 const DescTitle = styled.h3`
+  font-size: 18px;
   margin-bottom: 5px;
 `;
 const CurateInfo = styled.div`
@@ -148,6 +149,8 @@ const TagItem = styled(Link)`
   color: #767676;
   text-transform: capitalize;
   transition: 0.3s;
+  font-size: 14px;
+
   &:hover{
     background: #e1e1e1;
     color: #111;
