@@ -210,6 +210,18 @@ aria-hidden="false"
     />
   </svg>
 );
+export const IconHamburgerMenu = () => (
+  <svg
+width="24"
+height="24"
+className="GxoKE"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path d="M4 21.3h24V24H4v-2.7zM4 8v2.7h24V8H4zm0 9.3h24v-2.7H4v2.7z" />
+  </svg>
+);
 export const IconCheckCircle = () => (
   <svg
 width="32"

@@ -46,15 +46,19 @@ const NavItem = styled(Link)`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  white-space: nowrap;
   padding: 14px 0;
   margin: 0 10px;
+  white-space: nowrap;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: #767676;
+  transition: 0.2s;
   border-bottom: 2px solid transparent;
   &.active{
     border-bottom: 2px solid #111;
+    color: #111;
+  }
+  &:hover{
     color: #111;
   }
 `;
