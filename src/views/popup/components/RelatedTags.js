@@ -1,20 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const RelatedTags = ({ tags }) => {
-  const a = 1;
-  return (
-    <Container>
-      <Tags>
-        {
+const RelatedTags = ({ tags }) => (
+  <Container>
+    <Tags>
+      {
           tags.map((item) => (
             <TagItem>{item.title}</TagItem>
           ))
         }
-      </Tags>
-    </Container>
-  );
-};
+    </Tags>
+  </Container>
+);
 
 const Container = styled.div`
 
@@ -23,7 +21,7 @@ const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const TagItem = styled.div`
+const TagItem = styled(Link)`
   background: #eee;
   padding:  5px 7px;
   margin-right: 8px;
