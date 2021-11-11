@@ -33,7 +33,7 @@ const SearchLnbContainer = () => {
       <Nav>
         {
           menu.map(({ name, icon, total }) => (
-            <NavItem to={`/search/${name}/${query}`} className={cn({ active: category === name })}>
+            <NavItem key={name} to={`/search/${name}/${query}`} className={cn({ active: category === name })}>
               {icon}
               {name} {setNumberThousand(total)}k
             </NavItem>

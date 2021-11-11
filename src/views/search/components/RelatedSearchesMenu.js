@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ScrollMenu from '../../shared/components/ScrollMenu';
 
 const RelatedSearchesMenu = ({ data }) => {
-  const renderItem = (item) => <MenuItem to={`/search/photos/${item.title}`}>{item.title}</MenuItem>;
+  const renderItem = (item) => <MenuItem to={`/search/photos/${item.title}`} key={item.title}>{item.title}</MenuItem>;
   return (
     <Container>
       <ScrollMenu data={data} renderItem={renderItem} />

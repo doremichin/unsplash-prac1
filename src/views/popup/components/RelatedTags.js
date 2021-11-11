@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 const RelatedTags = ({ tags }) => (
   <Container>
+    <h4>Related Tags</h4>
     <Tags>
       {
-          tags.map((item) => (
-            <TagItem>{item.title}</TagItem>
+          tags.map((item, index) => (
+            <TagItem key={item.id || index}>{item.title}</TagItem>
           ))
         }
     </Tags>
@@ -15,7 +16,11 @@ const RelatedTags = ({ tags }) => (
 );
 
 const Container = styled.div`
-
+  h4{
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
 `;
 const Tags = styled.div`
   display: flex;

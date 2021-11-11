@@ -14,16 +14,21 @@ const SearchPhotosContainer = ({ data }) => {
   const { query } = useParams();
 
   const nextPhotos = () => {
-    dispatch(Action.Creators.getNextPhotos({
-      query,
-      page,
-      per_page: 15,
-      client_id: ACCESS_KEY,
+    dispatch(Action.Creators.searchNextResults({
+      searchType: 'photos',
+      params: {
+        query,
+        page,
+        per_page: 15,
+        client_id: ACCESS_KEY,
+      },
     }));
   };
 
   useEffect(() => {
-    nextPhotos();
+    if (page > 1) {
+      nextPhotos();
+    }
   }, [page]);
   useEffect(() => {
     setPage(1);
