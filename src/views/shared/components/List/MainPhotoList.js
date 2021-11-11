@@ -19,10 +19,10 @@ const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
       <Row>
         {
           photoGroups.map((group, groupIndex) => (
-            <Col>
+            <Col key={groupIndex}>
               {
                 group.map((item, index) => (
-                  <ItemWrapper>
+                  <ItemWrapper key={item.id || index}>
                     {renderItem(item)}
                   </ItemWrapper>
                 ))

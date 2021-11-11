@@ -2,11 +2,11 @@ import axios from 'axios';
 
 import { BASE_API_URL } from '../../const/config';
 
-export const nextPhotosResultsRest = async (params) => {
+export const searchNextResultsRest = async (searchType, params) => {
   try {
     const { data } = await axios({
       baseURL: BASE_API_URL,
-      url: '/search/photos',
+      url: `/search/${searchType}`,
       method: 'get',
       params,
     });

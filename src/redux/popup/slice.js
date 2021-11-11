@@ -1,5 +1,6 @@
 const initialState = {
   isView: false,
+
   detail: {
     height: 0,
     width: 0,
@@ -11,11 +12,13 @@ const initialState = {
     views: 0,
     downloads: 0,
     related_collections: {
-      results: [],
+      results: [
+      ],
     },
     tags: [],
     topic_submissions: {},
   },
+
   related: {},
 };
 export const Action = {

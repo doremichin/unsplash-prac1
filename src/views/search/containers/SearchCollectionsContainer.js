@@ -14,16 +14,21 @@ const SearchCollectionsContainer = ({ data }) => {
   const { query } = useParams();
 
   const nextCollections = () => {
-    dispatch(Action.Creators.getNextCollections({
-      query,
-      page,
-      per_page: 15,
-      client_id: ACCESS_KEY,
+    dispatch(Action.Creators.searchNextResults({
+      searchType: 'collections',
+      params: {
+        query,
+        page,
+        per_page: 15,
+        client_id: ACCESS_KEY,
+      },
     }));
   };
 
   useEffect(() => {
-    nextCollections();
+    if (page > 1) {
+      nextCollections();
+    }
   }, [page]);
 
   const next = () => {

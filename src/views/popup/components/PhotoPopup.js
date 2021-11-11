@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 import { WhiteButton } from '../../shared/components/Button/Button.Styled';
 import {
@@ -12,6 +13,9 @@ import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
 import UserTag from '../../shared/components/Item/UserTag';
 
 const PhotoPopup = ({ detail = {}, related = [] }) => {
+  const { id } = useParams();
+  const [zoomIn, setZoomIn] = useState(false);
+
   const handleOnClick = (e) => {
     e.stopPropagation();
   };
@@ -21,6 +25,12 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
     if (detail.height / detail.width === 1) return 'square';
     return 'landscape';
   };
+  const handlePhotoZoom = () => {
+    setZoomIn(!zoomIn);
+  };
+  useEffect(() => {
+    setZoomIn(false);
+  }, [id]);
 
   return (
     <Container onClick={handleOnClick}>
@@ -42,7 +52,7 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
         </ButtonBox>
       </Title>
 
-      <MainPhoto className={checkOrientation()}>
+      <MainPhoto className={checkOrientation()} onClick={handlePhotoZoom} zoomIn={zoomIn}>
         <img src={detail.urls.regular} alt="" />
       </MainPhoto>
 
@@ -58,14 +68,20 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
           </Feature>
           {
             Object.keys(detail.topic_submissions).length > 0
-            && (
-              <Feature>
-                <h4>Featured in</h4>
-                {
+              ? (
+                <Feature>
+                  <h4>Featured in</h4>
+                  Editorial,&nbsp;
+                  {
                   Object.keys(detail.topic_submissions).map((item) => <span>{item}</span>)
                 }
-              </Feature>
-            )
+                </Feature>
+              ) : (
+                <Feature>
+                  <h4>Featured in</h4>
+                  Editorial
+                </Feature>
+              )
            }
         </FeatureList>
         <ButtonBox>
@@ -82,6 +98,7 @@ const PhotoPopup = ({ detail = {}, related = [] }) => {
           </Button>
         </ButtonBox>
       </Info>
+
       <ContentContainer>
         <RelatedPhotos data={related} />
 
@@ -165,20 +182,42 @@ const DownloadButton = styled(WhiteButton)`
 `;
 
 const MainPhoto = styled.div`
+  ${(props) => (props.zoomIn ? css`
+    cursor: zoom-out;
+  ` : css`
+    cursor: zoom-in;
+  `)}
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
   &.portrait{
-    max-height: 90vh;
-    img{
-      object-fit: contain;
-    }
+    ${(props) => (props.zoomIn ? css`
+      max-height: none;
+      margin: 0 -20px 20px;
+      img{
+        width: 100%;
+        object-fit: fill ;
+      }
+    ` : css`
+      max-height : 90vh;
+      img{
+        object-fit : contain;
+      }
+    `)}
   }
   &.landscape, &.square{
-    img{
-      width: 100%;
-      max-width: 1500px;
-    }
+    ${(props) => (props.zoomIn ? css`
+      margin: 0 -20px 20px;
+      img{
+        width: 100%;
+        max-width: none;
+      }
+    ` : css`
+      img{
+        width: 100%;
+        max-width: 1500px;
+      }
+    `)}
   }
 `;
 
@@ -205,6 +244,7 @@ const Feature = styled.div`
     color: #111;
     font-weight: 600;
     margin-right: 8px;
+    text-transform: capitalize;
   }
 `;
 

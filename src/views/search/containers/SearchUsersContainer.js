@@ -14,16 +14,21 @@ const SearchUsersContainer = ({ data }) => {
   const { query } = useParams();
 
   const nextUsers = () => {
-    dispatch(Action.Creators.getNextUsers({
-      query,
-      page,
-      per_page: 15,
-      client_id: ACCESS_KEY,
+    dispatch(Action.Creators.searchNextResults({
+      searchType: 'users',
+      params: {
+        query,
+        page,
+        per_page: 15,
+        client_id: ACCESS_KEY,
+      },
     }));
   };
 
   useEffect(() => {
-    nextUsers();
+    if (page > 1) {
+      nextUsers();
+    }
   }, [page]);
 
   const next = () => {
