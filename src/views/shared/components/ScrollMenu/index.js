@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import cn from 'classnames';
 
@@ -20,9 +20,16 @@ const ScrollMenu = ({ data = [], renderItem }) => {
   const handleClickRight = () => {
     trackRef.current.scrollLeft += 300;
   };
-
   const start = scrollLeft === 0;
   const end = scrollLeft === maxScroll;
+
+  window.onresize = () => {
+    setMaxScroll(trackRef.current.scrollWidth - trackRef.current.clientWidth);
+  };
+
+  useEffect(() => {
+    setMaxScroll(trackRef.current.scrollWidth - trackRef.current.clientWidth);
+  }, []);
 
   return (
     <Container className={cn({ start, end })}>
