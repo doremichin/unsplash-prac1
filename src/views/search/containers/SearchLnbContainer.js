@@ -40,7 +40,20 @@ const SearchLnbContainer = () => {
           ))
         }
       </Nav>
-      <Filter />
+      <Filter>
+        <OrientationButton>
+          Any orientation
+          <OrientationMenu>
+            land
+          </OrientationMenu>
+        </OrientationButton>
+        <ColorButton>
+          Any color
+        </ColorButton>
+        <SortButton>
+          Sort by
+        </SortButton>
+      </Filter>
     </Container>
   );
 };
@@ -64,6 +77,7 @@ const NavItem = styled(Link)`
   padding: 10px 0;
   font-weight: 600;
   text-transform: capitalize;
+  font-size: 15px;
   color: #767676;
   border-bottom: 2px solid transparent;
   svg{
@@ -87,7 +101,26 @@ const NavItem = styled(Link)`
   }
 `;
 const Filter = styled.div`
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
-
+const OrientationButton = styled.div`
+  cursor: pointer;
+  position: relative;
+`;
+const OrientationMenu = styled.div`
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background-color: #18f;
+`;
+const ColorButton = styled.div`
+  margin-left: 15px;
+`;
+const SortButton = styled.div`
+  margin-left: 15px;
+`;
 export default SearchLnbContainer;
