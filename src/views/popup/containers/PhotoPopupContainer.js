@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
 
 import PhotoPopup from '../components/PhotoPopup';
 import { Action } from '../../../redux/popup/slice';
@@ -11,22 +10,24 @@ const PhotoPopupContainer = () => {
   const { isView } = useSelector((state) => state.popup);
   const { detail } = useSelector((state) => state.popup);
   const { related } = useSelector((state) => state.popup);
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const { pathname } = window.location;
+  // useLocation을 썼더니 주소가 안잡히네요
+  // 그리고 pathname 이 /photos/didnv123ks 이렇게 잡혀서 통째로 api url에 넣어버렸는데 이게 맞는 방법인가요
+
   const handlePopup = () => {
     dispatch(Action.Creators.togglePopup(false));
-    history.push('/');
+    window.history.back();
   };
   const getPhotoById = () => {
     dispatch(Action.Creators.getPhotoById({
-      id,
+      pathname,
       client_id: ACCESS_KEY,
     }));
   };
   const getRelatedPhotosById = () => {
     dispatch(Action.Creators.getRelatedPhotoById({
-      id,
+      pathname,
       client_id: ACCESS_KEY,
     }));
   };
@@ -39,7 +40,7 @@ const PhotoPopupContainer = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isView, id]);
+  }, [isView, pathname]);
   return (
     <Container isView={isView} onClick={handlePopup}>
       <PhotoPopup detail={detail} related={related.results} />

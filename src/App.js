@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Routes from './Routes';
 import { GlobalStyle } from './style/GlobalStyle';
 import Header from './views/shared/components/Header/Header';
+import ModalPortal from './lib/ModalPortal';
+import PhotoPopupContainer from './views/popup/containers/PhotoPopupContainer';
 
 const App = () => {
   const history = useHistory();
@@ -16,11 +18,16 @@ const App = () => {
     // });
   }, []);
   return (
-    <Container>
-      <GlobalStyle />
-      <Header />
-      <Routes />
-    </Container>
+    <>
+      <Container>
+        <GlobalStyle />
+        <Header />
+        <Routes />
+      </Container>
+      <ModalPortal>
+        <PhotoPopupContainer />
+      </ModalPortal>
+    </>
   );
 };
 

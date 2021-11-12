@@ -16,7 +16,7 @@ const PhotoItem = ({ item = {} }) => {
 
   const handlePopup = () => {
     dispatch(Action.Creators.togglePopup(true));
-    history.push(`/photos/${item.id}`);
+    window.history.pushState('', '', `/photos/${item.id}`);
   };
   const onMouseOver = () => {
     setMouseEnter(true);
