@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import SearchBoxContainer from '../../search/containers/SearchBoxContainer';
 
 const Visual = ({ data = {} }) => {
-  const a = 1;
+  if (!data.urls) return null;
   return (
     <Container urls={data.urls.regular}>
       <Content>

@@ -1,251 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
-import { WhiteButton } from '../../shared/components/Button/Button.Styled';
-import {
-  IconChevronDown, IconDotMenu, IconHeart, IconInfo, IconPlus, IconShare,
-} from '../../../icons';
-import RelatedPhotos from './RelatedPhotos';
-import RelatedCollections from './RelatedCollections';
-import RelatedTags from './RelatedTags';
-import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
-import UserTag from '../../shared/components/Item/UserTag';
+import PhotoContents from '../../photo/components/PhotoContents';
 
-const PhotoPopup = ({ detail = {}, related = [] }) => {
-  const { id } = useParams();
-  const [zoomIn, setZoomIn] = useState(false);
+const PhotoPopup = ({ id }) => {
+  const related = useSelector((state) => state.photos.related);
+  const detail = useSelector((state) => state.photos.detail);
 
-  const handleOnClick = (e) => {
-    e.stopPropagation();
-  };
-
-  const checkOrientation = () => {
-    if (detail.height / detail.width > 1) return 'portrait';
-    if (detail.height / detail.width === 1) return 'square';
-    return 'landscape';
-  };
-  const handlePhotoZoom = () => {
-    setZoomIn(!zoomIn);
-  };
-  useEffect(() => {
-    setZoomIn(false);
-  }, [id]);
+  if (!detail[id] || !related[id]) return null;
 
   return (
-    <Container onClick={handleOnClick}>
-      <Title>
-        <UserTag item={detail} />
-        <ButtonBox>
-          <Button>
-            <IconHeart />
-          </Button>
-          <Button>
-            <IconPlus />
-          </Button>
-          <DownloadButton left>
-            <span>Download</span>
-          </DownloadButton>
-          <DownloadButton right>
-            <IconChevronDown />
-          </DownloadButton>
-        </ButtonBox>
-      </Title>
-
-      <MainPhoto className={checkOrientation()} onClick={handlePhotoZoom} zoomIn={zoomIn}>
-        <img src={detail.urls.regular} alt="" />
-      </MainPhoto>
-
-      <Info>
-        <FeatureList>
-          <Feature>
-            <h4>Views</h4>
-            <span>{detail.views.toLocaleString()}</span>
-          </Feature>
-          <Feature>
-            <h4>Downloads</h4>
-            <span>{detail.downloads.toLocaleString()}</span>
-          </Feature>
-          {
-            Object.keys(detail.topic_submissions).length > 0
-              ? (
-                <Feature>
-                  <h4>Featured in</h4>
-                  Editorial,&nbsp;
-                  {
-                  Object.keys(detail.topic_submissions).map((item) => <span>{item}</span>)
-                }
-                </Feature>
-              ) : (
-                <Feature>
-                  <h4>Featured in</h4>
-                  Editorial
-                </Feature>
-              )
-           }
-        </FeatureList>
-        <ButtonBox>
-          <Button>
-            <IconShare />
-            <span>Share</span>
-          </Button>
-          <Button>
-            <IconInfo />
-            <span>Info</span>
-          </Button>
-          <Button>
-            <IconDotMenu />
-          </Button>
-        </ButtonBox>
-      </Info>
-
-      <ContentContainer>
-        <RelatedPhotos data={related} />
-
-        <RelatedCollections collection={detail.related_collections.results} />
-
-        <RelatedTags tags={detail.tags} />
-      </ContentContainer>
+    <Container>
+      <PhotoContents related={related[id]} detail={detail[id]} />
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
+  z-index: 100;
   margin: 15px auto 0;
   width: 85vw;
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 4px;
-`;
-
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`;
-
-const ButtonBox = styled.div`
-  display: flex;
-`;
-const Button = styled(WhiteButton)`
-  height: 32px;
-  padding: 0 10px;
-  margin-left: 10px;
-  fill: #767676;
-  transition: 0.3s;
-  svg{
-    width: 16px;
-  }
-  &:hover{
-    fill: #111;
-    border-color: #111;
-    h4,span{
-      color: #111;
-    }
-  }
-  span{
-    font-weight: 600;
-    color: #767676;
-    margin-left: 5px;
-  }
-`;
-const DownloadButton = styled(WhiteButton)`
-  height: 32px;
-  font-weight: 600;
-  transition: 0.3s;
-  fill: #767676;
-  color: #767676;
-  ${({ left }) => left && css`
-    padding: 0 10px;
-    margin-left: 10px;
-    border-radius: 3px 0 0 3px;
-    position: relative;
-    left: 1px;
-    &:hover{
-      z-index: 10;
-    }
-  `}
-  ${({ right }) => right && css`
-    padding: 0 5px;
-    border-radius: 0 3px 3px 0;
-    position: relative;
-    svg{
-      width: 25px;
-    }
-  `}
-  &:hover{
-    fill: #111;
-    border-color: #111;
-    color: #111;
-  }
-`;
-
-const MainPhoto = styled.div`
-  ${(props) => (props.zoomIn ? css`
-    cursor: zoom-out;
-  ` : css`
-    cursor: zoom-in;
-  `)}
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  &.portrait{
-    ${(props) => (props.zoomIn ? css`
-      max-height: none;
-      margin: 0 -20px 20px;
-      img{
-        width: 100%;
-        object-fit: fill ;
-      }
-    ` : css`
-      max-height : 90vh;
-      img{
-        object-fit : contain;
-      }
-    `)}
-  }
-  &.landscape, &.square{
-    ${(props) => (props.zoomIn ? css`
-      margin: 0 -20px 20px;
-      img{
-        width: 100%;
-        max-width: none;
-      }
-    ` : css`
-      img{
-        width: 100%;
-        max-width: 1500px;
-      }
-    `)}
-  }
-`;
-
-const Info = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-`;
-const FeatureList = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Feature = styled.div`
-  width: 160px;
-  white-space: nowrap;
-  h4{
-    font-weight: 500;
-    font-size: 14px;
-    color: #767676;
-    margin-bottom: 5px;
-  }
-  span{
-    font-size: 15px;
-    color: #111;
-    font-weight: 600;
-    margin-right: 8px;
-    text-transform: capitalize;
-  }
 `;
 
 export default PhotoPopup;

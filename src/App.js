@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Routes from './Routes';
 import { GlobalStyle } from './style/GlobalStyle';
 import Header from './views/shared/components/Header/Header';
-import ModalPortal from './lib/ModalPortal';
 import PhotoPopupContainer from './views/popup/containers/PhotoPopupContainer';
+import ModalPortal from './lib/ModalPortal';
 
 const App = () => {
   const history = useHistory();
@@ -34,5 +34,7 @@ const App = () => {
 const Container = styled.div`
   position: relative;
 `;
-
+const Box = styled.div`
+  
+`;
 export default App;

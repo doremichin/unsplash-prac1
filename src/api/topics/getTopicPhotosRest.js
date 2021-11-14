@@ -10,7 +10,7 @@ export const getTopicPhotosRest = async ({ slug, page }) => {
       method: 'get',
       params: {
         page,
-        client_id: '6_2N9-xx9qq8gNRcyVQgQmNVMmbSRuaIqMc1KQYpwYA',
+        client_id: process.env.REACT_APP_ACCESS_KEY,
       },
     });
     return data;

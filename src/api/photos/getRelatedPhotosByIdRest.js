@@ -2,14 +2,14 @@ import axios from 'axios';
 
 import { BASE_API_URL } from '../../const/config';
 
-export const getRelatedPhotosByIdRest = async ({ pathname, client_id }) => {
+export const getRelatedPhotosByIdRest = async (id) => {
   try {
     const { data } = await axios({
       baseURL: BASE_API_URL,
-      url: `${pathname}/related`,
+      url: `/photos/${id}/related`,
       method: 'get',
       params: {
-        client_id,
+        client_id: process.env.REACT_APP_ACCESS_KEY,
       },
     });
     return data;
