@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -6,12 +6,16 @@ const CollectionItem = ({ item }) => {
   const tags = [];
 
   for (let i = 0; i < 3; i++) {
-    tags.push(item.tags[i]);
+    if (item.tags[i] !== undefined) tags.push(item.tags[i]);
+    else break;
   }
-  const changeRoute = (item) => {
-    if (item.type === 'search') return `/search/photos/${item.title}`;
-    return `/${item.title}`;
+  const changeRoute = (tag) => {
+    if (tag.type === 'search') return `/search/photos/${tag.title}`;
+    return `/${tag.title}`;
   };
+  useEffect(() => {
+
+  }, []);
 
   return (
     <Container>
@@ -21,7 +25,7 @@ const CollectionItem = ({ item }) => {
           <CoverImage>
             <Image>
               {
-                item.preview_photos[0].urls.small
+                item.preview_photos?.[0]?.urls?.small
                 && <img src={item.preview_photos[0].urls.small} alt="" />
               }
             </Image>
@@ -30,7 +34,7 @@ const CollectionItem = ({ item }) => {
             <Top>
               <Image>
                 {
-                  item.preview_photos[1].urls.small
+                  item.preview_photos?.[1]?.urls?.small
                   && <img src={item.preview_photos[1].urls.small} alt="" />
                 }
               </Image>
@@ -38,7 +42,7 @@ const CollectionItem = ({ item }) => {
             <Bottom>
               <Image>
                 {
-                  item.preview_photos[2].urls.small
+                  item.preview_photos?.[2]?.urls?.small
                   && <img src={item.preview_photos[2].urls.small} alt="" />
                 }
               </Image>
@@ -57,8 +61,8 @@ const CollectionItem = ({ item }) => {
         </CurateInfo>
         <Tag>
           {
-            tags.map((item) => <TagItem to={changeRoute(item)}>{item.title}</TagItem>)
-          }
+            tags.map((tag, index) => <TagItem to={changeRoute(tag)} key={index}>{tag?.title}</TagItem>)
+           }
         </Tag>
       </Desc>
     </Container>

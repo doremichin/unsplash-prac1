@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import cn from 'classnames';
 
 import { Action } from '../../../../redux/popup/slice';
 import UserTag from './UserTag';
@@ -10,24 +8,17 @@ import { WhiteButton } from '../Button/Button.Styled';
 import { IconArrowDown, IconHeart, IconPlus } from '../../../../icons';
 
 const PhotoItem = ({ item = {} }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
-  const [mouseEnter, setMouseEnter] = useState(false);
 
-  const handlePopup = () => {
+  const openPopup = () => {
     dispatch(Action.Creators.togglePopup(true));
     window.history.pushState('', '', `/photos/${item.id}`);
   };
-  const onMouseOver = () => {
-    setMouseEnter(true);
-  };
-  const onMouseOut = () => {
-    setMouseEnter(false);
-  };
+
   return (
-    <Container onClick={handlePopup} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+    <Container onClick={openPopup} className="PhotoItem">
       <img src={item.urls.regular} alt="" />
-      <Cover className={cn({ mouseEnter })}>
+      <Cover>
         <CoverTop>
           <Button>
             <IconHeart />
@@ -65,7 +56,7 @@ const Cover = styled.div`
   background-color: #00000040;
   transition: 0.3s;
   opacity: 0;
-  &.mouseEnter{
+  .PhotoItem &:hover{
     opacity: 1;
   }
 `;
@@ -90,4 +81,4 @@ const Button = styled(WhiteButton)`
     fill: #111;
   }
 `;
-export default PhotoItem;
+export default React.memo(PhotoItem);
