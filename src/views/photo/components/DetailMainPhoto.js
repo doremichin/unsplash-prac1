@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import cn from 'classnames';
 
+import { IconZoomIn } from '../../../icons';
+
 const DetailMainPhoto = ({ imageUrl }) => {
   const [zoomIn, setZoomIn] = useState(false);
 
   return (
     <Container>
       <Inner>
-        <Image className={cn({ zoomIn })}>
+        <Image className={cn({ zoomIn })} onClick={() => setZoomIn((p) => !p)}>
           <img src={imageUrl} alt="" />
-          <ButtonZoom onClick={() => setZoomIn((p) => !p)}>
-            {zoomIn ? '축소' : '확대'}
+          <ButtonZoom className="buttonZoom">
+            <IconZoomIn />
           </ButtonZoom>
         </Image>
       </Inner>
@@ -28,8 +30,9 @@ const Inner = styled.div`
   justify-content: center;
 `;
 const Image = styled.div`
+  cursor: zoom-in;
   position: relative;
-  height: 76vh;
+  height: 45vw;
   background-color: #eee;
   &.zoomIn {
     height: auto;
@@ -38,6 +41,15 @@ const Image = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  .buttonZoom{
+    opacity: 0;
+    transition: 0.3s;
+  }
+  &:hover{
+    .buttonZoom{
+      opacity: 1;
+    }
+  }
 `;
 const ButtonZoom = styled.div`
   position: absolute;
@@ -45,5 +57,6 @@ const ButtonZoom = styled.div`
   top: 0;
   padding: 10px;
   color: #000;
+  fill: #ffffff;
 `;
 export default DetailMainPhoto;

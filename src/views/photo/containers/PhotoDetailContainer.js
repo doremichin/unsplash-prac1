@@ -54,7 +54,7 @@ const PhotoDetailContainer = ({ detail }) => {
                   <h4>Featured in</h4>
                   Editorial,&nbsp;
                   {
-                    keys.map((item) => <span>{item}</span>)
+                    keys.map((item, index) => <span key={index}>{item}</span>)
                   }
                 </Feature>
               ) : (

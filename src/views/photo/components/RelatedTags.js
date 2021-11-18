@@ -1,19 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const RelatedTags = ({ tags }) => (
-  <Container>
-    <h4>Related Tags</h4>
-    <Tags>
-      {
+import { Action } from '../../../redux/popup/slice';
+
+const RelatedTags = ({ tags }) => {
+  const dispatch = useDispatch();
+
+  const onClick = () => {
+    dispatch(Action.Creators.togglePopup(false));
+  };
+  return (
+    <Container>
+      <h4>Related Tags</h4>
+      <Tags>
+        {
           tags.map((item, index) => (
-            <TagItem key={item.id || index}>{item.title}</TagItem>
+            <TagItem key={item.id || index} to={`/search/photos/${item.title}`} onClick={onClick}>{item.title}</TagItem>
           ))
         }
-    </Tags>
-  </Container>
-);
+      </Tags>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   h4{

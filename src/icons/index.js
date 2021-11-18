@@ -248,3 +248,17 @@ aria-hidden="false"
     <path d="M25.8 15.5l-7.8 7.2v-20.7h-4v20.7l-7.8-7.2-2.7 3 12.5 11.4 12.5-11.4z" />
   </svg>
 );
+export const IconZoomIn = () => (
+  <svg
+width="32"
+height="32"
+className="QiJdx"
+viewBox="0 0 32 32"
+version="1.1"
+aria-hidden="false"
+  >
+    <path
+      d="M14.5 19.3l-6 6h4.8V28H4v-9.3h2.7v4.8l6-6 1.8 1.8zM18.7 4v2.7h4.8l-6 6 1.9 1.9 6-6v4.8H28V4h-9.3z"
+    />
+  </svg>
+);
