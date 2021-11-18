@@ -54,6 +54,7 @@ const Container = styled.div`
   `}
 `;
 const Screen = styled.div`
+  cursor: zoom-out;
   position: fixed;
   top: 0;
   bottom: 0;
