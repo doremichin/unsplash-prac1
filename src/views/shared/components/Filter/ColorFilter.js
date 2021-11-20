@@ -13,13 +13,17 @@ const ColorFilter = ({ clickColor, colorToggle }) => {
   return (
     <Color onClick={clickColor}>
       <ColorName>
+        {
+          queryString.color && queryString.color !== 'black_and_white'
+          && <ColorTag className={queryString.color} />
+        }
         {queryString.color || 'Any color'}
         <span className="icon">
           <AiFillCaretDown />
         </span>
       </ColorName>
       <ColorMenu className={cn({ colorToggle })}>
-        <ColorButton to={`/search/photos/${query}?${qs.stringify(delete queryString.color)}`}>Any Color</ColorButton>
+        <ColorButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, color: undefined })}`}>Any Color</ColorButton>
         <ColorButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, color: 'black_and_white' })}`}>Black and white</ColorButton>
         <Tones>
           <p className="tones">Tones</p>
@@ -78,6 +82,43 @@ const ColorMenu = styled.div`
   display: none;
   &.colorToggle{
     display: block;
+  }
+`;
+const ColorTag = styled.div`
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #f5f5f5;
+  margin-right: 5px;
+  &.white {
+    background-color: #fff;
+  }
+  &.black {
+    background: #4d4d4d;
+  }
+  &.yellow {
+    background: #fcdc00;
+  }
+  &.orange {
+    background: #fe9200;
+  }
+  &.red {
+    background: #f44e3b;
+  }
+  &.purple {
+    background: #7b64ff;
+  }
+  &.magenta {
+    background: #ab149e;
+  }
+  &.green {
+    background: #a4dd00;
+  }
+  &.teal {
+    background: #68ccca;
+  }
+  &.blue {
+    background: #009ce0;
   }
 `;
 const ColorName = styled.div`

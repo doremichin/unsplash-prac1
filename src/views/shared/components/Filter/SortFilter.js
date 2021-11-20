@@ -24,7 +24,7 @@ const SortFilter = ({ clickSort, sortToggle }) => {
         </span>
       </SortName>
       <SortMenu className={cn({ sortToggle })}>
-        <SortButton to={`/search/photos/${query}?${qs.stringify(delete queryString.order_by)}`}>
+        <SortButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, order_by: undefined })}`}>
           Relevance
         </SortButton>
         <SortButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, order_by: 'latest' })}`}>

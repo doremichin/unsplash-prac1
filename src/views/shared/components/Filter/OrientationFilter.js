@@ -19,7 +19,7 @@ const OrientationFilter = ({ clickOrientation, orientationToggle }) => {
         </span>
       </OrientationName>
       <OrientationMenu className={cn({ orientationToggle })}>
-        <OrientationButton to={`/search/photos/${query}?${qs.stringify(delete queryString.orientation)}`}>Any orientation</OrientationButton>
+        <OrientationButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, orientation: undefined })}`}>Any orientation</OrientationButton>
         <OrientationButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, orientation: 'landscape' })}`}>
           <div className="landscapeIcon" />
           landscape
