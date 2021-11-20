@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Route, useParams } from 'react-router-dom';
+import { Route, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import qs from 'qs';
 
 import { Action } from '../../../redux/search/slice';
 import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
@@ -13,6 +14,8 @@ import SearchUsersContainer from './SearchUsersContainer';
 
 const SearchContainer = () => {
   const { query } = useParams();
+  const { search } = useLocation();
+  const queryString = qs.parse(search, { ignoreQueryPrefix: true });
   const dispatch = useDispatch();
   const {
     photos, collections, users, related_searches,
@@ -24,12 +27,15 @@ const SearchContainer = () => {
       page: 1,
       per_page: 15,
       client_id: ACCESS_KEY,
+      orientation: queryString.orientation,
+      color: queryString.color,
+      order_by: queryString.order_by,
     }));
   };
 
   useEffect(() => {
     searchResults();
-  }, [query]);
+  }, [query, queryString.orientation, queryString.color, queryString.order_by]);
 
   if (!photos) return '...loading';
 
@@ -41,7 +47,7 @@ const SearchContainer = () => {
         <RelatedSearchesMenu data={related_searches} />
 
         <Route path={['/search/photos/:query']}>
-          <SearchPhotosContainer data={photos?.results} />
+          <SearchPhotosContainer data={photos?.results} shape={queryString.orientation} color={queryString.color} />
         </Route>
 
         <Route path={['/search/collections/:query']}>

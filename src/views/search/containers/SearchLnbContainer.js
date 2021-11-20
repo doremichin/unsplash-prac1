@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
+import qs from 'qs';
 
 import { IconCollections, IconImage, IconUsers } from '../../../icons';
 import { setNumberThousand } from '../../../lib/utils';
+import OrientationFilter from '../../shared/components/Filter/OrientationFilter';
+import ColorFilter from '../../shared/components/Filter/ColorFilter';
+import SortFilter from '../../shared/components/Filter/SortFilter';
 
 const SearchLnbContainer = () => {
   const { category, query } = useParams();
   const { photos, collections, users } = useSelector((state) => state.search);
+  const { search } = useLocation();
+  const queryString = qs.parse(search, { ignoreQueryPrefix: true });
+  console.log(queryString);
 
   const menu = [
     {
@@ -28,6 +35,26 @@ const SearchLnbContainer = () => {
       total: users.total,
     },
   ];
+  const [orientationToggle, setOrientationToggle] = useState(false);
+  const [colorToggle, setColorToggle] = useState(false);
+  const [sortToggle, setSortToggle] = useState(false);
+
+  const clickOrientation = () => {
+    setOrientationToggle((p) => !p);
+    setColorToggle(false);
+    setSortToggle(false);
+  };
+  const clickColor = () => {
+    setColorToggle((p) => !p);
+    setOrientationToggle(false);
+    setSortToggle(false);
+  };
+  const clickSort = () => {
+    setSortToggle((p) => !p);
+    setOrientationToggle(false);
+    setColorToggle(false);
+  };
+
   return (
     <Container>
       <Nav>
@@ -40,20 +67,16 @@ const SearchLnbContainer = () => {
           ))
         }
       </Nav>
-      <Filter>
-        <OrientationButton>
-          Any orientation
-          <OrientationMenu>
-            land
-          </OrientationMenu>
-        </OrientationButton>
-        <ColorButton>
-          Any color
-        </ColorButton>
-        <SortButton>
-          Sort by
-        </SortButton>
-      </Filter>
+      {
+        category === 'photos'
+        && (
+          <Filter>
+            <OrientationFilter clickOrientation={clickOrientation} orientationToggle={orientationToggle} />
+            <ColorFilter clickColor={clickColor} colorToggle={colorToggle} />
+            <SortFilter clickSort={clickSort} sortToggle={sortToggle} />
+          </Filter>
+        )
+      }
     </Container>
   );
 };
@@ -105,22 +128,5 @@ const Filter = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const OrientationButton = styled.div`
-  cursor: pointer;
-  position: relative;
-`;
-const OrientationMenu = styled.div`
-  position: absolute;
-  bottom: -100px;
-  right: 0;
-  width: 100px;
-  height: 100px;
-  background-color: #18f;
-`;
-const ColorButton = styled.div`
-  margin-left: 15px;
-`;
-const SortButton = styled.div`
-  margin-left: 15px;
-`;
+
 export default SearchLnbContainer;

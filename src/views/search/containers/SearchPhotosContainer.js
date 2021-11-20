@@ -8,7 +8,7 @@ import InfiniteScroll from '../../shared/components/InfiniteScroll';
 import { Action } from '../../../redux/search/slice';
 import { ACCESS_KEY } from '../../../const/config';
 
-const SearchPhotosContainer = ({ data }) => {
+const SearchPhotosContainer = ({ data, shape, color }) => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const { query } = useParams();
@@ -21,6 +21,8 @@ const SearchPhotosContainer = ({ data }) => {
         page,
         per_page: 15,
         client_id: ACCESS_KEY,
+        orientation: shape,
+        color,
       },
     }));
   };

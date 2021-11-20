@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 import { useIntersection } from '../../../../hooks/useIntersection';
 
@@ -14,7 +15,9 @@ const InfiniteScroll = ({ children, next }) => {
   return (
     <Container>
       {children}
-      <Sentinel ref={sentinelRef} />
+      <Sentinel ref={sentinelRef}>
+        <AiOutlineLoading3Quarters />
+      </Sentinel>
     </Container>
   );
 };
@@ -24,6 +27,8 @@ const Container = styled.div`
 `;
 const Sentinel = styled.div`
   height: 100px;
-  background: #18f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export default InfiniteScroll;
