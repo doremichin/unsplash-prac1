@@ -262,3 +262,17 @@ aria-hidden="false"
     />
   </svg>
 );
+export const IconFilter = () => (
+  <svg
+    width="32"
+    height="32"
+    className="PTf2D"
+    viewBox="0 0 32 32"
+    version="1.1"
+    aria-hidden="false"
+  >
+    <path
+      d="M0,24.89v3.55H10.67V24.89ZM0,3.56V7.11H17.78V3.56ZM17.78,32V28.44H32V24.89H17.78V21.33H14.22V32ZM7.11,10.67v3.55H0v3.56H7.11v3.55h3.56V10.67ZM32,17.78V14.22H14.22v3.56ZM21.33,10.67h3.56V7.11H32V3.56H24.89V0H21.33Z"
+    />
+  </svg>
+);

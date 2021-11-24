@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import cn from 'classnames';
 
 import SearchBoxContainer from '../../search/containers/SearchBoxContainer';
 
 const Visual = ({ data = {} }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   if (!data.urls) return null;
   return (
-    <Container urls={data.urls.regular}>
+    <Container urls={data.urls.regular} className={cn({ isMobile })}>
       <Content>
         <ContentTitle>
           <h1>Unsplash</h1>
@@ -16,7 +19,9 @@ const Visual = ({ data = {} }) => {
             Powered by creators everywhere.
           </p>
         </ContentTitle>
-        <SearchBoxContainer shape="square" />
+        {
+          !isMobile && <SearchBoxContainer shape="square" />
+        }
       </Content>
       <PhotoInfo>
         Photo <span>by</span> <a href={data.links.html}>{data.user.name}</a>
@@ -34,7 +39,11 @@ const Container = styled.div`
   padding: 0 80px;
   margin-bottom: 50px;
   position: relative;
+  &.isMobile {
+    height: 300px;
+    padding: 0 10px;
 
+  }
   &::before {
     content: '';
     position: absolute;
@@ -56,12 +65,18 @@ const ContentTitle = styled.div`
     font-size: 46px;
     color: #fff;
     margin-bottom: 10px;
+    .isMobile &{
+      font-size: 24px;
+    }
   }
   p {
     font-weight: 600;
     line-height: 1.6;
     font-size: 18px;
     color: #fff;
+    .isMobile &{
+      font-size: 15px;
+    }
     a {
       color: #d1d1d1;
       text-decoration: underline;

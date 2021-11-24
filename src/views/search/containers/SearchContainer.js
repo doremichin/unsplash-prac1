@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Route, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
+import { useMediaQuery } from 'react-responsive';
+import cn from 'classnames';
 
 import { Action } from '../../../redux/search/slice';
 import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
@@ -32,20 +34,20 @@ const SearchContainer = () => {
       order_by: queryString.order_by,
     }));
   };
-
   useEffect(() => {
     searchResults();
   }, [query, queryString.orientation, queryString.color, queryString.order_by]);
 
   if (!photos) return '...loading';
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>
-      <ContentContainer>
+      <ContentContainer className={cn({ isMobile })}>
         <PageTitle>{query}</PageTitle>
-
-        <RelatedSearchesMenu data={related_searches} />
-
+        {
+          !isMobile && <RelatedSearchesMenu data={related_searches} />
+        }
         <Route path={['/search/photos/:query']}>
           <SearchPhotosContainer data={photos?.results} shape={queryString.orientation} color={queryString.color} />
         </Route>
@@ -71,6 +73,10 @@ const PageTitle = styled.h1`
   font-weight: 900;
   text-transform: capitalize;
   margin-top: 60px;
+  .isMobile &{
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
 `;
 
 export default SearchContainer;

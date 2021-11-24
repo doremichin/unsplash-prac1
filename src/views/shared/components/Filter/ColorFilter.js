@@ -127,6 +127,7 @@ const ColorName = styled.div`
   align-items: center;
   color: #767676;
   fill: #767676;
+  transition: 0.3s;
   &:hover{
     fill: #111;
     color: #111;
@@ -145,6 +146,7 @@ const ColorButton = styled(Link)`
   margin-bottom: 10px;
   width: 160px;
   padding: 10px 30px;
+  transition: 0.3s;
   &:hover{
     background-color: #efefef;
     color: #000;

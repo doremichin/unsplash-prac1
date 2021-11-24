@@ -39,6 +39,7 @@ const SearchPhotosContainer = ({ data, shape, color }) => {
   const next = () => {
     setPage((p) => p + 1);
   };
+
   return (
     <Container>
       {
