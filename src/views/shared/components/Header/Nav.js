@@ -1,21 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { DefaultButton, WhiteButton } from '../Button/Button.Styled';
 import { IconHamburgerMenu } from '../../../../icons';
 
-const Nav = () => (
-  <Container>
-    <NavItem to="/topics">Brands</NavItem>
-    <NavItem to="/topics">Explore</NavItem>
-    <NavItem to="/topics">Blog</NavItem>
-    <Line />
-    <NavItem to="/topics">Log in</NavItem>
-    <SubmitButton>Submit a photo</SubmitButton>
-    <Button><IconHamburgerMenu /></Button>
-  </Container>
-);
+const Nav = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  return (
+    <Container>
+      {
+            !isMobile
+            && (
+              <>
+                <NavItem to="/topics">Brands</NavItem>
+                <NavItem to="/topics">Explore</NavItem>
+                <NavItem to="/topics">Blog</NavItem>
+                <Line />
+                <NavItem to="/topics">Log in</NavItem>
+                <SubmitButton>Submit a photo</SubmitButton>
+              </>
+            )
+        }
+      <Button><IconHamburgerMenu /></Button>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   margin-left: 30px;

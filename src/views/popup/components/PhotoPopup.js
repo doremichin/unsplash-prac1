@@ -8,7 +8,7 @@ const PhotoPopup = ({ id }) => {
   const related = useSelector((state) => state.photos.related);
   const detail = useSelector((state) => state.photos.detail);
 
-  if (!detail[id] || !related[id]) return null;
+  if (!detail?.[id] || !related?.[id]) return null;
 
   return (
     <Container>

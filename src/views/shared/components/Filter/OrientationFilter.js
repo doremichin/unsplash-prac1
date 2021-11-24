@@ -40,6 +40,7 @@ const OrientationFilter = ({ clickOrientation, orientationToggle }) => {
 const Orientation = styled.div`
   cursor: pointer;
   position: relative;
+  margin-left: 20px;
 `;
 const OrientationName = styled.p`
   text-transform: capitalize;
@@ -47,6 +48,7 @@ const OrientationName = styled.p`
   align-items: center;
   color: #767676;
   fill: #767676;
+  transition: 0.3s;
   &:hover{
     color: #111;
     fill: #111;

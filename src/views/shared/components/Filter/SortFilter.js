@@ -45,6 +45,7 @@ const SortName = styled.div`
   align-items: center;
   fill: #767676;
   color: #767676;
+  transition: 0.3s;
   &:hover{
     color: #111;
     fill : #111;
@@ -75,6 +76,7 @@ const SortButton = styled(Link)`
   padding: 10px 20px;
   font-size: 14px;
   color: #767676;
+  transition: 0.3s;
   &:hover {
     background-color: #efefef;
     color: #000;
