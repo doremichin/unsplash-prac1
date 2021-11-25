@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
+import MainPhotoListTwoColumn from '../../shared/components/List/MainPhotoListTwoColumn';
 
 const RelatedPhotos = ({ data }) => {
-  const renderItem = (item) => <PhotoItem item={item} />;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
+  const renderItem = (item) => <PhotoItem item={item} />;
   return (
     <Container>
       <h4>Related photos</h4>
-      <MainPhotoList data={data} renderItem={renderItem} />
+      {
+        isMobile
+          ? <MainPhotoListTwoColumn data={data} renderItem={renderItem} /> : <MainPhotoList data={data} renderItem={renderItem} />
+      }
     </Container>
   );
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
+import cn from 'classnames';
 
 import { DefaultButton } from '../../shared/components/Button/Button.Styled';
 import {
@@ -9,9 +11,10 @@ import StatusButton from '../../shared/components/Button/StatusButton';
 import { setNumberThousand } from '../../../lib/utils';
 
 const TopicsDetailHead = ({ data }) => {
-  const a = 1;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
-    <Container>
+    <Container className={cn({ isMobile })}>
       <Title>
         <h1>{data.title}</h1>
         <p dangerouslySetInnerHTML={{ __html: data.description }} />
@@ -73,9 +76,12 @@ const Container = styled.div`
   color: #111;
   display: flex;
   justify-content: space-between;
+  &.isMobile {
+    flex-direction: column;
+  }
 `;
 const Title = styled.div`
-  max-width: 50%;
+  width: 66%;
   h1{
     font-size: 46px;
     font-weight: 900;
@@ -83,17 +89,33 @@ const Title = styled.div`
   }
   p{
     font-size: 18px;
+    margin-right: 20%;
+    line-height: 1.6;
   }
   a{
     text-decoration: underline;
     color: #717171;
   }
+  .isMobile &{
+    width: 100%;
+    margin-bottom: 30px;
+    h1{
+      font-size: 32px;
+    }
+    p{
+      font-size: 16px;
+      margin-right: 0;
+    }
+  }
 `;
 const Info = styled.div`
-  
+  min-width: 315px;
+  width: 33%;
+  .isMobile &{
+    width: 100%;
+  }
 `;
 const StatusBox = styled.ul`
-  width: 420px;
   height: 230px;
   border: 1px solid #d1d1d1;
   border-radius: 3px;
@@ -108,8 +130,8 @@ const StatusBox = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: 800;
-
+    font-weight: 500;
+    font-size: 14px;
     &:last-child{
       border-bottom: none;
     }
@@ -119,6 +141,11 @@ const StatusBox = styled.ul`
       border-radius: 50%;
       overflow: hidden;
     }
+  }
+  .isMobile &{
+    border: none;
+    padding: 0 10px;
+    height: 190px;
   }
 `;
 const StatusTitle = styled.div`
@@ -150,7 +177,7 @@ const TopContributors = styled.div`
       width: 18px;
       border-radius: 50%;
     }
-    margin-left: 8px;
+    margin-left: 7px;
   }
 `;
 export default TopicsDetailHead;

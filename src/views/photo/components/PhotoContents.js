@@ -22,8 +22,9 @@ const PhotoContents = ({ detail, related }) => {
 };
 
 const Container = styled.div`
-background: #fff;
+  background: #fff;
   position: relative;
+  padding: 0 10px;
 `;
 
 export default PhotoContents;
