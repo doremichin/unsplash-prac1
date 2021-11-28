@@ -1,4 +1,3 @@
-html css js > react > ts , test, next.js(우대사항) > 알고리즘
 
 
 #Unsplash

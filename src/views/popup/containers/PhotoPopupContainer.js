@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 import PhotoPopup from '../components/PhotoPopup';
 import { Action } from '../../../redux/popup/slice';
+import { IconCancel } from '../../../icons';
 
 const PhotoPopupContainer = () => {
   const { isView } = useSelector((state) => state.popup);
@@ -32,7 +33,11 @@ const PhotoPopupContainer = () => {
 
   return (
     <Container isView={isView}>
-      <Screen onClick={closePopup} />
+      <Screen onClick={closePopup}>
+        <CancelButton>
+          <IconCancel />
+        </CancelButton>
+      </Screen>
       <PhotoPopup id={id} />
     </Container>
   );
@@ -61,5 +66,21 @@ const Screen = styled.div`
   right: 0;
   left: 0;
   background-color: #00000070;
+`;
+const CancelButton = styled.div`
+  position: absolute;
+  fill: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  transition: 0.3s;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    fill: #fff;
+  }
+
 `;
 export default PhotoPopupContainer;

@@ -73,6 +73,7 @@ const PageTitle = styled.h1`
   font-weight: 900;
   text-transform: capitalize;
   margin-top: 60px;
+  margin-left: 10px;
   .isMobile &{
     font-size: 28px;
     margin-bottom: 30px;

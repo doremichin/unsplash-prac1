@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { useHistory } from 'react-router-dom';
 
 import { Action } from '../../../../redux/popup/slice';
 import UserTag from './UserTag';
@@ -9,10 +11,16 @@ import { IconArrowDown, IconHeart, IconPlus } from '../../../../icons';
 
 const PhotoItem = ({ item = {} }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const openPopup = () => {
-    dispatch(Action.Creators.togglePopup(true));
-    window.history.pushState('', '', `/photos/${item.id}`);
+    if (isMobile) {
+      history.push(`/photos/${item.id}`);
+    } else {
+      dispatch(Action.Creators.togglePopup(true));
+      window.history.pushState('', '', `/photos/${item.id}`);
+    }
   };
 
   return (
