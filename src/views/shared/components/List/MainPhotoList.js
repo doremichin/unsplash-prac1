@@ -1,12 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
-  // 사진이 배치 될 때 다음 사진은 높이가 가장 낮은 그룹의 하단에 배치 되어야 한다
-  // 매번 사진이 나열 될 때마다 그룹의 총 높이를 알고 있어야한다.
-  // 가장 작은 높이값의 인덱스 번호를 알아야한다
-  const photoGroups = [[], [], []];
-  const photoGroupHeight = [0, 0, 0];
+  const isDesktop = useMediaQuery({ minWidth: 992 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  let photoGroups = [[], [], []];
+  let photoGroupHeight = [0, 0, 0];
+  let gridWidth;
+
+  if (isDesktop) {
+    photoGroups = [[], [], []];
+    photoGroupHeight = [0, 0, 0];
+    gridWidth = '33.33%';
+  }
+  if (isTablet) {
+    photoGroups = [[], []];
+    photoGroupHeight = [0, 0];
+    gridWidth = '50%';
+  }
+  if (isMobile) {
+    photoGroups = [[]];
+    photoGroupHeight = [0];
+    gridWidth = '100%';
+  }
 
   for (let i = 0; i < data.length; i++) {
     const minHeightIndex = photoGroupHeight.indexOf(Math.min(...photoGroupHeight));
@@ -19,7 +38,7 @@ const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
       <Row>
         {
           photoGroups.map((group, groupIndex) => (
-            <Col key={groupIndex}>
+            <Col key={groupIndex} width={gridWidth}>
               {
                 group.map((item, index) => (
                   <ItemWrapper key={item.id || index}>
@@ -44,7 +63,7 @@ const Row = styled.div`
   margin: 0 -10px;
 `;
 const Col = styled.div`
-  width: 33.33%;
+  width: ${(props) => props.width || '33.33%'};
   padding: 0 10px;
 `;
 const ItemWrapper = styled.div`

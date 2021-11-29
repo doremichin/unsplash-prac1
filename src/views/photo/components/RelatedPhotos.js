@@ -4,7 +4,6 @@ import { useMediaQuery } from 'react-responsive';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
-import MainPhotoListTwoColumn from '../../shared/components/List/MainPhotoListTwoColumn';
 
 const RelatedPhotos = ({ data }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -13,10 +12,7 @@ const RelatedPhotos = ({ data }) => {
   return (
     <Container>
       <h4>Related photos</h4>
-      {
-        isMobile
-          ? <MainPhotoListTwoColumn data={data} renderItem={renderItem} /> : <MainPhotoList data={data} renderItem={renderItem} />
-      }
+      <MainPhotoList data={data} renderItem={renderItem} />
     </Container>
   );
 };

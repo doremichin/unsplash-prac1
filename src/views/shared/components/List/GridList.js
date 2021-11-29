@@ -5,9 +5,10 @@ import cn from 'classnames';
 
 const GridList = ({ data, renderItem }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
   return (
-    <Container className={cn({ isMobile })}>
+    <Container className={cn({ isMobile, isTablet })}>
       <Row>
         {
           data.map((item, index) => (
@@ -37,6 +38,9 @@ const Col = styled.div`
   width: 33.33%;
   padding: 0 10px;
   margin-bottom: 20px;
+  .isTablet & {
+    width: 50%;
+  }
   .isMobile & {
     width: 100%;
   }
