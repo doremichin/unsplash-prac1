@@ -18,7 +18,7 @@ const PhotoContentsContainer = () => {
     dispatch(Action.Creators.getRelatedPhotoById(id));
   }, [id]);
 
-  if (!detail[id] || !related[id]) return null;
+  if (!detail?.[id] || !related?.[id]) return null;
   return (
     <Container>
       <PhotoContents related={related[id]} detail={detail[id]} />

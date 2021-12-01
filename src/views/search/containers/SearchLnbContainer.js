@@ -8,19 +8,20 @@ import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 
 import {
-  IconCollections, IconImage, IconUsers, IconFilter,
+  IconCollections, IconImage, IconUsers,
 } from '../../../icons';
 import { setNumberThousand } from '../../../lib/utils';
-import OrientationFilter from '../../shared/components/Filter/OrientationFilter';
-import ColorFilter from '../../shared/components/Filter/ColorFilter';
-import SortFilter from '../../shared/components/Filter/SortFilter';
+import OrientationFilter from '../../shared/components/Filter/OrientationFilter/OrientationFilter';
+import ColorFilter from '../../shared/components/Filter/ColorFilter/ColorFilter';
+import SortFilter from '../../shared/components/Filter/SortFilter/SortFilter';
 import Contain from '../../shared/components/common/Contain';
+import FilterInMobile from '../../shared/components/Filter/FilterInMobile';
 
 const SearchLnbContainer = () => {
   const { category, query } = useParams();
+  const { search } = useLocation();
   const { photos, collections, users } = useSelector((state) => state.search);
   const history = useHistory();
-  const { search } = useLocation();
   const menu = [
     {
       name: 'photos',
@@ -89,24 +90,28 @@ const SearchLnbContainer = () => {
         category === 'photos'
         && (
           <Contain onClickOut={clickOut}>
-            <Filter className={cn({ isTablet })}>
+            <Filters className={cn({ isTablet })}>
               {
                 search !== ''
                 && <Clear onClick={clickClear}>Clear</Clear>
               }
-              <OrientationFilter clickOrientation={clickOrientation} orientationToggle={orientationToggle} />
-              <ColorFilter clickColor={clickColor} colorToggle={colorToggle} />
-              <SortFilter clickSort={clickSort} sortToggle={sortToggle} />
-            </Filter>
+              <FilterButton onClick={clickOrientation}>
+                <OrientationFilter orientationToggle={orientationToggle} />
+              </FilterButton>
+              <FilterButton onClick={clickColor}>
+                <ColorFilter colorToggle={colorToggle} />
+              </FilterButton>
+              <FilterButton onClick={clickSort}>
+                <SortFilter sortToggle={sortToggle} />
+              </FilterButton>
+            </Filters>
           </Contain>
         )
       }
       {
         isTablet
         && (
-          <FilterButton className={cn({ search })}>
-            <IconFilter />
-          </FilterButton>
+          <FilterInMobile />
         )
       }
     </Container>
@@ -159,7 +164,7 @@ const NavItem = styled(Link)`
     }
   }
 `;
-const Filter = styled.div`
+const Filters = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -167,26 +172,14 @@ const Filter = styled.div`
     display: none;
   }
 `;
+const FilterButton = styled.div`
+  margin-left: 20px;
+  position: relative;
+  cursor: pointer;
+`;
 const Clear = styled.div`
   cursor: pointer;
   color: #767676;
 `;
-const FilterButton = styled.div`
-  position: relative;
-  cursor: pointer;
-  svg{
-    width: 18px;
-  }
-  &.search::after{
-    position: absolute;
-    top: 3px;
-    right: 1px;
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    background-color: #e25c3d;
-  }
-`;
+
 export default SearchLnbContainer;

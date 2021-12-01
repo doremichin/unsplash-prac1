@@ -26,7 +26,7 @@ const TopicsLnbContainer = () => {
     <Container>
       <Nav>
         <NavItem to="/" className={cn({ active: pathname === '/' })}>Editorial</NavItem>
-        <NavItem to="/following" className={cn({ active: pathname === '/following' })}>Following</NavItem>
+        <NavItem to="/">Following</NavItem>
       </Nav>
       <Line />
       <ScrollMenu data={list} renderItem={renderItem} />
