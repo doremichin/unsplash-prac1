@@ -2,16 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import cn from 'classnames';
 import qs from 'qs';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { AiFillCaretDown } from 'react-icons/ai';
 
-const SortFilter = ({ clickSort, sortToggle }) => {
-  const { query } = useParams();
+import SortFilterContent from './SortFilterContent';
+
+const SortFilter = ({ sortToggle }) => {
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
 
   return (
-    <Sort onClick={clickSort}>
+    <Container>
       <SortName>
         Sort by&nbsp;
         <span>
@@ -24,21 +25,14 @@ const SortFilter = ({ clickSort, sortToggle }) => {
         </span>
       </SortName>
       <SortMenu className={cn({ sortToggle })}>
-        <SortButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, order_by: undefined })}`}>
-          Relevance
-        </SortButton>
-        <SortButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, order_by: 'latest' })}`}>
-          Newest
-        </SortButton>
+        <SortFilterContent />
       </SortMenu>
-    </Sort>
+    </Container>
   );
 };
 
-const Sort = styled.div`
-  margin-left: 20px;
-  position: relative;
-  cursor: pointer;
+const Container = styled.div`
+
 `;
 const SortName = styled.div`
   display: flex;
@@ -72,14 +66,5 @@ const SortMenu = styled.div`
     display: flex;
   }
 `;
-const SortButton = styled(Link)`
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #767676;
-  transition: 0.3s;
-  &:hover {
-    background-color: #efefef;
-    color: #000;
-  }
-`;
+
 export default SortFilter;
