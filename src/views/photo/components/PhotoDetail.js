@@ -116,7 +116,7 @@ const ButtonBox = styled.div`
 `;
 const ButtonBoxBottom = styled.div`
   display: flex;
-
+  max-width: 100%;
 `;
 const Left = styled.div`
   display: flex;
@@ -188,6 +188,7 @@ const FeatureList = styled.div`
   align-items: center;
   .isMobile &{
     flex-direction: column;
+    align-items: flex-start;
   }
 `;
 const Feature = styled.div`

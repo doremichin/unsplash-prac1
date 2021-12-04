@@ -14,7 +14,7 @@ const PhotoItemInMobile = ({ item = {} }) => {
 
   return (
     <Container onClick={onClickItem} className="PhotoItem">
-      <UserTag item={item} />
+      <UserTag item={item} isMobile />
       <Image>
         <img src={item.urls.regular} alt="" />
       </Image>
@@ -47,10 +47,10 @@ const Container = styled.div`
 
 `;
 const Image = styled.div`
-  margin: 10px 0;
   cursor:zoom-in;
 `;
 const Bottom = styled.div`
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
 `;

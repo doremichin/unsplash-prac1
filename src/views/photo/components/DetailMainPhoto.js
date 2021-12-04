@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import cn from 'classnames';
+import { useMediaQuery } from 'react-responsive';
 
 import { IconZoomIn } from '../../../icons';
 
 const DetailMainPhoto = ({ imageUrl }) => {
   const [zoomIn, setZoomIn] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>
       <Inner>
-        <Image className={cn({ zoomIn })} onClick={() => setZoomIn((p) => !p)}>
-          <img src={imageUrl} alt="" />
-          <ButtonZoom className="buttonZoom">
-            <IconZoomIn />
-          </ButtonZoom>
-        </Image>
+        {
+          isMobile
+            ? (
+              <Image>
+                <img src={imageUrl} alt="" />
+              </Image>
+            )
+            : (
+              <Image className={cn({ zoomIn })} onClick={() => setZoomIn((p) => !p)}>
+                <img src={imageUrl} alt="" />
+                <ButtonZoom className="buttonZoom">
+                  <IconZoomIn />
+                </ButtonZoom>
+              </Image>
+            )
+        }
       </Inner>
     </Container>
   );
@@ -28,6 +40,9 @@ const Container = styled.div`
 const Inner = styled.div`
   display: flex;
   justify-content: center;
+  .isMobile &{
+    display: block;
+  }
 `;
 const Image = styled.div`
   cursor: zoom-in;
@@ -48,6 +63,13 @@ const Image = styled.div`
   &:hover{
     .buttonZoom{
       opacity: 1;
+    }
+  }
+  .isMobile &{
+    cursor: default;
+    height: auto;
+    img{
+      width: 100%;
     }
   }
 `;
