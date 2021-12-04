@@ -1,5 +1,5 @@
 import {
-  put, call, takeLatest, select,
+  put, call, takeLatest, select, takeEvery,
 } from 'redux-saga/effects';
 
 import { Action } from './slice';
@@ -31,7 +31,7 @@ function* searchNextResults({ payload }) {
 }
 
 function* saga() {
-  yield takeLatest(Action.Types.GET_SEARCH_RESULTS, getSearchResults);
+  yield takeEvery(Action.Types.GET_SEARCH_RESULTS, getSearchResults);
   yield takeLatest(Action.Types.SEARCH_NEXT_RESULTS, searchNextResults);
 }
 

@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import cn from 'classnames';
 
 import { IconCheckCircle } from '../../../../icons';
 
-const UserTag = ({ item = {}, color = '' }) => {
+const UserTag = ({ item = {}, color = '', isMobile }) => {
   const ableToHire = () => {
     if (item.user.for_hire) return <p className="hire">Available for hire <IconCheckCircle /></p>;
     return <p>@{item.user.username}</p>;
   };
   return (
-    <Container>
+    <Container className={cn({ isMobile })}>
       <Image>
         <img src={item.user.profile_image.small} alt={item.user.name} />
       </Image>
@@ -24,6 +25,9 @@ const UserTag = ({ item = {}, color = '' }) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
+  &.isMobile{
+    padding: 10px;
+  }
 `;
 const Image = styled.div`
   border: 1px solid #eee;
