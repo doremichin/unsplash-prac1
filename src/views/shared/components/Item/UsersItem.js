@@ -5,38 +5,35 @@ import cn from 'classnames';
 import { DefaultButton } from '../Button/Button.Styled';
 import { IconFollow } from '../../../../icons';
 
-const UsersItem = ({ item }) => {
-  const a = 1;
-  return (
-    <Container>
-      <Profile>
-        <UserImage href={item.links.html}>
-          <img src={item.profile_image.medium} alt="" />
-        </UserImage>
-        <UserName href={item.links.html}>
-          <h1>{item.name}</h1>
-          <p>@{item.username}</p>
-        </UserName>
-        <Buttons>
-          <FollowButton><IconFollow /></FollowButton>
-          <HireButton className={cn({ show: item.for_hire })}>Hire</HireButton>
-        </Buttons>
-      </Profile>
-      <Photos href={item.links.html}>
-        {
+const UsersItem = ({ item }) => (
+  <Container>
+    <Profile>
+      <UserImage href={item.links.html}>
+        <img src={item.profile_image.medium} alt="" />
+      </UserImage>
+      <UserName href={item.links.html}>
+        <h1>{item.name}</h1>
+        <p>@{item.username}</p>
+      </UserName>
+      <Buttons>
+        <FollowButton><IconFollow /></FollowButton>
+        <HireButton className={cn({ show: item.for_hire })}>Hire</HireButton>
+      </Buttons>
+    </Profile>
+    <Photos href={item.links.html}>
+      {
           item.photos.map((item) => (
             <Photo>
               <img src={item.urls.thumb} alt="" />
             </Photo>
           ))
         }
-      </Photos>
-      <ProfileButton href={item.links.html}>
-        View profile
-      </ProfileButton>
-    </Container>
-  );
-};
+    </Photos>
+    <ProfileButton href={item.links.html}>
+      View profile
+    </ProfileButton>
+  </Container>
+);
 
 const Container = styled.div`
   padding: 15px;

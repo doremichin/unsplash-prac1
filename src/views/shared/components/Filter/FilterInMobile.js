@@ -11,6 +11,7 @@ const FilterInMobile = () => {
   const { query } = useParams();
   const [isView, setIsView] = useState(false);
   const { search } = useLocation();
+
   const onClickCancel = () => {
     setIsView(!isView);
   };
@@ -24,10 +25,7 @@ const FilterInMobile = () => {
           <IconFilter />
         </FilterButton>
       </Container>
-      {
-        isView
-        && <FilterModal isView={isView} onClickCancel={onClickCancel} onClickClear={onClickClear} />
-      }
+      <FilterModal isView={isView} onClickCancel={onClickCancel} onClickClear={onClickClear} />
     </>
 
   );

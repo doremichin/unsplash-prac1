@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import qs from 'qs';
+import cn from 'classnames';
 
 import ColorFilterContent from './ColorFilter/ColorFilterContent';
 import OrientationFilterContent from './OrientationFilter/OrientationFilterContent';
@@ -22,7 +23,7 @@ const FilterModal = ({ isView, onClickCancel, onClickClear }) => {
   }, [isView]);
 
   return (
-    <Container>
+    <Container className={cn({ isView })}>
       <Top>
         <Title>
           Filters
@@ -74,6 +75,10 @@ const Container = styled.div`
   right: 0;
   z-index: 1000;
   background-color: #fff;
+  display: none;
+  &.isView{
+    display: block;
+  }
 `;
 const Top = styled.div`
   display: flex;
