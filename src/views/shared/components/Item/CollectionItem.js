@@ -20,7 +20,6 @@ const CollectionItem = ({ item }) => {
   return (
     <Container>
       <Thumb href={item.links.html}>
-
         <Inner>
           <CoverImage>
             <Image>
@@ -49,7 +48,6 @@ const CollectionItem = ({ item }) => {
             </Bottom>
           </SubImage>
         </Inner>
-
       </Thumb>
       <Desc>
         <DescTitle>

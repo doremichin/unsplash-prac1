@@ -14,9 +14,7 @@ const InfiniteScroll = ({ children, next }) => {
   return (
     <Container>
       {children}
-      <Sentinel ref={sentinelRef}>
-        <img src="https://t1.daumcdn.net/cfile/tistory/184F8A4E4E55932B06" alt="loading" />
-      </Sentinel>
+      <Sentinel ref={sentinelRef} />
     </Container>
   );
 };
