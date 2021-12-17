@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Search from './pages/Search';
@@ -15,11 +14,8 @@ const Routes = () => (
     <Route exact path="/search/:category/:query" component={Search} />
     <Route exact path="/topics" component={Topics} />
     <Route exact path="/topics/:slug" component={TopicsDetail} />
+    <Redirect path="*" to="/" />
   </Switch>
 );
-
-const Container = styled.div`
-
-`;
 
 export default Routes;
