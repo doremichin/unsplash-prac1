@@ -1,6 +1,7 @@
 
 
-#Unsplash
+Unsplash
+=================
 
 unsplash 데모 사이트 입니다.
 
@@ -46,8 +47,10 @@ const reducer = (state, action) => {
 ```
 <br/>
 
-----------------------------------
+***
+
 <br/>
+
 
 ###Redux-saga
 - Generator 문법을 사용
