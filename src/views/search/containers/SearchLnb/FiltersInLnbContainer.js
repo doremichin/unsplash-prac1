@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import Contain from '../../../shared/components/common/Contain';
 import OrientationFilter
@@ -10,41 +10,23 @@ import OrientationFilter
 import ColorFilter from '../../../shared/components/Filter/ColorFilter/ColorFilter';
 import SortFilter from '../../../shared/components/Filter/SortFilter/SortFilter';
 import FilterInMobile from '../../../shared/components/Filter/FilterInMobile';
+import { useFilter } from './hooks/useFilter';
 
 const FiltersInLnbContainer = () => {
-  const { category, query } = useParams();
+  const { category } = useParams();
   const { search } = useLocation();
-  const history = useHistory();
-  const [orientationToggle, setOrientationToggle] = useState(false);
-  const [colorToggle, setColorToggle] = useState(false);
-  const [sortToggle, setSortToggle] = useState(false);
 
-  const clickOrientation = () => {
-    setOrientationToggle((p) => !p);
-    setColorToggle(false);
-    setSortToggle(false);
-  };
-  const clickColor = () => {
-    setColorToggle((p) => !p);
-    setOrientationToggle(false);
-    setSortToggle(false);
-  };
-  const clickSort = () => {
-    setSortToggle((p) => !p);
-    setOrientationToggle(false);
-    setColorToggle(false);
-  };
-  const clickClear = () => {
-    setOrientationToggle(false);
-    setColorToggle(false);
-    setSortToggle(false);
-    history.push(`/search/photos/${query}`);
-  };
-  const clickOut = () => {
-    setOrientationToggle(false);
-    setColorToggle(false);
-    setSortToggle(false);
-  };
+  const {
+    clickOrientation,
+    clickColor,
+    clickSort,
+    clickClear,
+    clickOut,
+    orientationToggle,
+    colorToggle,
+    sortToggle,
+  } = useFilter();
+
   const isTablet = useMediaQuery({ maxWidth: 991 });
 
   return (
