@@ -42,7 +42,7 @@ const PhotoDetail = ({ detail }) => {
         </ButtonBox>
       </Title>
 
-      <DetailMainPhoto imageUrl={detail?.urls?.full} />
+      <DetailMainPhoto imageUrl={detail?.urls?.regular} />
 
       <Info>
         <FeatureList>
