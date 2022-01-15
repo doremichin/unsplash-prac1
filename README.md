@@ -5,11 +5,11 @@ Unsplash
 
 unsplash 데모 사이트 입니다.
 
-##Stack
+## Stack
 
-###React
+### React
 
-###Redux
+### Redux
 
 * store
   * dispatch - 아래 참조
@@ -52,7 +52,7 @@ const reducer = (state, action) => {
 <br/>
 
 
-###Redux-saga
+### Redux-saga
 - Generator 문법을 사용
 <br/><br/>
 - store에 saga를 미들웨어로 넣는다.
@@ -133,7 +133,7 @@ export default saga;
 ```
 
 
-###Axios
+### Axios
 - Axios는 브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리
 - Fetch API와 비교 했을 때 자동으로 JSON 데이터 변환을 해주고 polyfill 없이 여러 브라우저에 호환이 더 잘됨
 
