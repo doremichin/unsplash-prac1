@@ -13,7 +13,7 @@ const PhotoItemInMobile = ({ item = {} }) => {
   };
 
   return (
-    <Container onClick={onClickItem} className="PhotoItem">
+    <Container onClick={onClickItem} className="PhotoItemInDesktop">
       <UserTag item={item} isMobile />
       <Image>
         <img src={item.urls.regular} alt="" />

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
-import PhotoItemCombine from '../../shared/components/Item/PhotoItemCombine';
+import PhotoItem from '../../shared/components/Item/PhotoItem';
 
 const SearchPhotos = ({ data }) => {
   const { query } = useParams();
 
-  const renderItem = (item) => <PhotoItemCombine item={item} />;
+  const renderItem = (item) => <PhotoItem item={item} />;
 
   if (!data) return '...loading';
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
-import PhotoItem from '../../shared/components/Item/PhotoItem';
+import PhotoItem from '../../shared/components/Item/PhotoItemInDesktop';
 
 const RelatedPhotos = ({ data }) => {
   const renderItem = (item) => <PhotoItem item={item} />;
