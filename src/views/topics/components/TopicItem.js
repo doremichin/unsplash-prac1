@@ -13,11 +13,17 @@ const TopicItem = ({ item }) => {
     }
     return count;
   };
+  function imageUrlConfirm() {
+    if (item.cover_photo) {
+      return item.cover_photo.urls.regular;
+    }
+    return '';
+  }
   return (
     <Container to={`/topics/${item.slug}`}>
       <StatusButton item={item} position="absolute" top="20px" left="15px" />
       <Thumb>
-        <img src={item.cover_photo.urls.regular} alt={item.cover_photo.alt_description} />
+        <img src={imageUrlConfirm()} alt="" />
       </Thumb>
       <Desc>
         <Title>

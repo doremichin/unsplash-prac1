@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useMediaQuery } from 'react-responsive';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
-import PhotoItem from '../../shared/components/Item/PhotoItem';
+import PhotoItem from '../../shared/components/Item/PhotoItemInDesktop';
 
 const RelatedPhotos = ({ data }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
   const renderItem = (item) => <PhotoItem item={item} />;
   return (
     <Container>

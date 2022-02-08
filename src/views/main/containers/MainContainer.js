@@ -9,11 +9,11 @@ import {
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import InfiniteScroll from '../../shared/components/InfiniteScroll';
 import { ACCESS_KEY } from '../../../const/config';
-import PhotoItemCombine from '../../shared/components/Item/PhotoItemCombine';
+import PhotoItem from '../../shared/components/Item/PhotoItem';
 
 const MainContainer = () => {
   const dispatch = useDispatch();
-  const { list } = useSelector((state) => state.photos);
+  const list = useSelector((state) => state.photos.list);
   const [page, setPage] = useState(1);
   const getPhotos = () => {
     dispatch(Action.Creators.getPhotos({
@@ -27,7 +27,7 @@ const MainContainer = () => {
     getPhotos();
   }, [page]);
 
-  const renderItem = (item) => <PhotoItemCombine item={item} />;
+  const renderItem = (item) => <PhotoItem item={item} />;
 
   const next = () => {
     if (list.length) {

@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
-import PhotoItemCombine from '../../shared/components/Item/PhotoItemCombine';
+import PhotoItem from '../../shared/components/Item/PhotoItem';
 
 const TopicsDetailPhotos = ({ data }) => {
-  const renderItem = (item) => <PhotoItemCombine item={item} />;
+  const renderItem = (item) => <PhotoItem item={item} />;
 
   return (
     <Container>

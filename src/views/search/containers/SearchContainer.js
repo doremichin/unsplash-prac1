@@ -15,9 +15,9 @@ import SearchCollectionsContainer from './SearchCollectionsContainer';
 import SearchUsersContainer from './SearchUsersContainer';
 
 const SearchContainer = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const { query } = useParams();
-  const { search } = useLocation();
-  const queryString = qs.parse(search, { ignoreQueryPrefix: true });
+  const queryString = getQueryString();
   const dispatch = useDispatch();
   const {
     photos, collections, users, related_searches,
@@ -38,8 +38,14 @@ const SearchContainer = () => {
     searchResults();
   }, [query, queryString.orientation, queryString.color, queryString.order_by]);
 
+  function getQueryString() {
+    const { search } = useLocation();
+    const queryString = qs.parse(search, { ignoreQueryPrefix: true });
+
+    return queryString;
+  }
+
   if (!photos) return '...loading';
-  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>

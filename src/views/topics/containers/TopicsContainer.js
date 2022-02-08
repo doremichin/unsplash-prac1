@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -8,9 +8,6 @@ import TopicItem from '../components/TopicItem';
 const TopicsContainer = () => {
   const list = useSelector((state) => state.topics.list);
 
-  useEffect(() => {
-
-  }, []);
   const renderItem = (item) => <TopicItem item={item} />;
   return (
     <Container>

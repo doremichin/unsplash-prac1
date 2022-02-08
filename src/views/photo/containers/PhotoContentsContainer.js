@@ -10,8 +10,10 @@ const PhotoContentsContainer = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const related = useSelector((state) => state.photos.related);
-  const detail = useSelector((state) => state.photos.detail);
+  const { related, detail } = useSelector((state) => ({
+    related: state.photos.related,
+    detail: state.photos.detail,
+  }));
 
   useEffect(() => {
     dispatch(Action.Creators.getPhotoById(id));
