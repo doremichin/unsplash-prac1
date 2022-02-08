@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { IconZoomIn } from '../../../icons';
 
-const DetailMainPhoto = ({ imageUrl }) => {
+const DetailedPhotoById = ({ imageUrl }) => {
   const [zoomIn, setZoomIn] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -81,4 +81,4 @@ const ButtonZoom = styled.div`
   color: #000;
   fill: #ffffff;
 `;
-export default DetailMainPhoto;
+export default DetailedPhotoById;

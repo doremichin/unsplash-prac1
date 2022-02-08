@@ -5,8 +5,10 @@ import { useSelector } from 'react-redux';
 import PhotoContents from '../../photo/components/PhotoContents';
 
 const PhotoPopup = ({ id }) => {
-  const related = useSelector((state) => state.photos.related);
-  const detail = useSelector((state) => state.photos.detail);
+  const { related, detail } = useSelector((state) => ({
+    related: state.photos.related,
+    detail: state.photos.detail,
+  }));
 
   if (!detail?.[id] || !related?.[id]) return null;
 
