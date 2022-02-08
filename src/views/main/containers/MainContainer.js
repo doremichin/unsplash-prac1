@@ -13,7 +13,7 @@ import PhotoItemCombine from '../../shared/components/Item/PhotoItemCombine';
 
 const MainContainer = () => {
   const dispatch = useDispatch();
-  const { list } = useSelector((state) => state.photos);
+  const list = useSelector((state) => state.photos.list);
   const [page, setPage] = useState(1);
   const getPhotos = () => {
     dispatch(Action.Creators.getPhotos({

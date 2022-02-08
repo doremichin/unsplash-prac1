@@ -3,34 +3,42 @@ import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
 const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
-  const isDesktop = useMediaQuery({ minWidth: 992 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const { photoGroups, gridWidth } = organizedPhotos();
 
-  let photoGroups = [[], [], []];
-  let photoGroupHeight = [0, 0, 0];
-  let gridWidth;
+  function organizedPhotos() {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
-  if (isDesktop) {
-    photoGroups = [[], [], []];
-    photoGroupHeight = [0, 0, 0];
-    gridWidth = '33.33%';
-  }
-  if (isTablet) {
-    photoGroups = [[], []];
-    photoGroupHeight = [0, 0];
-    gridWidth = '50%';
-  }
-  if (isMobile) {
-    photoGroups = [[]];
-    photoGroupHeight = [0];
-    gridWidth = '100%';
-  }
+    let photoGroups = [[], [], []];
+    let photoGroupHeight = [0, 0, 0];
+    let gridWidth;
 
-  for (let i = 0; i < data.length; i++) {
-    const minHeightIndex = photoGroupHeight.indexOf(Math.min(...photoGroupHeight));
-    photoGroups[minHeightIndex].push(data[i]);
-    photoGroupHeight[minHeightIndex] += (data[i].height / data[i].width);
+    if (isDesktop) {
+      photoGroups = [[], [], []];
+      photoGroupHeight = [0, 0, 0];
+      gridWidth = '33.33%';
+    }
+    if (isTablet) {
+      photoGroups = [[], []];
+      photoGroupHeight = [0, 0];
+      gridWidth = '50%';
+    }
+    if (isMobile) {
+      photoGroups = [[]];
+      photoGroupHeight = [0];
+      gridWidth = '100%';
+    }
+    for (let i = 0; i < data.length; i++) {
+      const minHeightIndex = photoGroupHeight.indexOf(Math.min(...photoGroupHeight));
+      photoGroups[minHeightIndex].push(data[i]);
+      photoGroupHeight[minHeightIndex] += (data[i].height / data[i].width);
+    }
+
+    return {
+      photoGroups,
+      gridWidth,
+    };
   }
 
   return (
