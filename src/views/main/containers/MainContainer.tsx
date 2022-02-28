@@ -10,10 +10,12 @@ import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import InfiniteScroll from '../../shared/components/InfiniteScroll';
 import { ACCESS_KEY } from '../../../const/config';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
+import { RootState } from '../../../redux/store';
+import { IPhoto } from '../../../_interfaces/interface.photos';
 
 function MainContainer() {
   const dispatch = useDispatch();
-  const list = useSelector((state) => state.photos.list);
+  const list = useSelector((state: RootState) => state.photos.list);
   const [page, setPage] = useState(1);
   const getPhotos = () => {
     dispatch(Action.Creators.getPhotos({
@@ -27,7 +29,7 @@ function MainContainer() {
     getPhotos();
   }, [page]);
 
-  const renderItem = (item) => <PhotoItem item={item} />;
+  const renderItem = (item : IPhoto) : JSX.Element => <PhotoItem item={item} />;
 
   const next = () => {
     if (list.length) {

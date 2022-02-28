@@ -2,15 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
-function MainPhotoList({ data = [], renderItem = () => {} }) {
+import { IPhoto } from '../../../../_interfaces/interface.photos';
+
+interface Props {
+  data : IPhoto[]
+  renderItem(item : IPhoto) : JSX.Element
+}
+
+function MainPhotoList({ data, renderItem } :Props) {
   function organizedPhotos() {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const isMobile = useMediaQuery({ maxWidth: 767 });
-
-    let photoGroups = [[], [], []];
+    // photoGroups 타입을 지정하지 않았더니 never[][]가 자동으로 추론 됐고
+    // 그래서 계속 타입 에러가 떴었음
+    let photoGroups : IPhoto[][] = [[], [], []];
     let photoGroupHeight = [0, 0, 0];
-    let gridWidth;
+    let gridWidth = '';
 
     if (isDesktop) {
       photoGroups = [[], [], []];
@@ -69,7 +77,7 @@ const Row = styled.div`
   display: flex;
   margin: 0 -10px;
 `;
-const Col = styled.div`
+const Col = styled.div<{width : string}>`
   width: ${(props) => props.width || '33.33%'};
   padding: 0 10px;
 `;
