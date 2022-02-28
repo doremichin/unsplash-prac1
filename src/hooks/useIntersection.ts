@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-export const useIntersection = () => {
+export const useIntersection = () : [boolean, React.RefObject<HTMLDivElement>] => {
   const [isInView, setInView] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   const options = {
     threshold: 0,
@@ -10,8 +10,8 @@ export const useIntersection = () => {
   };
 
   useEffect(() => {
-    const callback = (entries, observer) => {
-      entries.forEach((entry) => {
+    const callback = (entries :any, observer :any) => {
+      entries.forEach((entry :any) => {
         setInView(entry.isIntersecting);
       });
     };
