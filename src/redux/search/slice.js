@@ -15,6 +15,7 @@ const initialState = {
     total: 0,
     total_pages: 0,
   },
+  related_searches: [],
 };
 
 export const Action = {

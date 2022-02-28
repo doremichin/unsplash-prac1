@@ -3,22 +3,32 @@ import styled, { css } from 'styled-components';
 import cn from 'classnames';
 
 import { IconChevronLeft, IconChevronRight } from '../../../../icons';
+import { IRelatedSearches } from '../../../../_interfaces/interface.search';
 
-function ScrollMenu({ data = [], renderItem }) {
+interface Props {
+  data : IRelatedSearches[]
+  renderItem(item : any) : JSX.Element
+}
+
+function ScrollMenu({ data, renderItem } : Props) {
   const [scrollLeftState, setScrollLeft] = useState(0);
   const [maxScroll, setMaxScroll] = useState(1);
-  const trackRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = (e) => {
-    const { scrollLeft, clientWidth, scrollWidth } = e.target;
+  const handleScroll = (e : React.UIEvent<HTMLDivElement>) => {
+    const { scrollLeft, clientWidth, scrollWidth } = e.currentTarget;
     setMaxScroll(scrollWidth - clientWidth);
     setScrollLeft(scrollLeft);
   };
   const handleClickLeft = () => {
-    trackRef.current.scrollLeft -= 300;
+    if (trackRef.current !== null) {
+      trackRef.current.scrollLeft -= 300;
+    }
   };
   const handleClickRight = () => {
-    trackRef.current.scrollLeft += 300;
+    if (trackRef.current !== null) {
+      trackRef.current.scrollLeft += 300;
+    }
   };
   const start = scrollLeftState === 0;
   const end = scrollLeftState === maxScroll;
@@ -100,7 +110,7 @@ const Nav = styled.div`
   display: flex;
 
 `;
-const Arrow = styled.div`
+const Arrow = styled.div<{left? : boolean, right? : boolean}>`
   position: absolute;
   top: 0;
   bottom: 0;
