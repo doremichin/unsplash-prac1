@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { IconSearch } from '../../../../icons';
 import { DefaultButton } from '../Button/Button.Styled';
 
-const SearchBox = ({
+function SearchBox({
   value, onSubmit, onChange, shape,
-}) => {
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(e);
@@ -29,7 +29,7 @@ const SearchBox = ({
       </Form>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
     

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Contain = ({ children, onClickOut }) => {
+function Contain({ children, onClickOut }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Contain = ({ children, onClickOut }) => {
       {children}
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

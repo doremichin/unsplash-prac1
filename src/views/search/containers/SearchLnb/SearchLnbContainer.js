@@ -13,7 +13,7 @@ import {
 import { setNumberThousand } from '../../../../lib/utils';
 import FiltersInLnbContainer from './FiltersInLnbContainer';
 
-const SearchLnbContainer = () => {
+function SearchLnbContainer() {
   const { category, query } = useParams();
   const { photos, collections, users } = useSelector((state) => state.search);
   const menu = [
@@ -43,8 +43,12 @@ const SearchLnbContainer = () => {
           menu.map(({ name, icon, total }) => (
             <NavItem key={name} to={`/search/${name}/${query}`} className={cn({ active: category === name, isMobile })}>
               <span>{icon}</span>
-              {name}&nbsp;
-              <span>{setNumberThousand(total)}k</span>
+              {name}
+&nbsp;
+              <span>
+                {setNumberThousand(total)}
+                k
+              </span>
             </NavItem>
           ))
         }
@@ -52,7 +56,7 @@ const SearchLnbContainer = () => {
       <FiltersInLnbContainer />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   display: flex;

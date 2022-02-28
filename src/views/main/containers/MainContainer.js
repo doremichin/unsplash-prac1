@@ -11,7 +11,7 @@ import InfiniteScroll from '../../shared/components/InfiniteScroll';
 import { ACCESS_KEY } from '../../../const/config';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
 
-const MainContainer = () => {
+function MainContainer() {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.photos.list);
   const [page, setPage] = useState(1);
@@ -43,7 +43,7 @@ const MainContainer = () => {
       </ContentContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   

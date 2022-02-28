@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const CollectionItem = ({ item }) => {
+function CollectionItem({ item }) {
   const tags = [];
 
   for (let i = 0; i < 3; i++) {
@@ -54,18 +54,30 @@ const CollectionItem = ({ item }) => {
           {item.title}
         </DescTitle>
         <CurateInfo>
-          <span>{item.total_photos} photos · </span>
-          <span>Curated by <a href={item.user.links.html}>{item.user.name}</a></span>
+          <span>
+            {item.total_photos}
+            {' '}
+            photos ·
+            {' '}
+          </span>
+          <span>
+            Curated by
+            <a href={item.user.links.html}>{item.user.name}</a>
+          </span>
         </CurateInfo>
         <Tag>
           {
-            tags.map((tag, index) => <TagItem to={changeRoute(tag)} key={index}>{tag?.title}</TagItem>)
-           }
+            tags.map((tag, index) => (
+              <TagItem to={changeRoute(tag)} key={index}>
+                {tag?.title}
+              </TagItem>
+            ))
+          }
         </Tag>
       </Desc>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

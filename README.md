@@ -57,7 +57,7 @@ const reducer = (state, action) => {
 <br/><br/>
 - store에 saga를 미들웨어로 넣는다.
 ```javascript
-//store.js
+//store.tsx
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';

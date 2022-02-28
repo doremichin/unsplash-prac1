@@ -4,8 +4,8 @@ import cn from 'classnames';
 
 import { IconChevronLeft, IconChevronRight } from '../../../../icons';
 
-const ScrollMenu = ({ data = [], renderItem }) => {
-  const [scrollLeft, setScrollLeft] = useState(0);
+function ScrollMenu({ data = [], renderItem }) {
+  const [scrollLeftState, setScrollLeft] = useState(0);
   const [maxScroll, setMaxScroll] = useState(1);
   const trackRef = useRef(null);
 
@@ -20,8 +20,8 @@ const ScrollMenu = ({ data = [], renderItem }) => {
   const handleClickRight = () => {
     trackRef.current.scrollLeft += 300;
   };
-  const start = scrollLeft === 0;
-  const end = scrollLeft === maxScroll;
+  const start = scrollLeftState === 0;
+  const end = scrollLeftState === maxScroll;
 
   return (
     <Container className={cn({ start, end })}>
@@ -51,7 +51,7 @@ const ScrollMenu = ({ data = [], renderItem }) => {
 
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   overflow: hidden;

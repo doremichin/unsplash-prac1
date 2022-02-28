@@ -8,7 +8,7 @@ import Header from './views/shared/components/Header/Header';
 import PhotoPopupContainer from './views/popup/containers/PhotoPopupContainer';
 import ModalPortal from './lib/ModalPortal';
 
-const App = () => {
+function App() {
   const history = useHistory();
   useEffect(() => {
     // history.listen((location, action) => {
@@ -17,6 +17,7 @@ const App = () => {
     //   }
     // });
   }, []);
+
   return (
     <>
       <Container>
@@ -29,7 +30,7 @@ const App = () => {
       </ModalPortal>
     </>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;

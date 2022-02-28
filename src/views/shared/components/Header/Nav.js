@@ -6,13 +6,13 @@ import { useMediaQuery } from 'react-responsive';
 import { DefaultButton, WhiteButton } from '../Button/Button.Styled';
 import { IconHamburgerMenu } from '../../../../icons';
 
-const Nav = () => {
+function Nav() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>
       {
-            !isMobile
+        !isMobile
             && (
               <>
                 <NavItem to="/topics">Brands</NavItem>
@@ -23,11 +23,11 @@ const Nav = () => {
                 <SubmitButton>Submit a photo</SubmitButton>
               </>
             )
-        }
+      }
       <Button><IconHamburgerMenu /></Button>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   margin-left: 30px;

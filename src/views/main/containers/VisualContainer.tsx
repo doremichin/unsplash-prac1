@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Action } from '../../../redux/photos/slice';
 import Visual from '../components/Visual';
 import { ACCESS_KEY } from '../../../const/config';
+import { RootState } from '../../../redux/store';
 
-const VisualContainer = () => {
-  const { randomPhoto } = useSelector((state) => state.photos);
+function VisualContainer() {
+  const { randomPhoto } = useSelector((state: RootState) => state.photos);
   const dispatch = useDispatch();
 
   const getRandomPhoto = () => {
@@ -25,7 +26,7 @@ const VisualContainer = () => {
       <Visual data={randomPhoto} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

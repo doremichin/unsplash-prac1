@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 import ScrollMenu from '../../shared/components/ScrollMenu';
 
-const RelatedSearchesMenu = ({ data }) => {
+function RelatedSearchesMenu({ data }) {
   const renderItem = (item) => <MenuItem to={`/search/photos/${item.title}`} key={item.title}>{item.title}</MenuItem>;
   return (
     <Container>
       <ScrollMenu data={data} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   margin: 32px 0 72px;

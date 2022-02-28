@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import StatusButton from '../../shared/components/Button/StatusButton';
 import { IconImage } from '../../../icons';
 
-const TopicItem = ({ item }) => {
+function TopicItem({ item }) {
   const handlePhotosCount = () => {
     const count = item.total_photos;
     if (count >= 1000) {
@@ -19,6 +19,7 @@ const TopicItem = ({ item }) => {
     }
     return '';
   }
+
   return (
     <Container to={`/topics/${item.slug}`}>
       <StatusButton item={item} position="absolute" top="20px" left="15px" />
@@ -52,7 +53,7 @@ const TopicItem = ({ item }) => {
       </Desc>
     </Container>
   );
-};
+}
 
 const Container = styled(Link)`
   display: block;

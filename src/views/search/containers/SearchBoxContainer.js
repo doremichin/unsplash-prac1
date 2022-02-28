@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import SearchBox from '../../shared/components/SearchBox';
 
-const SearchBoxContainer = ({ shape }) => {
+function SearchBoxContainer({ shape }) {
   const history = useHistory();
   const [query, setQuery] = useState('');
 
@@ -26,7 +26,7 @@ const SearchBoxContainer = ({ shape }) => {
       />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   flex: 1;

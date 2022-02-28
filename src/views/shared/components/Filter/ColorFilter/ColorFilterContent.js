@@ -4,7 +4,7 @@ import qs from 'qs';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames';
 
-const ColorFilterContent = ({ isMobile }) => {
+function ColorFilterContent({ isMobile }) {
   const { query } = useParams();
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
@@ -20,6 +20,7 @@ const ColorFilterContent = ({ isMobile }) => {
     { color: '#68ccca', queryColor: 'teal' },
     { color: '#009ce0', queryColor: 'blue' },
   ];
+
   return (
     <Container className={cn({ isMobile })}>
       <ColorButton to={`/search/photos/${query}?${qs.stringify({ ...queryString, color: undefined })}`}>Any Color</ColorButton>
@@ -38,7 +39,7 @@ const ColorFilterContent = ({ isMobile }) => {
       </ColorBox>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

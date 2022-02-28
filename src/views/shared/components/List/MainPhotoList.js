@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 
-const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
-  const { photoGroups, gridWidth } = organizedPhotos();
-
+function MainPhotoList({ data = [], renderItem = () => {} }) {
   function organizedPhotos() {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
@@ -40,6 +38,7 @@ const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
       gridWidth,
     };
   }
+  const { photoGroups, gridWidth } = organizedPhotos();
 
   return (
     <Container>
@@ -60,7 +59,7 @@ const MainPhotoList = ({ data = [], renderItem = () => {} }) => {
       </Row>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   

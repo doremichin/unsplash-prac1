@@ -10,7 +10,7 @@ import SortFilterContent from './SortFilter/SortFilterContent';
 import { DefaultButton } from '../Button/Button.Styled';
 import { IconCancel } from '../../../../icons';
 
-const FilterModal = ({ isView, onClickCancel, onClickClear }) => {
+function FilterModal({ isView, onClickCancel, onClickClear }) {
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
   useEffect(() => {
@@ -37,8 +37,8 @@ const FilterModal = ({ isView, onClickCancel, onClickClear }) => {
           Sort by&nbsp;
           <span>
             {
-            queryString.order_by || 'Relevance'
-          }
+              queryString.order_by || 'Relevance'
+            }
           </span>
         </SortTitle>
         <SortFilterContent isMobile />
@@ -65,7 +65,7 @@ const FilterModal = ({ isView, onClickCancel, onClickClear }) => {
       </Bottom>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: fixed;

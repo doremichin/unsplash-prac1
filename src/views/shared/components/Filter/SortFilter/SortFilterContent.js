@@ -4,7 +4,7 @@ import qs from 'qs';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames';
 
-const SortFilterContent = ({ isMobile }) => {
+function SortFilterContent({ isMobile }) {
   const { query } = useParams();
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
@@ -18,7 +18,7 @@ const SortFilterContent = ({ isMobile }) => {
       </SortButton>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

@@ -4,10 +4,22 @@ import cn from 'classnames';
 
 import { IconCheckCircle } from '../../../../icons';
 
-const UserTag = ({ item = {}, color = '', isMobile }) => {
+function UserTag({ item = {}, color = '', isMobile }) {
   const ableToHire = () => {
-    if (item.user.for_hire) return <p className="hire">Available for hire <IconCheckCircle /></p>;
-    return <p>@{item.user.username}</p>;
+    if (item.user.for_hire) {
+      return (
+        <p className="hire">
+          Available for hire
+          <IconCheckCircle />
+        </p>
+      );
+    }
+    return (
+      <p>
+        @
+        {item.user.username}
+      </p>
+    );
   };
   return (
     <Container className={cn({ isMobile })}>
@@ -20,7 +32,7 @@ const UserTag = ({ item = {}, color = '', isMobile }) => {
       </Name>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   display: flex;

@@ -7,7 +7,7 @@ import DetailedPhotoById from '../DetailedPhotoById';
 import PhotoDetailHeadline from './PhotoDetailHeadline';
 import PhotoDetailFeature from './PhotoDetailFeature';
 
-const PhotoDetail = ({ detail }) => {
+function PhotoDetail({ detail }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Container className={cn({ isMobile })}>
@@ -18,7 +18,7 @@ const PhotoDetail = ({ detail }) => {
       <PhotoDetailFeature detail={detail} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useIntersection } from '../../../../hooks/useIntersection';
 
-const InfiniteScroll = ({ children, next }) => {
+function InfiniteScroll({ children, next }) {
   const [isInView, sentinelRef] = useIntersection();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const InfiniteScroll = ({ children, next }) => {
       <Sentinel ref={sentinelRef} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

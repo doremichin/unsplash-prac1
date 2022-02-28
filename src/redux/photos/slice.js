@@ -62,37 +62,37 @@ export const Action = {
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    default: return state;
-    case Action.Types.SET_PHOTOS: {
-      return {
-        ...state,
-        list: action.payload,
-      };
-    }
-    case Action.Types.SET_RANDOM_PHOTOS: {
-      return {
-        ...state,
-        randomPhoto: action.payload,
-      };
-    }
-    case Action.Types.SET_PHOTO_BY_ID: {
-      return {
-        ...state,
-        detail: {
-          ...state.detail,
-          [action.payload.id]: action.payload.data,
-        },
-      };
-    }
-    case Action.Types.SET_RELATED_PHOTO_BY_ID: {
-      return {
-        ...state,
-        related: {
-          ...state.related,
-          [action.payload.id]: action.payload.data,
-        },
-      };
-    }
+  default: return state;
+  case Action.Types.SET_PHOTOS: {
+    return {
+      ...state,
+      list: action.payload,
+    };
+  }
+  case Action.Types.SET_RANDOM_PHOTOS: {
+    return {
+      ...state,
+      randomPhoto: action.payload,
+    };
+  }
+  case Action.Types.SET_PHOTO_BY_ID: {
+    return {
+      ...state,
+      detail: {
+        ...state.detail,
+        [action.payload.id]: action.payload.data,
+      },
+    };
+  }
+  case Action.Types.SET_RELATED_PHOTO_BY_ID: {
+    return {
+      ...state,
+      related: {
+        ...state.related,
+        [action.payload.id]: action.payload.data,
+      },
+    };
+  }
   }
 };
 export default reducer;

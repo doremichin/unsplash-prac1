@@ -12,7 +12,7 @@ import SortFilter from '../../../shared/components/Filter/SortFilter/SortFilter'
 import FilterInMobile from '../../../shared/components/Filter/FilterInMobile';
 import { useFilter } from './hooks/useFilter';
 
-const FiltersInLnbContainer = () => {
+function FiltersInLnbContainer() {
   const { category } = useParams();
   const { search } = useLocation();
 
@@ -32,7 +32,7 @@ const FiltersInLnbContainer = () => {
   return (
     <Container>
       {
-            category === 'photos'
+        category === 'photos'
             && (
               <Contain onClickOut={clickOut}>
                 <Filters className={cn({ isTablet })}>
@@ -52,16 +52,16 @@ const FiltersInLnbContainer = () => {
                 </Filters>
               </Contain>
             )
-          }
+      }
       {
-            isTablet
+        isTablet
             && (
               <FilterInMobile />
             )
-          }
+      }
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

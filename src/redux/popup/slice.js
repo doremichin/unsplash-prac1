@@ -17,15 +17,16 @@ export const Action = {
     }),
   },
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    default: return state;
-    case Action.Types.TOGGLE_POPUP: {
-      return {
-        ...state,
-        isView: action.payload,
-      };
-    }
+  default: return state;
+  case Action.Types.TOGGLE_POPUP: {
+    return {
+      ...state,
+      isView: action.payload,
+    };
+  }
   }
 };
 export default reducer;

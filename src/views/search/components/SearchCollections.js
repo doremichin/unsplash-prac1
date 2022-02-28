@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import GridList from '../../shared/components/List/GridList';
 import CollectionItem from '../../shared/components/Item/CollectionItem';
 
-const SearchCollections = ({ data }) => {
+function SearchCollections({ data }) {
   const renderCollectionItem = (item) => <CollectionItem item={item} />;
   if (!data) return '...loading';
 
@@ -16,7 +16,7 @@ const SearchCollections = ({ data }) => {
       />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

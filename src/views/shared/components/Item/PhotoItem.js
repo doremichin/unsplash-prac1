@@ -5,17 +5,17 @@ import { useMediaQuery } from 'react-responsive';
 import PhotoItemInMobile from './PhotoItemInMobile';
 import PhotoItemInDesktop from './PhotoItemInDesktop';
 
-const PhotoItem = ({ item }) => {
+function PhotoItem({ item }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Container>
       {
-            isMobile ? <PhotoItemInMobile item={item} /> : <PhotoItemInDesktop item={item} />
-          }
+        isMobile ? <PhotoItemInMobile item={item} /> : <PhotoItemInDesktop item={item} />
+      }
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

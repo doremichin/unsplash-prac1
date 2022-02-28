@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 import PhotoContentsContainer from '../views/photo/containers/PhotoContentsContainer';
 
-const Photo = () => (
-  <Container>
-    <PhotoContentsContainer />
-  </Container>
-);
+function Photo() {
+  return (
+    <Container>
+      <PhotoContentsContainer />
+    </Container>
+  );
+}
 
 const Container = styled.div`
 

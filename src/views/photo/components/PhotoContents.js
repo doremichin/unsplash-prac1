@@ -7,7 +7,7 @@ import RelatedCollectionsContainer from '../containers/RelatedCollectionsContain
 import RelatedTagsContainer from '../containers/RelatedTagsContainer';
 import PhotoDetail from './photoDetail/PhotoDetail';
 
-const PhotoContents = ({ detail, related }) => {
+function PhotoContents({ detail, related }) {
   if (!detail.id || !related) return null;
   return (
     <Container>
@@ -19,7 +19,7 @@ const PhotoContents = ({ detail, related }) => {
       </ContentContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   background: #fff;

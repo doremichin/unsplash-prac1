@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { IconZoomIn } from '../../../icons';
 
-const DetailedPhotoById = ({ imageUrl }) => {
+function DetailedPhotoById({ imageUrl }) {
   const [zoomIn, setZoomIn] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -31,7 +31,7 @@ const DetailedPhotoById = ({ imageUrl }) => {
       </Inner>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   overflow: hidden;

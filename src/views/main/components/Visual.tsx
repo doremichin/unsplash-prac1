@@ -5,8 +5,13 @@ import { useMediaQuery } from 'react-responsive';
 import cn from 'classnames';
 
 import SearchBoxContainer from '../../search/containers/SearchBoxContainer';
+import { IVisualPhoto } from '../../../_interfaces/interface.photos';
 
-const Visual = ({ data = {} }) => {
+interface Props {
+    data : IVisualPhoto
+}
+
+function Visual({ data } : Props) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   if (!data.urls) return null;
   return (
@@ -15,7 +20,10 @@ const Visual = ({ data = {} }) => {
         <ContentTitle>
           <h1>Unsplash</h1>
           <p>
-            The internet’s source of <Link to="/license">freely-usable images.</Link><br />
+            The internet’s source of
+            {' '}
+            <Link to="/license">freely-usable images.</Link>
+            <br />
             Powered by creators everywhere.
           </p>
         </ContentTitle>
@@ -24,13 +32,17 @@ const Visual = ({ data = {} }) => {
         }
       </Content>
       <PhotoInfo>
-        Photo <span>by</span> <a href={data.links.html}>{data.user.name}</a>
+        Photo
+        {' '}
+        <span>by</span>
+        {' '}
+        <a href={data.links.html}>{data.user.name}</a>
       </PhotoInfo>
     </Container>
   );
-};
+}
 
-const Container = styled.div`
+const Container = styled.div<{urls : string}>`
   height: 560px;
   background: #fff url("${(props) => props.urls}") no-repeat center / cover;
   display: flex;
@@ -42,7 +54,6 @@ const Container = styled.div`
   &.isMobile {
     height: 300px;
     padding: 0 10px;
-
   }
   &::before {
     content: '';

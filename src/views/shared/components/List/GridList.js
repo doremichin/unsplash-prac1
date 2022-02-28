@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import cn from 'classnames';
 
-const GridList = ({ data, renderItem }) => {
+function GridList({ data, renderItem }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
 
@@ -19,9 +19,8 @@ const GridList = ({ data, renderItem }) => {
         }
       </Row>
     </Container>
-
   );
-};
+}
 
 const Container = styled.div`
   padding: 0 010px;

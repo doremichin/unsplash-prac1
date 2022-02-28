@@ -5,29 +5,31 @@ import UserTag from '../../../shared/components/Item/UserTag';
 import { IconChevronDown, IconHeart, IconPlus } from '../../../../icons';
 import { WhiteButton } from '../../../shared/components/Button/Button.Styled';
 
-const PhotoDetailHeadline = ({ detail }) => (
-  <Headline>
-    <UserTag item={detail} />
-    <ButtonBox>
-      <Left>
-        <Button>
-          <IconHeart />
-        </Button>
-        <Button>
-          <IconPlus />
-        </Button>
-      </Left>
-      <Right>
-        <DownloadButton left>
-          <span>Download</span>
-        </DownloadButton>
-        <DownloadButton right>
-          <IconChevronDown />
-        </DownloadButton>
-      </Right>
-    </ButtonBox>
-  </Headline>
-);
+function PhotoDetailHeadline({ detail }) {
+  return (
+    <Headline>
+      <UserTag item={detail} />
+      <ButtonBox>
+        <Left>
+          <Button>
+            <IconHeart />
+          </Button>
+          <Button>
+            <IconPlus />
+          </Button>
+        </Left>
+        <Right>
+          <DownloadButton left>
+            <span>Download</span>
+          </DownloadButton>
+          <DownloadButton right>
+            <IconChevronDown />
+          </DownloadButton>
+        </Right>
+      </ButtonBox>
+    </Headline>
+  );
+}
 
 const Headline = styled.div`
   display: flex;

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PhotoContents from '../components/PhotoContents';
 import { Action } from '../../../redux/photos/slice';
 
-const PhotoContentsContainer = () => {
+function PhotoContentsContainer() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const PhotoContentsContainer = () => {
       <PhotoContents related={related[id]} detail={detail[id]} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

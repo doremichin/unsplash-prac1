@@ -4,7 +4,7 @@ import qs from 'qs';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames';
 
-const OrientationFilterContent = ({ isMobile }) => {
+function OrientationFilterContent({ isMobile }) {
   const { query } = useParams();
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
@@ -25,7 +25,7 @@ const OrientationFilterContent = ({ isMobile }) => {
       </OrientationButton>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

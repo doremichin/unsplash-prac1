@@ -9,7 +9,7 @@ import UserTag from './UserTag';
 import { WhiteButton } from '../Button/Button.Styled';
 import { IconArrowDown, IconHeart, IconPlus } from '../../../../icons';
 
-const PhotoItemInDesktop = ({ item = {} }) => {
+function PhotoItemInDesktop({ item = {} }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -46,7 +46,7 @@ const PhotoItemInDesktop = ({ item = {} }) => {
       </Cover>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;
