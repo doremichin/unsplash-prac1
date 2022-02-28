@@ -1,13 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-function Contain({ children, onClickOut }) {
-  const ref = useRef();
+interface Props {
+  children : JSX.Element
+  onClickOut() : void
+}
+
+function Contain({ children, onClickOut } :Props) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e : any) => {
       if (ref.current) {
-        const isContain = ref.current.contains(e.target);
+        const isContain = ref.current.contains(e?.target);
         if (!isContain) {
           onClickOut();
         }

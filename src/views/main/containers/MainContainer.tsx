@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Action } from '../../../redux/photos/slice';
 import {
   ContentContainer,
-} from '../../shared/components/Layout/Layout.Styled';
+} from '../../shared/components/Layout/LayoutStyled';
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import InfiniteScroll from '../../shared/components/InfiniteScroll';
 import { ACCESS_KEY } from '../../../const/config';

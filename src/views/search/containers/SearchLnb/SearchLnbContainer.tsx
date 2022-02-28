@@ -12,10 +12,11 @@ import {
 } from '../../../../icons';
 import { setNumberThousand } from '../../../../lib/utils';
 import FiltersInLnbContainer from './FiltersInLnbContainer';
+import { RootState } from '../../../../redux/store';
 
 function SearchLnbContainer() {
-  const { category, query } = useParams();
-  const { photos, collections, users } = useSelector((state) => state.search);
+  const { category, query } = useParams<{category : string, query : string}>();
+  const { photos, collections, users } = useSelector((state : RootState) => state.search);
   const menu = [
     {
       name: 'photos',

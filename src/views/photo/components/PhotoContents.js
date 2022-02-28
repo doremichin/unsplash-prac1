@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import { ContentContainer } from '../../shared/components/Layout/LayoutStyled';
 import RelatedPhotosContainer from '../containers/RelatedPhotosContainer';
 import RelatedCollectionsContainer from '../containers/RelatedCollectionsContainer';
 import RelatedTagsContainer from '../containers/RelatedTagsContainer';

@@ -13,7 +13,7 @@ import FilterInMobile from '../../../shared/components/Filter/FilterInMobile';
 import { useFilter } from './hooks/useFilter';
 
 function FiltersInLnbContainer() {
-  const { category } = useParams();
+  const { category } = useParams<{category : string}>();
   const { search } = useLocation();
 
   const {
