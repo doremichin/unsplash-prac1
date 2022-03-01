@@ -10,11 +10,11 @@ import {
   getRelatedPhotosByIdRest,
 } from '../../api';
 
-function* getPhotos({ payload }) {
+function* getPhotos({ payload } : { payload : any, type : string }) {
   const { photos } = yield select();
   const prevPhotos = photos.list;
 
-  const result = yield call(getPhotosRest, payload);
+  const result : any[] = yield call(getPhotosRest, payload);
 
   const nextPhotos = [
     ...prevPhotos,
@@ -22,16 +22,16 @@ function* getPhotos({ payload }) {
   ];
   yield put(Action.Creators.setPhotos(nextPhotos));
 }
-function* getRandomPhoto({ payload }) {
-  const result = yield call(getRandomPhotoRest, payload);
+function* getRandomPhoto({ payload } : { payload : any, type : string }) {
+  const result : object = yield call(getRandomPhotoRest, payload);
   yield put(Action.Creators.setRandomPhoto(result));
 }
-function* getPhotoById({ payload }) {
-  const result = yield call(getPhotoByIdRest, payload);
+function* getPhotoById({ payload } : { payload : any, type : string }) {
+  const result : object = yield call(getPhotoByIdRest, payload);
   yield put(Action.Creators.setPhotoById({ id: payload, data: result }));
 }
-function* getRelatedPhotosById({ payload }) {
-  const result = yield call(getRelatedPhotosByIdRest, payload);
+function* getRelatedPhotosById({ payload } : { payload : any, type : string }) {
+  const result : object = yield call(getRelatedPhotosByIdRest, payload);
   yield put(Action.Creators.setRelatedPhotoById({ id: payload, data: result }));
 }
 function* saga() {

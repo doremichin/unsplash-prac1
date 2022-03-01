@@ -78,7 +78,7 @@ export default store;
 ```
 - sagas에서는 action을 모니터링하는 여러 saga를 모아서 store에 넣어준다.
 ```javascript
-//sagas.js
+//sagas.ts
 import { fork } from 'redux-saga/effects';
 
 import popupSaga from './popup/saga';
@@ -95,7 +95,7 @@ export default sagas;
 ```
 - saga에서는 dispatch로 날린 action.type을 감지해서 메서드를 실행함. 
 ```javascript
-//saga.js
+//saga.ts
 import { takeLatest, call, put, all, select, } from 'redux-saga/effects'; // saga에서 사용할 수 있는 여러 기능들
 
 import { Action } from './slice';
