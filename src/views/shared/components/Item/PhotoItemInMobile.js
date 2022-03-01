@@ -6,7 +6,7 @@ import UserTag from './UserTag';
 import { WhiteButton } from '../Button/Button.Styled';
 import { IconChevronDown, IconHeart, IconPlus } from '../../../../icons';
 
-const PhotoItemInMobile = ({ item = {} }) => {
+function PhotoItemInMobile({ item = {} }) {
   const history = useHistory();
   const onClickItem = () => {
     history.push(`/photos/${item.id}`);
@@ -39,7 +39,7 @@ const PhotoItemInMobile = ({ item = {} }) => {
 
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;

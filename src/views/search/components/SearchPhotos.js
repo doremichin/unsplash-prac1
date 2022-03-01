@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import PhotoItem from '../../shared/components/Item/PhotoItem';
 
-const SearchPhotos = ({ data }) => {
+function SearchPhotos({ data }) {
   const { query } = useParams();
 
   const renderItem = (item) => <PhotoItem item={item} />;
@@ -13,11 +13,14 @@ const SearchPhotos = ({ data }) => {
   if (!data) return '...loading';
   return (
     <Container>
-      <PageDesc>Results for {query}</PageDesc>
+      <PageDesc>
+        Results for
+        {query}
+      </PageDesc>
       <MainPhotoList data={data} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

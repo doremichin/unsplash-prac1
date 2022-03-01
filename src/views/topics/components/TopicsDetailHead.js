@@ -10,7 +10,7 @@ import {
 import StatusButton from '../../shared/components/Button/StatusButton';
 import { setNumberThousand } from '../../../lib/utils';
 
-const TopicsDetailHead = ({ data }) => {
+function TopicsDetailHead({ data }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
@@ -42,7 +42,8 @@ const TopicsDetailHead = ({ data }) => {
               <IconImage />
               <span>Contributions</span>
             </StatusTitle>
-            {setNumberThousand(data.total_photos)}k
+            {setNumberThousand(data.total_photos)}
+            k
           </li>
           <li>
             <StatusTitle>
@@ -51,8 +52,8 @@ const TopicsDetailHead = ({ data }) => {
             </StatusTitle>
             <TopContributors>
               {
-                (data.top_contributors).map((item) => (
-                  <a href={item.portfolio_url}>
+                (data.top_contributors).map((item, index) => (
+                  <a href={item.portfolio_url} key={index}>
                     <img src={item.profile_image.small} alt="" />
                   </a>
                 ))
@@ -69,7 +70,7 @@ const TopicsDetailHead = ({ data }) => {
       </Info>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   padding: 60px 10px;

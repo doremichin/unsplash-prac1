@@ -8,7 +8,7 @@ import { Action } from '../../../redux/topics/slice';
 import ScrollMenu from '../../shared/components/ScrollMenu';
 import { ACCESS_KEY } from '../../../const/config';
 
-const TopicsLnbContainer = () => {
+function TopicsLnbContainer() {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.topics.list);
   const { slug } = useParams();
@@ -32,7 +32,7 @@ const TopicsLnbContainer = () => {
       <ScrollMenu data={list} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   box-shadow: 0 4px 5px #00000014;

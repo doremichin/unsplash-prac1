@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import PhotoContents from '../../photo/components/PhotoContents';
 
-const PhotoPopup = ({ id }) => {
+function PhotoPopup({ id }) {
   const { related, detail } = useSelector((state) => ({
     related: state.photos.related,
     detail: state.photos.detail,
@@ -17,7 +17,7 @@ const PhotoPopup = ({ id }) => {
       <PhotoContents related={related[id]} detail={detail[id]} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   position: relative;

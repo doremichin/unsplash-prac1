@@ -7,7 +7,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 import ColorFilterContent from './ColorFilterContent';
 
-const ColorFilter = ({ colorToggle }) => {
+function ColorFilter({ colorToggle }) {
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
 
@@ -28,7 +28,7 @@ const ColorFilter = ({ colorToggle }) => {
       </ColorMenu>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CollectionItem from '../../shared/components/Item/CollectionItem';
 import GridList from '../../shared/components/List/GridList';
 
-const RelatedCollections = ({ collection }) => {
+function RelatedCollections({ collection }) {
   const renderItem = (item) => <CollectionItem item={item} />;
 
   return (
@@ -15,7 +15,7 @@ const RelatedCollections = ({ collection }) => {
       </Content>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   h4{

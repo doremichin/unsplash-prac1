@@ -7,7 +7,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 import SortFilterContent from './SortFilterContent';
 
-const SortFilter = ({ sortToggle }) => {
+function SortFilter({ sortToggle }) {
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
 
@@ -17,8 +17,8 @@ const SortFilter = ({ sortToggle }) => {
         Sort by&nbsp;
         <span>
           {
-               queryString.order_by || 'Relevance'
-             }
+            queryString.order_by || 'Relevance'
+          }
         </span>
         <span className="icon">
           <AiFillCaretDown />
@@ -29,7 +29,7 @@ const SortFilter = ({ sortToggle }) => {
       </SortMenu>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

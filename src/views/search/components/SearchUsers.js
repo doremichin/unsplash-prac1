@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import GridList from '../../shared/components/List/GridList';
 import UsersItem from '../../shared/components/Item/UsersItem';
 
-const SearchUsers = ({ data }) => {
+function SearchUsers({ data }) {
   const renderUsersItem = (item) => <UsersItem item={item} />;
   if (!data) return '...loading';
 
@@ -16,7 +16,7 @@ const SearchUsers = ({ data }) => {
       />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

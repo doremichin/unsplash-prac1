@@ -2,18 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const RelatedTags = ({ tags, onClick }) => (
-  <Container>
-    <h4>Related Tags</h4>
-    <Tags>
-      {
+function RelatedTags({ tags, onClick }) {
+  return (
+    <Container>
+      <h4>Related Tags</h4>
+      <Tags>
+        {
           tags.map((item, index) => (
             <TagItem key={item.id || index} to={`/search/photos/${item.title}`} onClick={onClick}>{item.title}</TagItem>
           ))
         }
-    </Tags>
-  </Container>
-);
+      </Tags>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   h4{

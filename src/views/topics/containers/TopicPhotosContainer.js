@@ -7,7 +7,7 @@ import TopicsDetailPhotos from '../components/TopicsDetailPhotos';
 import { Action } from '../../../redux/topics/slice';
 import InfiniteScroll from '../../shared/components/InfiniteScroll';
 
-const TopicPhotosContainer = () => {
+function TopicPhotosContainer() {
   const [page, setPage] = useState(1);
   const { slug } = useParams();
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const TopicPhotosContainer = () => {
       </InfiniteScroll>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

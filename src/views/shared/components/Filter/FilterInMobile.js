@@ -6,7 +6,7 @@ import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { IconFilter } from '../../../../icons';
 import FilterModal from './FilterModal';
 
-const FilterInMobile = () => {
+function FilterInMobile() {
   const history = useHistory();
   const { query } = useParams();
   const [isView, setIsView] = useState(false);
@@ -29,7 +29,7 @@ const FilterInMobile = () => {
     </>
 
   );
-};
+}
 
 const Container = styled.div`
 

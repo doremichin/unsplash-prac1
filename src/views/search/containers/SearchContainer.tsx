@@ -7,21 +7,28 @@ import { useMediaQuery } from 'react-responsive';
 import cn from 'classnames';
 
 import { Action } from '../../../redux/search/slice';
-import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import { ContentContainer } from '../../shared/components/Layout/LayoutStyled';
 import RelatedSearchesMenu from '../components/RelatedSearchesMenu';
 import { ACCESS_KEY } from '../../../const/config';
 import SearchPhotosContainer from './SearchPhotosContainer';
 import SearchCollectionsContainer from './SearchCollectionsContainer';
 import SearchUsersContainer from './SearchUsersContainer';
+import { RootState } from '../../../redux/store';
 
-const SearchContainer = () => {
+function SearchContainer() {
+  function getQueryString() {
+    const { search } = useLocation();
+    const queryString = qs.parse(search, { ignoreQueryPrefix: true });
+
+    return queryString;
+  }
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { query } = useParams();
+  const { query } = useParams<{query : string}>();
   const queryString = getQueryString();
   const dispatch = useDispatch();
   const {
     photos, collections, users, related_searches,
-  } = useSelector((state) => state.search);
+  } = useSelector((state : RootState) => state.search);
 
   const searchResults = () => {
     dispatch(Action.Creators.getSearchResults({
@@ -34,18 +41,12 @@ const SearchContainer = () => {
       order_by: queryString.order_by,
     }));
   };
+
   useEffect(() => {
     searchResults();
   }, [query, queryString.orientation, queryString.color, queryString.order_by]);
 
-  function getQueryString() {
-    const { search } = useLocation();
-    const queryString = qs.parse(search, { ignoreQueryPrefix: true });
-
-    return queryString;
-  }
-
-  if (!photos) return '...loading';
+  if (!photos) return <div>...loading</div>;
 
   return (
     <Container>
@@ -55,7 +56,11 @@ const SearchContainer = () => {
           !isMobile && <RelatedSearchesMenu data={related_searches} />
         }
         <Route path={['/search/photos/:query']}>
-          <SearchPhotosContainer data={photos?.results} shape={queryString.orientation} color={queryString.color} />
+          <SearchPhotosContainer
+            data={photos?.results}
+            shape={queryString.orientation}
+            color={queryString.color}
+          />
         </Route>
 
         <Route path={['/search/collections/:query']}>
@@ -69,7 +74,7 @@ const SearchContainer = () => {
       </ContentContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

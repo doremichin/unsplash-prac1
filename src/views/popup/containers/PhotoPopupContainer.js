@@ -7,7 +7,7 @@ import PhotoPopup from '../components/PhotoPopup';
 import { Action } from '../../../redux/popup/slice';
 import { IconCancel } from '../../../icons';
 
-const PhotoPopupContainer = () => {
+function PhotoPopupContainer() {
   const { isView } = useSelector((state) => state.popup);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -41,7 +41,7 @@ const PhotoPopupContainer = () => {
       <PhotoPopup id={id} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   display: none;

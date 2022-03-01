@@ -12,10 +12,11 @@ import {
 } from '../../../../icons';
 import { setNumberThousand } from '../../../../lib/utils';
 import FiltersInLnbContainer from './FiltersInLnbContainer';
+import { RootState } from '../../../../redux/store';
 
-const SearchLnbContainer = () => {
-  const { category, query } = useParams();
-  const { photos, collections, users } = useSelector((state) => state.search);
+function SearchLnbContainer() {
+  const { category, query } = useParams<{category : string, query : string}>();
+  const { photos, collections, users } = useSelector((state : RootState) => state.search);
   const menu = [
     {
       name: 'photos',
@@ -43,8 +44,12 @@ const SearchLnbContainer = () => {
           menu.map(({ name, icon, total }) => (
             <NavItem key={name} to={`/search/${name}/${query}`} className={cn({ active: category === name, isMobile })}>
               <span>{icon}</span>
-              {name}&nbsp;
-              <span>{setNumberThousand(total)}k</span>
+              {name}
+&nbsp;
+              <span>
+                {setNumberThousand(total)}
+                k
+              </span>
             </NavItem>
           ))
         }
@@ -52,7 +57,7 @@ const SearchLnbContainer = () => {
       <FiltersInLnbContainer />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   display: flex;

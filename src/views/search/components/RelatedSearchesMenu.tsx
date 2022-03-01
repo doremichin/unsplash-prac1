@@ -3,15 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import ScrollMenu from '../../shared/components/ScrollMenu';
+import { IRelatedSearches } from '../../../_interfaces/interface.search';
 
-const RelatedSearchesMenu = ({ data }) => {
-  const renderItem = (item) => <MenuItem to={`/search/photos/${item.title}`} key={item.title}>{item.title}</MenuItem>;
+interface Props {
+    data : IRelatedSearches[]
+}
+function RelatedSearchesMenu({ data } : Props) {
+  const renderItem = (item : IRelatedSearches) => <MenuItem to={`/search/photos/${item.title}`} key={item.title}>{item.title}</MenuItem>;
   return (
     <Container>
       <ScrollMenu data={data} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   margin: 32px 0 72px;

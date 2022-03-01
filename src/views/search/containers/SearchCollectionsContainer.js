@@ -8,7 +8,7 @@ import { Action } from '../../../redux/search/slice';
 import { ACCESS_KEY } from '../../../const/config';
 import SearchCollections from '../components/SearchCollections';
 
-const SearchCollectionsContainer = ({ data }) => {
+function SearchCollectionsContainer({ data }) {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const { query } = useParams();
@@ -46,7 +46,7 @@ const SearchCollectionsContainer = ({ data }) => {
       }
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

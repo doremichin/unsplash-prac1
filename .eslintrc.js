@@ -1,73 +1,96 @@
 module.exports = {
-    env: {
-        browser: true,
-        es6: true,
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'airbnb',
+    ecmaVersion: 13,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'unused-imports',
+  ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  rules: {
+    indent: ['error', 2],
+    quotes: ['error', 'single'],
+    'react/function-component-definition': [2, { namedComponents: 'function-declaration' }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_',
+      },
     ],
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
-        ecmaVersion: 2020,
-        sourceType: 'module',
-    },
-    plugins: [
-        'react',
-        'react-hooks',
-        'unused-imports',
+    'import/order': [
+      'error', {
+        groups: ['external', 'internal'],
+        'newlines-between': 'always-and-inside-groups',
+      },
     ],
-    settings: {
-        'import/resolver': {
-            node: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
-        },
-    },
-    ignorePatterns: [
-        '.eslintrc.js',
-        '*.config.js',
+    'import/prefer-default-export': 'off',
+    'import/extensions': [
+      'error',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
     ],
-    rules: {
-        'import/extensions': ['off'],
-        'import/prefer-default-export': 'off',
-        'no-plusplus': 'off',
-        semi: ['error', 'always'],
-        // Custom rules
-        'react/jsx-filename-extension': [
-            'error',
-            { extensions: ['.tsx', '.jsx', '.js', '.ts'] },
-        ],
-        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-        'import/order': [
-            'error',
-            {
-                groups: ['external', 'internal'],
-                'newlines-between': 'always',
-            },
-        ],
-        'unused-imports/no-unused-imports': ['error'],
-        'react/jsx-indent-props': ['error', 'first'],
-        'react/jsx-curly-newline': 'off',
-        'react/jsx-one-expression-per-line': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'react/jsx-wrap-multilines': 'off',
-        'no-unused-vars': 'off',
-        'no-proto': 'off',
-        'camelcase': 'off',
-        'class-methods-use-this': 'off',
-        'jsx-a11y/label-has-associated-control': 'off',
-        'max-classes-per-file': 'off',
-        'max-len': 'off',
-        'no-param-reassign': 'off',
-        'no-shadow': 'off',
-        'no-undef': 'off',
-        'no-underscore-dangle': 'off',
-        'no-use-before-define': 'off',
-        'no-useless-escape': 'off',
-        'react/no-array-index-key': 'off',
-        'react/require-default-props': 'off',
-        'react/prop-types': 'off',
-        'react/react-in-jsx-scope': 'off'
-    },
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'no-use-before-define': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'import/no-unresolved': 'off',
+    'react/require-default-props': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/no-array-index-key': 'off',
+    'no-param-reassign': 'off',
+    'react/button-has-type': 'off',
+    'react/prop-types': 'off',
+    camelcase: 'off',
+    'no-plusplus': 'off',
+    'react/no-danger': 'off',
+  },
+  globals: {
+    JSX: true,
+  },
 };
+
+//
+// ========================
+//
+//
+// "devDependencies": {
+//   "@typescript-eslint/eslint-plugin": "^5.9.1",
+//       "@typescript-eslint/parser": "^5.9.1",
+//       "babel-plugin-import": "^1.13.3",
+//       "eslint": "^8.6.0",
+//       "eslint-config-airbnb": "^19.0.4",
+//       "eslint-config-next": "12.0.7",
+//       "eslint-plugin-import": "^2.25.4",
+//       "eslint-plugin-jsx-a11y": "^6.5.1",
+//       "eslint-plugin-react": "^7.28.0",
+//       "eslint-plugin-react-hooks": "^4.3.0",
+//       "eslint-plugin-unused-imports": "^2.0.0"
+// }

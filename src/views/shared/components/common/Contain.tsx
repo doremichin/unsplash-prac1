@@ -1,13 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Contain = ({ children, onClickOut }) => {
-  const ref = useRef();
+interface Props {
+  children : JSX.Element
+  onClickOut() : void
+}
+
+function Contain({ children, onClickOut } :Props) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e : any) => {
       if (ref.current) {
-        const isContain = ref.current.contains(e.target);
+        const isContain = ref.current.contains(e?.target);
         if (!isContain) {
           onClickOut();
         }
@@ -23,7 +28,7 @@ const Contain = ({ children, onClickOut }) => {
       {children}
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

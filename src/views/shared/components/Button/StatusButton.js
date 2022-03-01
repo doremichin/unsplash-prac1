@@ -1,20 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StatusButton = ({
+function StatusButton({
   item, position, top, left,
-}) => (
-  <Status
-    className={item?.status === 'open' ? 'open' : 'close'}
-    position={position}
-    top={top}
-    left={left}
-  >
-    <span>
-      {item?.status}
-    </span>
-  </Status>
-);
+}) {
+  return (
+    <Status
+      className={item?.status === 'open' ? 'open' : 'close'}
+      position={position}
+      top={top}
+      left={left}
+    >
+      <span>
+        {item?.status}
+      </span>
+    </Status>
+  );
+}
 
 const Status = styled.div`
   position: ${(props) => props.position || 'static'};

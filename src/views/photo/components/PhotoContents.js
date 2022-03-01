@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ContentContainer } from '../../shared/components/Layout/Layout.Styled';
+import { ContentContainer } from '../../shared/components/Layout/LayoutStyled';
 import RelatedPhotosContainer from '../containers/RelatedPhotosContainer';
 import RelatedCollectionsContainer from '../containers/RelatedCollectionsContainer';
 import RelatedTagsContainer from '../containers/RelatedTagsContainer';
 import PhotoDetail from './photoDetail/PhotoDetail';
 
-const PhotoContents = ({ detail, related }) => {
+function PhotoContents({ detail, related }) {
   if (!detail.id || !related) return null;
   return (
     <Container>
@@ -19,7 +19,7 @@ const PhotoContents = ({ detail, related }) => {
       </ContentContainer>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   background: #fff;

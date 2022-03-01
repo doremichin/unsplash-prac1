@@ -4,7 +4,7 @@ import React from 'react';
 import { IconDotMenu, IconInfo, IconShare } from '../../../../icons';
 import { WhiteButton } from '../../../shared/components/Button/Button.Styled';
 
-const PhotoDetailFeature = ({ detail }) => {
+function PhotoDetailFeature({ detail }) {
   const keys = Object.keys(detail.topic_submissions);
 
   return (
@@ -19,22 +19,22 @@ const PhotoDetailFeature = ({ detail }) => {
           <span>{detail.downloads.toLocaleString()}</span>
         </Feature>
         {
-            keys.length > 0
-              ? (
-                <Feature>
-                  <h4>Featured in</h4>
-                  Editorial,&nbsp;
-                  {
-                    keys.map((item, index) => <span key={index}>{item}</span>)
-                  }
-                </Feature>
-              ) : (
-                <Feature>
-                  <h4>Featured in</h4>
-                  Editorial
-                </Feature>
-              )
-          }
+          keys.length > 0
+            ? (
+              <Feature>
+                <h4>Featured in</h4>
+                Editorial,&nbsp;
+                {
+                  keys.map((item, index) => <span key={index}>{item}</span>)
+                }
+              </Feature>
+            ) : (
+              <Feature>
+                <h4>Featured in</h4>
+                Editorial
+              </Feature>
+            )
+        }
       </FeatureList>
       <ButtonBox>
         <Button>
@@ -51,7 +51,7 @@ const PhotoDetailFeature = ({ detail }) => {
       </ButtonBox>
     </Info>
   );
-};
+}
 
 const ButtonBox = styled.div`
   display: flex;

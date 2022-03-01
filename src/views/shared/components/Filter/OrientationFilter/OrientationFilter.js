@@ -7,7 +7,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 import OrientationFilterContent from './OrientationFilterContent';
 
-const OrientationFilter = ({ orientationToggle }) => {
+function OrientationFilter({ orientationToggle }) {
   const { search } = useLocation();
   const queryString = qs.parse(search, { ignoreQueryPrefix: true });
 
@@ -24,7 +24,7 @@ const OrientationFilter = ({ orientationToggle }) => {
       </OrientationMenu>
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

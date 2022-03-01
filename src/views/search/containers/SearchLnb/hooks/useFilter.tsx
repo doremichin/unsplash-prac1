@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 export const useFilter = () => {
-  const { query } = useParams();
+  const { query } = useParams<{query : string}>();
   const history = useHistory();
   const [orientationToggle, setOrientationToggle] = useState(false);
   const [colorToggle, setColorToggle] = useState(false);

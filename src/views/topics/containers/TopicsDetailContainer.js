@@ -7,7 +7,7 @@ import { Action } from '../../../redux/topics/slice';
 import TopicsDetailHead from '../components/TopicsDetailHead';
 import TopicPhotosContainer from './TopicPhotosContainer';
 
-const TopicsDetailContainer = () => {
+function TopicsDetailContainer() {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const topicDetail = useSelector((state) => state.topics.detail);
@@ -23,7 +23,7 @@ const TopicsDetailContainer = () => {
       <TopicPhotosContainer />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 

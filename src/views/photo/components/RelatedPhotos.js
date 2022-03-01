@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MainPhotoList from '../../shared/components/List/MainPhotoList';
 import PhotoItem from '../../shared/components/Item/PhotoItemInDesktop';
 
-const RelatedPhotos = ({ data }) => {
+function RelatedPhotos({ data }) {
   const renderItem = (item) => <PhotoItem item={item} />;
   return (
     <Container>
@@ -12,7 +12,7 @@ const RelatedPhotos = ({ data }) => {
       <MainPhotoList data={data} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
   margin-top: 40px;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import GridList from '../../shared/components/List/GridList';
 import TopicItem from '../components/TopicItem';
 
-const TopicsContainer = () => {
+function TopicsContainer() {
   const list = useSelector((state) => state.topics.list);
 
   const renderItem = (item) => <TopicItem item={item} />;
@@ -24,7 +24,7 @@ const TopicsContainer = () => {
       <GridList data={list} renderItem={renderItem} />
     </Container>
   );
-};
+}
 
 const Container = styled.div`
 
