@@ -4,12 +4,18 @@ import styled from 'styled-components';
 import { IconSearch } from '../../../../icons';
 import { DefaultButton } from '../Button/Button.Styled';
 
+interface Props {
+  value : string
+  onSubmit() : void
+  onChange(e : any) : void
+  shape : string
+}
 function SearchBox({
   value, onSubmit, onChange, shape,
-}) {
-  const handleSubmit = (e) => {
+} : Props) {
+  const handleSubmit = (e : React.FormEvent) : void => {
     e.preventDefault();
-    onSubmit(e);
+    onSubmit();
   };
 
   return (

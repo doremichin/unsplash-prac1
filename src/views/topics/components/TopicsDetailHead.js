@@ -52,8 +52,8 @@ function TopicsDetailHead({ data }) {
             </StatusTitle>
             <TopContributors>
               {
-                (data.top_contributors).map((item) => (
-                  <a href={item.portfolio_url}>
+                (data.top_contributors).map((item, index) => (
+                  <a href={item.portfolio_url} key={index}>
                     <img src={item.profile_image.small} alt="" />
                   </a>
                 ))

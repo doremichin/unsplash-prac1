@@ -70,6 +70,7 @@ module.exports = {
     'react/prop-types': 'off',
     camelcase: 'off',
     'no-plusplus': 'off',
+    'react/no-danger': 'off',
   },
   globals: {
     JSX: true,

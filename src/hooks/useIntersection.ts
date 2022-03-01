@@ -10,7 +10,7 @@ export const useIntersection = () : [boolean, React.RefObject<HTMLDivElement>] =
   };
 
   useEffect(() => {
-    const callback = (entries :any, observer :any) => {
+    const callback = (entries :any) => {
       entries.forEach((entry :any) => {
         setInView(entry.isIntersecting);
       });

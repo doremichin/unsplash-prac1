@@ -4,15 +4,15 @@ import { useHistory } from 'react-router-dom';
 
 import SearchBox from '../../shared/components/SearchBox';
 
-function SearchBoxContainer({ shape }) {
+function SearchBoxContainer({ shape } : { shape : string }) {
   const history = useHistory();
   const [query, setQuery] = useState('');
 
-  const onSubmit = (e) => {
+  const onSubmit = () => {
     history.push(`/search/photos/${query}`);
   };
 
-  const onChange = (e) => {
+  const onChange = (e : any) => {
     setQuery(e.target.value);
   };
 

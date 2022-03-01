@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 
 import Routes from './Routes';
 import { GlobalStyle } from './style/GlobalStyle';
@@ -9,7 +8,7 @@ import PhotoPopupContainer from './views/popup/containers/PhotoPopupContainer';
 import ModalPortal from './lib/ModalPortal';
 
 function App() {
-  const history = useHistory();
+  // const history = useHistory();
   useEffect(() => {
     // history.listen((location, action) => {
     //   if (action === 'PUSH') {
@@ -35,7 +34,5 @@ function App() {
 const Container = styled.div`
   position: relative;
 `;
-const Box = styled.div`
-  
-`;
+
 export default App;
